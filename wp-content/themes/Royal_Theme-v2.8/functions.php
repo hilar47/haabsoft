@@ -119,10 +119,10 @@ add_action('profile_update', 'save_custom_user_profile_fields');
 //add_action('restrict_manage_posts', 'rudr_filter_by_the_author');
 
 add_action( 'pre_get_posts', 'wpcf_filter_author_posts' );
-   function wpcf_filter_author_posts( $query ){
+function wpcf_filter_author_posts( $query ){
     global $post_type, $pagenow;
     //if we are currently on the edit screen of the post type listings
-    if($pagenow == 'edit.php' && $post_type == 'post' && current_user_can('editor')){
+    if($pagenow == 'edit.php' && $post_type == 'videos' && current_user_can('editor')){
         global $user_ID;
         $meta = get_user_meta( $user_ID );
         $selected_author_id = $meta['select_md'][0];
@@ -143,4 +143,39 @@ add_action( 'pre_get_posts', 'wpcf_filter_author_posts' );
             
         }
     }
-   }
+}
+//Hide roles from "change role to" on user listing screen
+// function wdm_user_role_dropdown($all_roles) {
+//     global $pagenow;
+//     if( current_user_can('administrator') && $pagenow == 'users.php' ) {
+//         // if current user is editor AND current page is user's listing page
+//         unset($all_roles['administrator']);
+//         unset($all_roles['editor']);
+//     }
+//     return $all_roles;
+// }
+// add_action('editable_roles','wdm_user_role_dropdown');
+
+// add_action( 'admin_init', 'fb_deactivate_support' );
+// function fb_deactivate_support() {
+//     remove_post_type_support( 'post', 'comments' );
+//     remove_post_type_support( 'post', 'author' );
+// }
+
+//Display only clients in the authors dropdown list
+add_action('pre_user_query','ap_pre_user_query');
+function ap_pre_user_query($user_search) {
+  $user = wp_get_current_user();
+  if ($user->ID!=1) { // Is not administrator, remove administrator (you can add any user-ID)
+    global $wpdb;
+    global $user_ID;
+    $meta = get_user_meta( $user_ID );
+    $selected_author_id = $meta['select_md'][0];
+    // echo "<pre>";
+    // print_r($meta);
+    // echo "</pre>";
+    // exit();
+    $user_search->query_where = str_replace('WHERE 1=1',
+      "WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID='".$selected_author_id."'",$user_search->query_where);
+  }
+}
