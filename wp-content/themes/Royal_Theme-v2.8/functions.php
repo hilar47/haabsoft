@@ -128,18 +128,10 @@ function wpcf_filter_author_posts( $query ){
         global $user_ID;
         $meta = get_user_meta( $user_ID );
         $selected_author_id = unserialize($meta['select_md'][0]);
-        //if the author is not 0 (meaning all)
         if(isset($selected_author_id) && !empty($selected_author_id)){
             $count = count($selected_author_id);
             $selected_author_id[$count] = $user_ID;
-            //$query->query_vars['author'] = $selected_author_id;
-            //$query->query_vars['author'] = $user_ID;
-            //foreach($selected_author_id as $author){
-
-                $query->query_vars['author__in'] = $selected_author_id;//array($author,$user_ID);
-            //}
-            // $query->set('authors__in', array(2,8) );
-            // return;
+            $query->query_vars['author__in'] = $selected_author_id;
         } else {
             $query->query_vars['author'] = $user_ID;
             
@@ -180,7 +172,6 @@ function ap_pre_user_query($user_search) {
         $store_ids .= $ids.',';
     }
     $final_ids = rtrim($store_ids,',');
-    $val = array('21','22','19');
     $user_search->query_where = str_replace('WHERE 1=1',"WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID IN (".$final_ids.")",$user_search->query_where);
   }
 }
