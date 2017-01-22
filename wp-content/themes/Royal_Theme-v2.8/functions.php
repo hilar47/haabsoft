@@ -48,13 +48,13 @@ function wpse149143_edit_posts_views( $views ) {
 function custom_user_profile_fields($user){
     if(is_object($user)) {
         $company = esc_attr( get_the_author_meta( 'company', $user->ID ) );
-    	$username = esc_attr( get_the_author_meta( 'select_md', $user->ID ) );
+    	$username = get_the_author_meta( 'select_md', $user->ID );
     } else {
         $company = null;
     	$username = null;
     }
     ?>
-    <h3>Choose Moderator</h3>
+    <h3>Choose Clients</h3>
     <?php 
     // echo "<pre>";
     // print_r(wp_get_current_user());
@@ -62,26 +62,26 @@ function custom_user_profile_fields($user){
     ?>
     <table class="form-table">
         <tr>
-            <th><label for="company">Company Name</label></th>
-            <td>
-                <input type="text" class="regular-text" name="company" value="<?php echo $company; ?>" id="company" /><br />
-                <span class="description">Where are you?</span>
-            </td>
-        </tr>
-        <tr>
-            <th><label for="company">Moderator Options</label></th>
+            <th><label for="company">Select Your clients</label></th>
             <td>
         		<?php
+                    $is_selected = '';
         			$users = get_users( 'role=author' );
         		?>
-            	<select name="select_md" id="select_md">
-                    <option value="">--Select--</option>
-            		<?php foreach($users as $user) {?>
-            			<option value="<?php echo $user->ID;?>" <?php if($username == $user->ID) { echo "selected='selected'"; } ?>><?php echo $user->user_login;?></option>
-            		<?php } ?>
+            	<select name="select_md[]" multiple="multiple" id="select_md">
+                    <?php if(isset($users) && !empty($users)) {?>
+                        <!--<option value="">--Select--</option>-->
+                		<?php foreach($users as $user) {
+                            $selected = (in_array($user->ID, $username)) ? 'selected="selected"' : '' ;
+                            echo "<option value='".$user->ID."' ".$selected.">".$user->user_login."</option>";
+                            }
+                        ?>
+                    <?php } else { ?>
+                        <option value="">--Select--</option>
+                    <?php } ?>
             	</select>
-            	<!--<input type="button" id="select_all_state" class="btn btn-bricky" name="select_all_state" value="Select All Items">
-				<input type="button" id="unselect_all_state" class="btn btn-bricky" name="unselect_all_state" value="Unselect All Items">-->
+            	<input type="button" id="select_all_state" class="btn btn-bricky" name="select_all_state" value="Select All Items">
+				<input type="button" id="unselect_all_state" class="btn btn-bricky" name="unselect_all_state" value="Unselect All Items">
             </td>
         </tr>
     </table>
@@ -98,7 +98,9 @@ function save_custom_user_profile_fields($user_id){
  
     # save my custom field
     update_user_meta($user_id, 'company', $_POST['company']);
-    update_user_meta($user_id, 'select_md', $_POST['select_md']);
+    //foreach($_POST['select_md'] as $selected_md){
+        update_user_meta($user_id, 'select_md', $_POST['select_md']);
+    //}
 }
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('profile_update', 'save_custom_user_profile_fields');
@@ -125,17 +127,17 @@ function wpcf_filter_author_posts( $query ){
     if($pagenow == 'edit.php' && $post_type == 'videos' && current_user_can('editor')){
         global $user_ID;
         $meta = get_user_meta( $user_ID );
-        $selected_author_id = $meta['select_md'][0];
-        
+        $selected_author_id = unserialize($meta['select_md'][0]);
         //if the author is not 0 (meaning all)
-        if($selected_author_id != ''){
-            // echo "<pre>";
-            // print_r($query);
-            // echo "</pre>";
-            // exit();
+        if(isset($selected_author_id) && !empty($selected_author_id)){
+            $count = count($selected_author_id);
+            $selected_author_id[$count] = $user_ID;
             //$query->query_vars['author'] = $selected_author_id;
             //$query->query_vars['author'] = $user_ID;
-            $query->query_vars['author__in'] = array($selected_author_id,$user_ID);
+            //foreach($selected_author_id as $author){
+
+                $query->query_vars['author__in'] = $selected_author_id;//array($author,$user_ID);
+            //}
             // $query->set('authors__in', array(2,8) );
             // return;
         } else {
@@ -170,12 +172,46 @@ function ap_pre_user_query($user_search) {
     global $wpdb;
     global $user_ID;
     $meta = get_user_meta( $user_ID );
-    $selected_author_id = $meta['select_md'][0];
-    // echo "<pre>";
-    // print_r($meta);
-    // echo "</pre>";
-    // exit();
-    $user_search->query_where = str_replace('WHERE 1=1',
-      "WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID='".$selected_author_id."'",$user_search->query_where);
+    $selected_author_id = unserialize($meta['select_md'][0]);
+    $count = count($selected_author_id);
+    $selected_author_id[$count] = $user_ID;
+    $store_ids = '';
+    foreach($selected_author_id as $ids){
+        $store_ids .= $ids.',';
+    }
+    $final_ids = rtrim($store_ids,',');
+    $val = array('21','22','19');
+    $user_search->query_where = str_replace('WHERE 1=1',"WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID IN (".$final_ids.")",$user_search->query_where);
   }
 }
+
+// function isa_pre_user_query($user_search) {
+//   $user = wp_get_current_user();
+//   //if (!current_user_can('administrator')) { // Is Not Administrator - Remove Administrator
+//     global $wpdb;
+//     $user_ID = get_current_user_id();
+//     $user_search->query_where =
+//         str_replace('WHERE 1=1',
+//             "WHERE 1=1 AND {$wpdb->users}.ID IN (
+//                  SELECT {$wpdb->usermeta}.user_id FROM $wpdb->usermeta
+//                     WHERE {$wpdb->usermeta}.meta_key = '{$wpdb->prefix}capabilities'
+//                     AND {$wpdb->usermeta}.meta_value NOT LIKE '%administrator%')",
+//             $user_search->query_where
+//         );
+//   //}
+// }
+// add_action('pre_user_query','isa_pre_user_query');
+
+// function modify_user_list($query){
+//     $user = wp_get_current_user();
+
+//     if( ! current_user_can( 'edit_user' ) ) return $query;
+
+//     $user_id = $user->ID; 
+//     $query->query_vars['meta_key'] = 'user_branch_number';
+//     $query->query_vars['meta_value'] = $user_branch_number; 
+//     $query->query_vars['meta_compare'] = '=';
+
+// }
+// add_action('pre_get_users', 'modify_user_list');
+
