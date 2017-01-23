@@ -34,7 +34,7 @@ function posts_for_current_author($query) {
 }
 add_filter('pre_get_posts', 'posts_for_current_author');
 
-//hide all count
+//hide all count on listing screen
 add_filter( 'views_edit-post', 'wpse149143_edit_posts_views' );
 
 function wpse149143_edit_posts_views( $views ) {
@@ -45,6 +45,7 @@ function wpse149143_edit_posts_views( $views ) {
     return $views;
 }
 
+//Adding Custom fields in the add/edit user screen
 function custom_user_profile_fields($user){
     if(is_object($user)) {
         $company = esc_attr( get_the_author_meta( 'company', $user->ID ) );
@@ -55,11 +56,6 @@ function custom_user_profile_fields($user){
     }
     ?>
     <h3>Choose Clients</h3>
-    <?php 
-    // echo "<pre>";
-    // print_r(wp_get_current_user());
-    // echo "</pre>";
-    ?>
     <table class="form-table">
         <tr>
             <th><label for="company">Select Your clients</label></th>
@@ -70,8 +66,7 @@ function custom_user_profile_fields($user){
         		?>
             	<select name="select_md[]" multiple="multiple" id="select_md">
                     <?php if(isset($users) && !empty($users)) {?>
-                        <!--<option value="">--Select--</option>-->
-                		<?php foreach($users as $user) {
+                        <?php foreach($users as $user) {
                             $selected = (in_array($user->ID, $username)) ? 'selected="selected"' : '' ;
                             echo "<option value='".$user->ID."' ".$selected.">".$user->user_login."</option>";
                             }
@@ -91,6 +86,7 @@ add_action( 'show_user_profile', 'custom_user_profile_fields' );
 add_action( 'edit_user_profile', 'custom_user_profile_fields' );
 add_action( "user_new_form", "custom_user_profile_fields" );
 
+//Saving the data from custom fields
 function save_custom_user_profile_fields($user_id){
     # again do this only if you can
     if(!current_user_can('manage_options'))
@@ -98,28 +94,12 @@ function save_custom_user_profile_fields($user_id){
  
     # save my custom field
     update_user_meta($user_id, 'company', $_POST['company']);
-    //foreach($_POST['select_md'] as $selected_md){
-        update_user_meta($user_id, 'select_md', $_POST['select_md']);
-    //}
+    update_user_meta($user_id, 'select_md', $_POST['select_md']);
 }
 add_action('user_register', 'save_custom_user_profile_fields');
 add_action('profile_update', 'save_custom_user_profile_fields');
 
-//Adding the filter
-// function rudr_filter_by_the_author() {
-// 	$params = array(
-// 		'name' => 'author',
-// 		'show_option_all' => 'All authors'
-// 	);
- 
-// 	if ( isset($_GET['user']) )
-// 		$params['selected'] = $_GET['user']; // choose selected user by $_GET variable
- 
-// 	wp_dropdown_users( $params ); // print the ready author list
-// }
- 
-//add_action('restrict_manage_posts', 'rudr_filter_by_the_author');
-
+//fetch all the posts added by editor(Promoter) and its selected author(Clients) 
 add_action( 'pre_get_posts', 'wpcf_filter_author_posts' );
 function wpcf_filter_author_posts( $query ){
     global $post_type, $pagenow;
@@ -138,25 +118,8 @@ function wpcf_filter_author_posts( $query ){
         }
     }
 }
-//Hide roles from "change role to" on user listing screen
-// function wdm_user_role_dropdown($all_roles) {
-//     global $pagenow;
-//     if( current_user_can('administrator') && $pagenow == 'users.php' ) {
-//         // if current user is editor AND current page is user's listing page
-//         unset($all_roles['administrator']);
-//         unset($all_roles['editor']);
-//     }
-//     return $all_roles;
-// }
-// add_action('editable_roles','wdm_user_role_dropdown');
 
-// add_action( 'admin_init', 'fb_deactivate_support' );
-// function fb_deactivate_support() {
-//     remove_post_type_support( 'post', 'comments' );
-//     remove_post_type_support( 'post', 'author' );
-// }
-
-//Display only clients in the authors dropdown list
+//Display only clients in the authors dropdown list while creating new Video
 add_action('pre_user_query','ap_pre_user_query');
 function ap_pre_user_query($user_search) {
   $user = wp_get_current_user();
@@ -175,34 +138,3 @@ function ap_pre_user_query($user_search) {
     $user_search->query_where = str_replace('WHERE 1=1',"WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID IN (".$final_ids.")",$user_search->query_where);
   }
 }
-
-// function isa_pre_user_query($user_search) {
-//   $user = wp_get_current_user();
-//   //if (!current_user_can('administrator')) { // Is Not Administrator - Remove Administrator
-//     global $wpdb;
-//     $user_ID = get_current_user_id();
-//     $user_search->query_where =
-//         str_replace('WHERE 1=1',
-//             "WHERE 1=1 AND {$wpdb->users}.ID IN (
-//                  SELECT {$wpdb->usermeta}.user_id FROM $wpdb->usermeta
-//                     WHERE {$wpdb->usermeta}.meta_key = '{$wpdb->prefix}capabilities'
-//                     AND {$wpdb->usermeta}.meta_value NOT LIKE '%administrator%')",
-//             $user_search->query_where
-//         );
-//   //}
-// }
-// add_action('pre_user_query','isa_pre_user_query');
-
-// function modify_user_list($query){
-//     $user = wp_get_current_user();
-
-//     if( ! current_user_can( 'edit_user' ) ) return $query;
-
-//     $user_id = $user->ID; 
-//     $query->query_vars['meta_key'] = 'user_branch_number';
-//     $query->query_vars['meta_value'] = $user_branch_number; 
-//     $query->query_vars['meta_compare'] = '=';
-
-// }
-// add_action('pre_get_users', 'modify_user_list');
-
