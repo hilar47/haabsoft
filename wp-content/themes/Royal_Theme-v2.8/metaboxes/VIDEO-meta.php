@@ -31,6 +31,54 @@
 			<div class="my_meta_control metabox">
 				<div class="row">
 					<div class="col-sm-12">
+						<label>Select Category</label>
+						<?php $metabox->the_field('video_category'); ?>
+						<?php 
+						$video_category = get_terms(array(
+							'taxonomy' => 'videos_category',
+							'hide_empty' => false,
+							'orderby' => 'name',
+							'order' => 'asc'
+						));
+						?>
+						<p>
+						<select class="col-sm-12" name="<?php $metabox->the_name(); ?>">
+							<option value="">---</option>
+							<?php foreach($video_category as $category){
+								$selected = '';
+								if($category->name==$metabox->get_the_value()){
+									$selected = 'selected="selected"';
+								}
+								echo '<option value="'.$category->name.'" '.$selected.'>'.$category->name.'</option>';
+							 } ?>
+						</select>
+						</p>
+					</div>
+					<div class="col-sm-12">
+						<label>Select SubCategory</label>
+						<?php $metabox->the_field('video_subcategory'); ?>
+						<?php 
+						$video_subcategory = get_terms(array(
+							'taxonomy' => 'videos_subcategory',
+							'hide_empty' => false,
+							'orderby' => 'name',
+							'order' => 'asc'
+						));
+						?>
+						<p>
+						<select class="col-sm-12" name="<?php $metabox->the_name(); ?>">
+							<option value="">---</option>
+							<?php foreach($video_subcategory as $subcategory){
+								$selected = '';
+								if($subcategory->name==$metabox->get_the_value()){
+									$selected = 'selected="selected"';
+								}
+								echo '<option value="'.$subcategory->name.'" '.$selected.'>'.$subcategory->name.'</option>';
+							 } ?>
+						</select>
+						</p>
+					</div>
+					<div class="col-sm-12">
 						<label>Keywords</label>
 						<?php $metabox->the_field('keywords'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
