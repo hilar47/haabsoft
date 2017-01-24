@@ -5,6 +5,7 @@ require_once( get_template_directory() . '/framework/init.php' );
 
 include_once 'metaboxes/setup.php';
 include_once 'metaboxes/VIDEO-spec.php';
+include_once 'metaboxes/PAGE-spec.php';
 
 //Add custom admin styles css
 function admin_style() {
