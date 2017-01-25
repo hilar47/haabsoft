@@ -15614,3 +15614,8 @@ header{
 	width: 85%;
 	border: 1px solid #fff!important;
 }
+
+.outer {
+  margin: 40px auto;
+  text-align: center;
+}
