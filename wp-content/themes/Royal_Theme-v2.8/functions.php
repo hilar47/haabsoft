@@ -9,11 +9,16 @@ include_once 'metaboxes/PAGE-spec.php';
 
 //Add custom admin styles css
 function admin_style() {
+    // wp_enqueue_script( 'my_custom_script', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' );
 	wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin/css/custom-override.css');
 	wp_enqueue_script( 'my_custom_script', get_template_directory_uri().'/js_admin/admin_scripts.js' );
+    // wp_enqueue_script( 'data', 'https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js' );
+    // wp_enqueue_script( 'datatb', 'https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js' );
 	//wp_enqueue_script( 'my_custom_script', get_template_directory_uri().'/admin/js/test.js' );
 	//wp_enqueue_style('bootstrap', "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css");
-	wp_enqueue_style('font-awsome', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css");
+    wp_enqueue_style('font-awsome', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css");
+    // wp_enqueue_style('boot', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+	// wp_enqueue_style('datatables', "https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css");
 }
 add_action('admin_enqueue_scripts', 'admin_style');
 
@@ -138,4 +143,64 @@ function ap_pre_user_query($user_search) {
     $final_ids = rtrim($store_ids,',');
     $user_search->query_where = str_replace('WHERE 1=1',"WHERE 1=1 AND {$wpdb->users}.ID<>1 AND {$wpdb->users}.ID IN (".$final_ids.")",$user_search->query_where);
   }
+}
+
+//Sending email once post is published
+add_action( 'transition_post_status', 'send_mails_on_publish', 10, 3 );
+
+function send_mails_on_publish( $new_status, $old_status, $post )
+{
+    if ( 'publish' !== $new_status or 'publish' === $old_status
+        or 'videos' !== get_post_type( $post ) )
+        return;
+
+    //$subscribers = get_users( array ( 'role' => 'editor' ) );
+    //$meta = get_users( $post->post_author );
+    $meta = get_user_by( 'ID', $post->post_author );
+    
+    $email = $meta->data->user_email;
+    $body = sprintf( 'Hey there is a new entry!
+        See <%s>',
+        get_permalink( $post )
+    );
+
+
+    wp_mail( $email, 'New entry!', $body );
+}
+
+add_filter( 'gettext', 'change_publish_button', 10, 2 );
+
+function change_publish_button( $translation, $text ) {
+    if(current_user_can('author')){
+        if ( $text == 'Publish' )
+            return 'Pay';
+    }
+
+    return $translation;
+}
+
+/*Saving post as draft before payment*/
+add_action('publish_post', 'check_user_publish', 10, 2);
+
+function check_user_publish ($post_id, $post) {
+    // echo "<pre>";
+    // print_r($post);
+    // echo "</pre>";
+    // exit();
+    if(current_user_can('author')){
+        $query = array(
+            'ID' => $post_id,
+            'post_status' => 'draft',
+        );
+        $post_id = wp_update_post( $query, true );
+        
+        if ( is_wp_error( $post_id ) ) {
+             echo $post_id->get_error_message();
+        }
+        else {
+             wp_redirect("http://localhost/haabsoft/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title);
+             exit();
+        }
+    }
+
 }
