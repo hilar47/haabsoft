@@ -204,3 +204,32 @@ function check_user_publish ($post_id, $post) {
     }
 
 }
+
+/* Redirect the user logging in to a Video Section. */
+function new_dashboard_home($username, $user){
+    if(array_key_exists('administrator', $user->caps) || array_key_exists('editor', $user->caps) || array_key_exists('subscriber', $user->caps) || array_key_exists('author', $user->caps)){
+        wp_redirect(admin_url('edit.php?post_type=videos', 'http'), 301);
+        exit;
+    }
+}
+add_action('wp_login', 'new_dashboard_home', 10, 2);
+
+//Adding thumbnails to the admin section
+add_filter('manage_videos_posts_columns', 'ST4_columns_head_only_videos', 10);
+add_action('manage_videos_posts_custom_column', 'ST4_columns_content_only_videos', 10, 2);
+
+//Add column to the Logos
+function ST4_columns_head_only_videos($defaults) {
+    $defaults['videos'] = 'Videos';
+    return $defaults;
+}
+
+//Fetch data to the Logos newly added column
+function ST4_columns_content_only_videos($column_name, $post_ID) {
+    if($column_name == 'videos') {
+        global $content_item_meta;
+        $meta = get_post_meta($post_ID, $content_item_meta->get_the_id(), true);
+        $video_upload = (isset($meta['video_upload']) && !empty($meta['video_upload']) ? $meta['video_upload'] : '');
+        echo "<video controls style='width:200px;'><source src='".$video_upload."' type='video/mp4'></video>";
+    }
+}
