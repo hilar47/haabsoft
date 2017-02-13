@@ -195,7 +195,8 @@ function check_user_publish ($post_id, $post) {
                  echo $post_id->get_error_message();
             }
             else {
-                 wp_redirect("http://localhost/haabsoft/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title);
+                $url = site_url()."/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title;
+                 wp_redirect($url);
                  exit();
             }
         }
