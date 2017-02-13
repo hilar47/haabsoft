@@ -180,26 +180,24 @@ function change_publish_button( $translation, $text ) {
 }
 
 /*Saving post as draft before payment*/
-add_action('publish_post', 'check_user_publish', 10, 2);
+add_action('publish_videos', 'check_user_publish', 10, 2);
 
 function check_user_publish ($post_id, $post) {
-    // echo "<pre>";
-    // print_r($post);
-    // echo "</pre>";
-    // exit();
     if(current_user_can('author')){
-        $query = array(
-            'ID' => $post_id,
-            'post_status' => 'draft',
-        );
-        $post_id = wp_update_post( $query, true );
-        
-        if ( is_wp_error( $post_id ) ) {
-             echo $post_id->get_error_message();
-        }
-        else {
-             wp_redirect("http://localhost/haabsoft/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title);
-             exit();
+        if($post->post_type == 'videos'){
+            $query = array(
+                'ID' => $post_id,
+                'post_status' => 'draft',
+            );
+            $post_id = wp_update_post( $query, true );
+            
+            if ( is_wp_error( $post_id ) ) {
+                 echo $post_id->get_error_message();
+            }
+            else {
+                 wp_redirect("http://localhost/haabsoft/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title);
+                 exit();
+            }
         }
     }
 
