@@ -48,8 +48,9 @@
 								<?php etheme_search_form(); ?>
 							<?php endif; ?><?php */?>
 							<form action="http://localhost/haabsoft/" id="searchform" class="hide-input" method="get"> 
-								<input name="s" id="s" class="form-control pull-left search-bar" placeholder="Search..." type="text">
-								<input name="post_type" value="post" type="hidden">
+								<input name="kywrds" id="kywrds" class="form-control pull-left search-bar" placeholder="Search..." type="text">
+								<input name="post_type" value="videos" type="hidden">
+								<input type="hidden" name="cntry" id="cntryId" value="" />
 								<button type="submit" class="btn medium-btn btn-black pull-right">Search</button>
 							</form>
 						</div>

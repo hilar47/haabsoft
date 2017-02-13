@@ -6,6 +6,39 @@
 	get_header();
 ?>
 <?php 
+	global $content_item_meta;
+	
+	$args = array(
+	'post_type' => 'videos',
+	// must use meta_query as an array with WP 3.1+ (instead of meta_key or meta_value)
+	'meta_query' => array(
+			'relation' => 'OR',
+	        array(
+                'key' => $content_item_meta->get_the_name('country'),
+                'value'=> $_GET['cntry']
+	        ),
+	        array(
+                'key' => $content_item_meta->get_the_name('state'),
+                'value'=> $_GET['stat']
+	        ),
+	        array(
+                'key' => $content_item_meta->get_the_name('city'),
+                'value'=> $_GET['cty']
+	        ),
+	        array(
+                'key' => $content_item_meta->get_the_name('pin_code'),
+                'value'=> $_GET['pncde']
+	        ),
+	        array(
+                'key' => $content_item_meta->get_the_name('keywords'),
+                'value'=> $_GET['kywrds']
+	        )
+	)
+	);
+	
+	$the_query = new WP_Query( $args );
+?>
+<?php 
 
 	$l = et_page_config();
 
@@ -22,6 +55,7 @@
 	}
 ?>
 
+
 <?php do_action( 'et_page_heading' ); ?>
 
 <div class="<?php echo (!$full_width) ? 'container' : 'blog-full-width'; ?>">
@@ -30,8 +64,8 @@
 			<div class="content <?php esc_attr_e( $l['content-class'] ); ?>">
 		
 				<div class="<?php if ($content_layout == 'grid'): ?>blog-masonry row<?php endif ?>">
-					<?php if(have_posts()): 
-						while(have_posts()) : the_post(); ?>
+					<?php if($the_query->have_posts()): 
+						while($the_query->have_posts()) : $the_query->the_post(); ?>
 
 							<?php get_template_part('content', $content_layout); ?>
 

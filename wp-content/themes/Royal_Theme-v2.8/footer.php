@@ -244,7 +244,18 @@
 			}
 		});
 
-	
+	jQuery(document).ready(function(){
+		jQuery.getJSON("http://freegeoip.net/json/", function(data) {
+		    var country = data.country_name;
+		    var ip = data.ip;
+		    localStorage.setItem('country', country);
+		    var storedData = localStorage.getItem('country');
+		    console.log(storedData);
+		    if(storedData != ''){
+		    	jQuery('#cntryId').val(storedData);
+		    }
+		});
+	})
 	</script>
 
 	<?php

@@ -7,6 +7,7 @@ $content_item_meta = new WPAlchemy_MetaBox(array
 	'id' => '_content_item_meta',
 	'types' => array('videos'),
 	'template' => $dir_path . 'VIDEO-meta.php',
+	'mode'    => WPALCHEMY_MODE_EXTRACT
 ));
 
 
