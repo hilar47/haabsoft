@@ -47,7 +47,7 @@
 							<?php if(etheme_get_option('search_form')): ?>
 								<?php etheme_search_form(); ?>
 							<?php endif; ?><?php */?>
-							<form action="http://localhost/haabsoft/" id="searchform" class="hide-input" method="get"> 
+							<form action="<?php echo site_url();?>" id="searchform" class="hide-input" method="get"> 
 								<input name="kywrds" id="kywrds" class="form-control pull-left search-bar" placeholder="Search..." type="text">
 								<input name="post_type" value="videos" type="hidden">
 								<input type="hidden" name="cntry" id="cntryId" value="" />

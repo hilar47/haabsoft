@@ -128,7 +128,7 @@ get_header();
 				<p></p>
 				<div class="post-navigation">
 				</div>
-				<p class="edit-link"><a class="post-edit-link" href="http://localhost/haabsoft/wp-admin/post.php?post=22879&amp;action=edit">Edit this</a> <a href="http://localhost/haabsoft/wp-admin/post.php?vc_action=vc_inline&amp;post_id=22879&amp;post_type=page" id="vc_load-inline-editor" class="vc_inline-link">Edit with Visual Composer</a></p>
+				<p class="edit-link"><a class="post-edit-link" href="<?php echo site_url();?>wp-admin/post.php?post=22879&amp;action=edit">Edit this</a> <a href="<?php echo site_url();?>/wp-admin/post.php?vc_action=vc_inline&amp;post_id=22879&amp;post_type=page" id="vc_load-inline-editor" class="vc_inline-link">Edit with Visual Composer</a></p>
 			</div>
 		</div>
 		<!-- end row-fluid -->
