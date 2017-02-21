@@ -184,6 +184,8 @@ add_action('publish_videos', 'check_user_publish', 10, 2);
 
 function check_user_publish ($post_id, $post) {
     if(current_user_can('author')){
+        $user_details = wp_get_current_user();
+        $email = $user_details->data->user_email;
         if($post->post_type == 'videos'){
             $query = array(
                 'ID' => $post_id,
@@ -195,7 +197,7 @@ function check_user_publish ($post_id, $post) {
                  echo $post_id->get_error_message();
             }
             else {
-                $url = site_url()."/payment-product-details.php?id=".$post_id."&price=0.1&post_name=".$post->post_title;
+                $url = site_url()."/pay-form.php?id=".$post_id."&price=0.1&post_name=".$post->post_title."&payer_email=".$email;
                  wp_redirect($url);
                  exit();
             }

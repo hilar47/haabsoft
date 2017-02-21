@@ -1,39 +1,143 @@
 <?php
 //Include DB configuration file
 include 'config.php';
+//$url = "http://localhost/haabsoft/";
+//echo "SIte Url ".site_url();
 
-//Set useful variables for paypal form
-$paypalURL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'; //Test PayPal API URL
-$paypalID = 'hilarsandbox@gmail.com'; //Business Email
-
+$project = explode('/', $_SERVER['PHP_SELF']);
+$actual_link = 'http://'.$_SERVER['HTTP_HOST'].'/'.$project[1].'/';
 ?>
+
 <?php
-    //Fetch products from the database
-    // $results = $db->query("SELECT * FROM products");
-    // while($row = $results->fetch_assoc()){
+
+// PayPal settings
+$paypal_email = 'hilariogoes47@gmail.com';
+$return_url = $actual_link.'payment-product-details.php';
+$cancel_url = $actual_link.'payment-cancelled.html';
+$notify_url = $actual_link.'payment-product-details.php';
+    
+
+$item_name = (isset($_POST['first_name']) && !empty($_POST['first_name']) ? $_POST['first_name'] : '');
+$item_amount = (isset($_POST['price']) && !empty($_POST['price']) ? $_POST['price'] : '');
+
+// Include Functions
+include("functions.php");
+
+// Check if paypal request or response
+if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
+    $querystring = '';
+    
+    // Firstly Append paypal account to querystring
+    $querystring .= "?business=".urlencode($paypal_email)."&";
+    
+    // Append amount& currency (£) to quersytring so it cannot be edited in html
+    
+    //The item name and amount can be brought in dynamically by querying the $_POST['item_number'] variable.
+    $querystring .= "item_name=".urlencode($item_name)."&";
+    $querystring .= "amount=".urlencode($item_amount)."&";
+    
+    //loop for posted values and append to querystring
+    foreach($_POST as $key => $value){
+        $value = urlencode(stripslashes($value));
+        $querystring .= "$key=$value&";
+    }
+    
+    // Append paypal return addresses
+    $querystring .= "return=".urlencode(stripslashes($return_url))."&";
+    $querystring .= "cancel_return=".urlencode(stripslashes($cancel_url))."&";
+    $querystring .= "notify_url=".urlencode($notify_url);
+    
+    // Append querystring with custom field
+    //$querystring .= "&custom=".USERID;
+    // echo "String".$querystring;
+    // exit();
+    // Redirect to paypal IPN
+    header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
+    exit();
+} else {
+    
+    //Database Connection
+    // $link = mysql_connect($host, $user, $pass);
+    // mysql_select_db($db_name);
+    
+    // Response from Paypal
+
+    // read the post from PayPal system and add 'cmd'
+    $req = 'cmd=_notify-validate';
+    foreach ($_POST as $key => $value) {
+        $value = urlencode(stripslashes($value));
+        $value = preg_replace('/(.*[^%^0^D])(%0A)(.*)/i','${1}%0D%0A${3}',$value);// IPN fix
+        $req .= "&$key=$value";
+    }
+    
+    // assign posted variables to local variables
+    $data['item_name']          = (isset($_POST['item_name']) && !empty($_POST['item_name']) ? $_POST['item_name'] : '' );
+    $data['item_number']        = (isset($_POST['item_number']) && !empty($_POST['item_number']) ? $_POST['item_number'] : '' );;
+    $data['payment_status']     = (isset($_POST['payment_status']) && !empty($_POST['payment_status']) ? $_POST['payment_status'] : '' );
+    $data['payment_amount']     = (isset($_POST['mc_gross']) && !empty($_POST['mc_gross']) ? $_POST['mc_gross'] : '' );
+    $data['payment_currency']   = (isset($_POST['mc_currency']) && !empty($_POST['mc_currency']) ? $_POST['mc_currency'] : '' );
+    $data['txn_id']             = (isset($_POST['txn_id']) && !empty($_POST['txn_id']) ? $_POST['txn_id'] : '' );
+    $data['receiver_email']     = (isset($_POST['receiver_email']) && !empty($_POST['receiver_email']) ? $_POST['receiver_email'] : '' );
+    $data['payer_email']        = (isset($_POST['payer_email']) && !empty($_POST['payer_email']) ? $_POST['payer_email'] : '' );
+    $data['custom']             = (isset($_POST['custom']) && !empty($_POST['custom']) ? $_POST['custom'] : '' );
+
+    // post back to PayPal system to validate
+    $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
+    $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
+    $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
+    
+    $fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+    
+    if (!$fp) {
+        // HTTP ERROR
+        
+    } else {
+
+        fputs($fp, $header . $req);
+        while (!feof($fp)) {
+            echo "here";
+            $res = fgets ($fp, 1024);
+
+            if (strcmp($res, "VERIFIED") == 0) {
+                echo "yes";
+                exit();
+                // Used for debugging
+                // mail('user@domain.com', 'PAYPAL POST - VERIFIED RESPONSE', print_r($post, true));
+                        
+                // Validate payment (Check unique txnid & correct price)
+                $valid_txnid = check_txnid($data['txn_id']);
+                $valid_price = check_price($data['payment_amount'], $data['item_number']);
+                // PAYMENT VALIDATED & VERIFIED!
+                if ($valid_txnid && $valid_price) {
+                    
+                    $orderid = updatePayments($data);
+                    
+                    if ($orderid) {
+                        echo "Payment has been made & successfully inserted into the Database";
+                    } else {
+                        echo "Error inserting into DB";
+                        // E-mail admin or alert user
+                        // mail('user@domain.com', 'PAYPAL POST - INSERT INTO DB WENT WRONG', print_r($data, true));
+                    }
+                } else {
+                    echo "Payment made but data has been changed";
+                    // E-mail admin or alert user
+                }
+            
+            } else if (strcmp ($res, "INVALID") == 0) {
+                
+                echo "PAYMENT INVALID & INVESTIGATE MANUALY!";
+                exit();
+                // E-mail admin or alert user
+                
+                // Used for debugging
+                //@mail("user@domain.com", "PAYPAL DEBUGGING", "Invalid Response<br />data = <pre>".print_r($post, true)."</pre>");
+            }
+        }
+        echo "last";
+        exit();
+    fclose ($fp);
+    }
+}
+
 ?>
-    Name: <?php echo $_GET['post_name']; ?>
-    Price: <?php echo $_GET['price']; ?>
-    <form action="<?php echo $paypalURL; ?>" method="post">
-        <!-- Identify your business so that you can collect the payments. -->
-        <input type="hidden" name="business" value="<?php echo $paypalID; ?>">
-        
-        <!-- Specify a Buy Now button. -->
-        <input type="hidden" name="cmd" value="_xclick">
-        
-        <!-- Specify details about the item that buyers will purchase. -->
-        <input type="hidden" name="item_name" value="<?php echo $_GET['post_name']; ?>">
-        <input type="hidden" name="item_number" value="<?php echo $_GET['id']; ?>">
-        <input type="hidden" name="amount" value="<?php echo $_GET['price']; ?>">
-        <input type="hidden" name="currency_code" value="USD">
-        
-        <!-- Specify URLs -->
-        <input type='hidden' name='cancel_return' value='http://localhost/haabsoft'>
-        <input type='hidden' name='return' value='http://localhost/haabsoft/payment-success.php'>
-        
-        <!-- Display the payment button. -->
-        <input type="image" name="submit" border="0"
-        src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online">
-        <img alt="" border="0" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-    </form>
-<?php //} ?>
