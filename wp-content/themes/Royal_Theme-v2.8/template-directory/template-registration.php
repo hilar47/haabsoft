@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Template Name: Registration
 */
@@ -10,12 +10,12 @@ get_header();
 ?>
 <div class="container">
     <div class="outer">
-        <a href="<?php echo site_url().'/viewer';?>">Sign up as Viewer</a>
-            <a href="<?php echo site_url().'/client';?>">Sign up as Client</a>
-                <a href="<?php echo site_url().'/promoter   ';?>">Sign up as Promoter</a>
+        <a href="<?php echo site_url() . '/viewer'; ?>">Sign up as Viewer</a>
+        <a href="<?php echo site_url() . '/client'; ?>">Sign up as Client</a>
+        <a href="<?php echo site_url() . '/promoter   '; ?>">Sign up as Promoter</a>
     </div>
 
 </div>
-<?php 
+<?php
 get_footer();
 ?>

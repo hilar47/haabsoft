@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 Template Name: Viewer
 */
@@ -11,10 +11,11 @@ get_header();
 <div class="container">
     <div class="outer">
         <div id="success" class="alert alert-success" style="display:none;">
-          <strong>You are registered Successfully!</strong> Please <a href="<?php echo site_url().'/wp-admin';?>">click here</a> to login.
+            <strong>You are registered Successfully!</strong> Please <a href="<?php echo site_url() . '/wp-admin'; ?>">click
+                here</a> to login.
         </div>
         <div id="error" class="alert alert-danger" style="display:none;">
-          <strong>Error Occured!!!</strong> Please submit the form again to register.
+            <strong>Error Occured!!!</strong> Please submit the form again to register.
         </div>
     </div>
     <h4 class="modal-title" id="modal_title">Sign up as Viewer</h4>
@@ -69,11 +70,11 @@ get_header();
             <span id="phone_errmsg"></span>
             <span class="help-block"></span>
         </div>
-        <input type="hidden" id="model_hid_id" name="" value="0" />
+        <input type="hidden" id="model_hid_id" name="" value="0"/>
         <button type="button" class="btn btn-info register">Register</button>
     </form>
 
 </div>
-<?php 
+<?php
 get_footer();
 ?>
