@@ -15597,6 +15597,47 @@ html.st-menu-open body {
 }
 
 
+/* CUSTOM CSS STARTS HERE */
+
+/*Typography*/
+
+h5 {
+    margin: 0;
+    text-transform: lowercase;
+}
+
+/* MARGINS */
+
+/* Margin top */
+.m-t-15{
+	margin-top:15px;
+}
+
+
+/* Margin right */
+
+
+
+/* Margin bottom */
+.m-b-20{
+	margin-bottom:20px;
+}
+
+/* Margin left */
+
+
+/* Margin top/bottom */
+.m-tb-15{
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+/*MARGINS END*/
+
+
+
+
+
 header{
 	background:#2874F0;
 }
@@ -15617,5 +15658,36 @@ header{
 
 .outer {
   margin: 40px auto;
-  text-align: center;
+  text-align: center
 }
+
+.Main hr.horizontal-break, hr.break {
+  width: 200px;
+  margin: 5px auto 20px auto;
+}
+
+
+/*======HOME PAGE Css=======*/
+
+
+.home .videos h3 {
+    border-bottom: 3px solid #e9dbaa;
+    padding-bottom: 7px;
+    margin: 30px 0 23px 0;
+	color: #002e80;
+	text-transform: lowercase;
+}
+
+.home .videos video {
+    border: 1px solid #e1e1e6;
+	border-bottom: 0;
+}
+.home .videos .video-disc {
+    border: 1px solid #e1e1e6;
+	border-top: 0;
+	padding: 10px;
+}
+.home .videos .video-disc p {
+	margin-bottom: 0px;
+}
+
