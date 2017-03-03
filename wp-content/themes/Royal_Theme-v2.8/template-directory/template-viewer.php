@@ -36,6 +36,11 @@ get_header();
             <span id="user_email_errmsg"></span>
         </div>
         <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Confirm E-mail</label>
+            <input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
+            <span id="confirm_user_email_errmsg"></span>
+        </div>
+        <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Password</label>
             <input type="text" class="form-control" name="password" id="password" value="">
         </div>
@@ -43,14 +48,14 @@ get_header();
             <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
             <input type="text" class="form-control" name="c_password" id="c_password" value="">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Address 1</label>
             <input type="text" class="form-control" name="address_1" id="address_1" value="">
         </div>
         <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Address 2</label>
             <input type="text" class="form-control" name="address_2" id="address_2" value="">
-        </div>
+        </div> -->
         <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Country</label>
             <input type="text" class="form-control" name="country" id="country" value="">
@@ -60,14 +65,24 @@ get_header();
             <input type="text" class="form-control" name="city" id="city" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Pin Code</label>
+            <label for="example-text-input" class="col-2 col-form-label">Area/Town</label>
+            <input type="text" class="form-control" name="area_town" id="area_town" value="">
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Post Code</label>
             <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
             <span id="pin_code_errmsg"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Phone</label>
+            <label for="example-text-input" class="col-2 col-form-label">Cell Phone</label>
             <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
             <span id="phone_errmsg"></span>
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Accept Terms/Conditions</label>
+            <input type="checkbox" class="form-control" name="terms_conditions" id="terms_conditions" value="1">
+            <span id="terms_conditions_errmsg"></span>
             <span class="help-block"></span>
         </div>
         <input type="hidden" id="model_hid_id" name="" value="0"/>

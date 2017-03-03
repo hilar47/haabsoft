@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aad210b5-0333-434a-8e1c-5768fb68dacb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php" afterPath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php" afterPath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php" afterPath="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php" />
-    </list>
+    <list default="true" id="aad210b5-0333-434a-8e1c-5768fb68dacb" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,22 +18,22 @@
       <file leaf-file-name="template-registration.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            <state relative-caret-position="360">
+              <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="18">
+              <caret line="1" column="53" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="53" />
               <folding>
-                <marker date="1486648599000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
-                <marker date="1486648599000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
-                <marker date="1486648599000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
+                <marker date="1487870611000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
+                <marker date="1487870611000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
+                <marker date="1487870611000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
               </folding>
             </state>
           </provider>
@@ -47,18 +42,18 @@
       <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-538">
+            <state relative-caret-position="882">
               <caret line="49" column="52" lean-forward="false" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="template-viewer.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="template-viewer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="182">
-              <caret line="48" column="14" lean-forward="true" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+              <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -67,7 +62,7 @@
       <file leaf-file-name="template-client.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-client.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="342">
               <caret line="19" column="62" lean-forward="false" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
               <folding />
             </state>
@@ -77,7 +72,7 @@
       <file leaf-file-name="template-promoter.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-promoter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="342">
               <caret line="19" column="64" lean-forward="false" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
               <folding />
             </state>
@@ -104,6 +99,7 @@
         <option value="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/register.php" />
       </list>
     </option>
   </component>
@@ -134,7 +130,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -230,6 +225,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,11 +308,12 @@
       <updated>1487694143110</updated>
       <workItem from="1487694145195" duration="1522000" />
       <workItem from="1487696086847" duration="119000" />
+      <workItem from="1487870130690" duration="464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1641000" />
+    <option name="totallyTimeSpent" value="2105000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -327,18 +324,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +364,58 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <marker date="1487870611000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
+            <marker date="1487870611000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
+            <marker date="1487870611000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="49" column="52" lean-forward="false" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="62" lean-forward="false" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-promoter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="64" lean-forward="false" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="60" lean-forward="false" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
           <folding />
@@ -378,9 +427,9 @@
         <state relative-caret-position="150">
           <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <marker date="1486648599000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
-            <marker date="1486648599000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
-            <marker date="1486648599000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
+            <marker date="1487870611000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
+            <marker date="1487870611000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
+            <marker date="1487870611000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
           </folding>
         </state>
       </provider>
@@ -417,21 +466,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <marker date="1486648599000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
-            <marker date="1486648599000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
-            <marker date="1486648599000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="342">
           <caret line="19" column="62" lean-forward="false" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
           <folding />
         </state>
@@ -439,7 +476,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-promoter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="342">
           <caret line="19" column="64" lean-forward="false" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
           <folding />
         </state>
@@ -447,15 +484,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-registration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="360">
+          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-538">
+        <state relative-caret-position="882">
           <caret line="49" column="52" lean-forward="false" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
           <folding />
         </state>
@@ -464,8 +501,20 @@
     <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/template-viewer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
-          <caret line="48" column="14" lean-forward="true" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/Royal_Theme-v2.8/template-directory/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="53" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="53" />
+          <folding>
+            <marker date="1487870611000" expanded="true" signature="884:950" ph="SELECT * FRO... wp_users" />
+            <marker date="1487870611000" expanded="true" signature="1028:1470" ph="INSERT INTO wp_users... " />
+            <marker date="1487870611000" expanded="true" signature="1557:2302" ph="INSERT INTO wp_usermeta... " />
+          </folding>
         </state>
       </provider>
     </entry>

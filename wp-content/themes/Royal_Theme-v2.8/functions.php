@@ -146,31 +146,32 @@ function ap_pre_user_query($user_search) {
 }
 
 //Sending email once post is published
-add_action( 'transition_post_status', 'send_mails_on_publish', 10, 3 );
+// add_action( 'transition_post_status', 'send_mails_on_publish', 10, 3 );
 
-function send_mails_on_publish( $new_status, $old_status, $post )
-{
-    if ( 'publish' !== $new_status or 'publish' === $old_status
-        or 'videos' !== get_post_type( $post ) )
-        return;
+// function send_mails_on_publish( $new_status, $old_status, $post )
+// {
+//     if ( 'publish' !== $new_status or 'publish' === $old_status
+//         or 'videos' !== get_post_type( $post ) )
+//         return;
 
-    //$subscribers = get_users( array ( 'role' => 'editor' ) );
-    //$meta = get_users( $post->post_author );
-    $meta = get_user_by( 'ID', $post->post_author );
+//     //$subscribers = get_users( array ( 'role' => 'editor' ) );
+//     //$meta = get_users( $post->post_author );
+//     $meta = get_user_by( 'ID', $post->post_author );
     
-    $email = $meta->data->user_email;
-    $body = sprintf( 'Hey there is a new entry!
-        See <%s>',
-        get_permalink( $post )
-    );
+//     $email = $meta->data->user_email;
+//     $body = sprintf( 'Hey there is a new entry!
+//         See <%s>',
+//         get_permalink( $post )
+//     );
 
 
-    wp_mail( $email, 'New entry!', $body );
-}
+//     wp_mail( $email, 'New entry!', $body );
+// }
 
-add_filter( 'gettext', 'change_publish_button', 10, 2 );
+// add_filter( 'gettext', 'change_publish_button', 10, 2 );
 
 function change_publish_button( $translation, $text ) {
+    
     if(current_user_can('author')){
         if ( $text == 'Publish' )
             return 'Pay';
@@ -183,27 +184,30 @@ function change_publish_button( $translation, $text ) {
 add_action('publish_videos', 'check_user_publish', 10, 2);
 
 function check_user_publish ($post_id, $post) {
-    if(current_user_can('author')){
-        $user_details = wp_get_current_user();
-        $email = $user_details->data->user_email;
-        if($post->post_type == 'videos'){
-            $query = array(
-                'ID' => $post_id,
-                'post_status' => 'draft',
-            );
-            $post_id = wp_update_post( $query, true );
-            
-            if ( is_wp_error( $post_id ) ) {
-                 echo $post_id->get_error_message();
-            }
-            else {
-                $url = site_url()."/pay-form.php?id=".$post_id."&price=0.1&post_name=".$post->post_title."&payer_email=".$email;
-                 wp_redirect($url);
-                 exit();
+    $postDate = strtotime( $post->post_date );
+    $modifiedDate = strtotime( $post->post_modified );
+    if($postDate == $modifiedDate){
+        if(current_user_can('author')){
+            $user_details = wp_get_current_user();
+            $email = $user_details->data->user_email;
+            if($post->post_type == 'videos'){
+                $query = array(
+                    'ID' => $post_id,
+                    'post_status' => 'draft',
+                );
+                $post_id = wp_update_post( $query, true );
+                
+                if ( is_wp_error( $post_id ) ) {
+                     echo $post_id->get_error_message();
+                }
+                else {
+                    $url = site_url()."/pay-form?id=".$post_id."&price=0.1&post_name=".$post->post_title."&payer_email=".$email;
+                     wp_redirect($url);
+                     exit();
+                }
             }
         }
     }
-
 }
 
 /* Redirect the user logging in to a Video Section. */
@@ -219,13 +223,13 @@ add_action('wp_login', 'new_dashboard_home', 10, 2);
 add_filter('manage_videos_posts_columns', 'ST4_columns_head_only_videos', 10);
 add_action('manage_videos_posts_custom_column', 'ST4_columns_content_only_videos', 10, 2);
 
-//Add column to the Logos
+//Add column to the Videos
 function ST4_columns_head_only_videos($defaults) {
     $defaults['videos'] = 'Videos';
     return $defaults;
 }
 
-//Fetch data to the Logos newly added column
+//Fetch data to the Videos newly added column
 function ST4_columns_content_only_videos($column_name, $post_ID) {
     if($column_name == 'videos') {
         global $content_item_meta;

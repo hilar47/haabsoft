@@ -161,93 +161,114 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
         var first_name = jQuery('#first_name').val();
         var last_name = jQuery('#last_name').val();
         var user_email = jQuery('#user_email').val();
+        var confirm_user_email = jQuery('#confirm_user_email').val();
         var password = jQuery('#password').val();
         var c_password = jQuery('#c_password').val();
-        var address_1 = jQuery('#address_1').val();
-        var address_2 = jQuery('#address_2').val();
+        // var address_1 = jQuery('#address_1').val();
+        // var address_2 = jQuery('#address_2').val();
         var country = jQuery('#country').val();
         var city = jQuery('#city').val();
+        var area_town = jQuery('#area_town').val();
         var pin_code = jQuery('#pin_code').val();
         var phone = jQuery('#phone').val();
+        var terms_conditions = jQuery('#terms_conditions').val();
         var model_hid_id = jQuery('#model_hid_id').val();
+        var checked = jQuery('input[name=terms_conditions]:checked').val();
         //console.log(first_name+' '+last_name+' '+user_email+' '+password+' '+c_password+' '+address_1+' '+address_2+' '+country+' '+city+' '+pin_code+' '+model_hid_id);
         if (jQuery.trim(first_name).length != 0) {
             if (jQuery.trim(last_name).length != 0) {
                 if (jQuery.trim(user_email).length != 0) {
                     if (isValidEmailAddress(user_email)) {
-                        if (jQuery.trim(password).length != 0) {
-                            if (jQuery.trim(c_password).length != 0) {
-                                if (password == c_password) {
-                                    if (jQuery.trim(address_1).length != 0) {
-                                        if (jQuery.trim(country).length != 0) {
-                                            if (jQuery.trim(city).length != 0) {
-                                                if (jQuery.trim(pin_code).length != 0) {
-                                                    if (jQuery.trim(phone).length != 0) {
-                                                        if (phone.length >= 10) {
-                                                            var path = '<?php echo get_template_directory_uri();?>';
-                                                            var url = path + '/template-directory/register.php';
-                                                            jQuery.ajax({
-                                                                url: url,
-                                                                type: "POST",
-                                                                data: {
-                                                                    first_name: first_name,
-                                                                    last_name: last_name,
-                                                                    user_email: user_email,
-                                                                    password: password,
-                                                                    c_password: c_password,
-                                                                    address_1: address_1,
-                                                                    address_2: address_2,
-                                                                    country: country,
-                                                                    city: city,
-                                                                    pin_code: pin_code,
-                                                                    phone: phone,
-                                                                    model_hid_id: model_hid_id
-                                                                },
-                                                                success: function (msg) {
-                                                                    console.log(msg);
-                                                                    if (msg == 'success') {
-                                                                        jQuery('#error').css('display', 'none');
-                                                                        jQuery('#myModal').modal('hide');
-                                                                        jQuery('#success').show().css('display', 'block');
-                                                                        setTimeout(function () {
-                                                                            window.location.href = "http://localhost/haabsoft/register/";
-                                                                        }, 5000);
-                                                                    } else if (msg == 'error') {
-                                                                        jQuery('#myModal').modal('hide');
-                                                                        jQuery('#error').show().css('display', 'block');
-                                                                        // $('#error').html('Error Occured').show().css('color','red').delay(2000).fadeOut('slow');
-                                                                    } else if (msg == 'user-exists') {
-                                                                        //$('#myModal').modal('hide');
-                                                                        jQuery('#user_exist').css('display', 'block');
+                        if (jQuery.trim(confirm_user_email).length != 0) {
+                            if (isValidEmailAddress(confirm_user_email)) {
+                                if(user_email == confirm_user_email) {
+                                    if (jQuery.trim(password).length != 0) {
+                                        if (jQuery.trim(c_password).length != 0) {
+                                            if (password == c_password) {
+                                                //if (jQuery.trim(address_1).length != 0) {
+                                                    if (jQuery.trim(country).length != 0) {
+                                                        if (jQuery.trim(city).length != 0) {
+                                                            if (jQuery.trim(pin_code).length != 0) {
+                                                                if (jQuery.trim(phone).length != 0) {
+                                                                    if (phone.length >= 10) {
+                                                                        if(checked == 1){
+                                                                            var path = '<?php echo get_template_directory_uri();?>';
+                                                                            var url = path + '/template-directory/register.php';
+                                                                            jQuery.ajax({
+                                                                                url: url,
+                                                                                type: "POST",
+                                                                                data: {
+                                                                                    first_name: first_name,
+                                                                                    last_name: last_name,
+                                                                                    user_email: user_email,
+                                                                                    confirm_user_email: confirm_user_email,
+                                                                                    password: password,
+                                                                                    c_password: c_password,
+                                                                                    country: country,
+                                                                                    city: city,
+                                                                                    area_town: area_town,
+                                                                                    pin_code: pin_code,
+                                                                                    phone: phone,
+                                                                                    model_hid_id: model_hid_id
+                                                                                },
+                                                                                success: function (msg) {
+                                                                                    console.log(msg);
+                                                                                    if (msg == 'success') {
+                                                                                        jQuery('#error').css('display', 'none');
+                                                                                        jQuery('#myModal').modal('hide');
+                                                                                        jQuery('#success').show().css('display', 'block');
+                                                                                        setTimeout(function () {
+                                                                                            window.location.href = "http://localhost/haabsoft/register/";
+                                                                                        }, 5000);
+                                                                                    } else if (msg == 'error') {
+                                                                                        jQuery('#myModal').modal('hide');
+                                                                                        jQuery('#error').show().css('display', 'block');
+                                                                                        // $('#error').html('Error Occured').show().css('color','red').delay(2000).fadeOut('slow');
+                                                                                    } else if (msg == 'user-exists') {
+                                                                                        //$('#myModal').modal('hide');
+                                                                                        jQuery('#user_exist').css('display', 'block');
+                                                                                    }
+                                                                                }
+                                                                            });
+                                                                        } else {
+                                                                            
+                                                                            jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").css('color', 'red');
+                                                                        }
+                                                                    } else {
+                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").css('color', 'red');
                                                                     }
+                                                                } else {
+                                                                    jQuery('#phone').css('border-color', 'red');
                                                                 }
-                                                            });
+                                                            } else {
+                                                                jQuery('#pin_code').css('border-color', 'red');
+                                                            }
                                                         } else {
-                                                            jQuery('#phone_errmsg').html("Enter Valid Number").css('color', 'red');
+                                                            jQuery('#city').css('border-color', 'red');
                                                         }
                                                     } else {
-                                                        jQuery('#phone').css('border-color', 'red');
+                                                        jQuery('#country').css('border-color', 'red');
                                                     }
-                                                } else {
-                                                    jQuery('#pin_code').css('border-color', 'red');
-                                                }
+                                                // } else {
+                                                //     jQuery('#address_1').css('border-color', 'red');
+                                                // }
                                             } else {
-                                                jQuery('#city').css('border-color', 'red');
+                                                jQuery('#c_password').css('border-color', 'red');
                                             }
                                         } else {
-                                            jQuery('#country').css('border-color', 'red');
+                                            jQuery('#c_password').css('border-color', 'red');
                                         }
                                     } else {
-                                        jQuery('#address_1').css('border-color', 'red');
+                                        jQuery('#password').css('border-color', 'red');
                                     }
                                 } else {
-                                    jQuery('#c_password').css('border-color', 'red');
+                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").css('color', 'red');
                                 }
                             } else {
-                                jQuery('#c_password').css('border-color', 'red');
+                                jQuery('#confirm_user_email_errmsg').html("Invalid Email").css('color', 'red');
                             }
                         } else {
-                            jQuery('#password').css('border-color', 'red');
+                            jQuery('#confirm_user_email').css('border-color', 'red');
                         }
                     } else {
                         jQuery('#user_email_errmsg').html("Invalid Email").css('color', 'red');
@@ -275,6 +296,11 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
             }
         });
     })
+
+    jQuery('.video-search').click(function () {
+        var id = jQuery(this).data('id');
+        jQuery('#myModal_'+id).modal('show');
+    });
 </script>
 
 <?php
