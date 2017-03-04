@@ -1030,7 +1030,7 @@
     margin-top: 0;
   }
   .header-type-12 .navbar-collapse .menu > li > a {
-    padding: 21px 17px;
+    padding: 13px 17px;
     border-left: 1px solid #ebebeb;
   }
   .header-type-12 .navbar-collapse .menu > li:last-child > a {
@@ -1159,7 +1159,7 @@
     font-size: 0;
   }
   .plus:after {
-    content: '';
+    content: '';
     font-family: FontAwesome;
     color: #cda85c;
     position: absolute;
@@ -1168,7 +1168,7 @@
     font-size: 20px;
   }
   .minus:after {
-    content: '';
+    content: '';
     font-family: FontAwesome;
     color: #cda85c;
     position: absolute;
@@ -3734,3 +3734,6 @@
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+
+
+

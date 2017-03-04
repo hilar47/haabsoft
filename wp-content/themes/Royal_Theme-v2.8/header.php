@@ -16,7 +16,8 @@
 			wp_head();
 		?>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/994b84cd61.js"></script>
 </head>
 
 <body <?php body_class(); ?>>

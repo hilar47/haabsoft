@@ -51,13 +51,11 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
              <?php if ($fbg != ''): ?>style="background-color:<?php echo $fbg; ?>"<?php endif; ?>>
             <div class="container">
                 <div class="row-copyrights">
-                    <div class="pull-left">
                         <?php if (is_active_sidebar('footer9')): ?>
                             <?php dynamic_sidebar('footer9'); ?>
                         <?php else: ?>
                             <?php if ($fd) etheme_footer_demo('footer9'); ?>
                         <?php endif; ?>
-                    </div>
                     <div class="clearfix visible-xs"></div>
                     <div class="copyright-payment pull-right">
                         <?php if (is_active_sidebar('footer10')): ?>
@@ -239,55 +237,56 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                                             });
                                                                         } else {
                                                                             
-                                                                            jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").css('color', 'red');
+                                                                            jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").addClass('has-error');
                                                                         }
                                                                     } else {
-                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").css('color', 'red');
+                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").addClass('has-error');
                                                                     }
                                                                 } else {
-                                                                    jQuery('#phone').css('border-color', 'red');
+                                                                    jQuery('#phone').addClass('has-error');
                                                                 }
                                                             } else {
-                                                                jQuery('#pin_code').css('border-color', 'red');
+                                                                jQuery('#pin_code').addClass('has-error');
                                                             }
                                                         } else {
-                                                            jQuery('#city').css('border-color', 'red');
+                                                            jQuery('#city').addClass('has-error');
                                                         }
                                                     } else {
-                                                        jQuery('#country').css('border-color', 'red');
+                                                        jQuery('#country').addClass('has-error');
                                                     }
                                                 // } else {
                                                 //     jQuery('#address_1').css('border-color', 'red');
                                                 // }
                                             } else {
-                                                jQuery('#c_password').css('border-color', 'red');
+                                                jQuery('#c_password').addClass('has-error');
                                             }
                                         } else {
-                                            jQuery('#c_password').css('border-color', 'red');
+                                            jQuery('#c_password').addClass('has-error');
                                         }
                                     } else {
-                                        jQuery('#password').css('border-color', 'red');
+                                        jQuery('#password').addClass('has-error');
                                     }
                                 } else {
-                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").css('color', 'red');
+                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").addClass('has-error');
                                 }
                             } else {
-                                jQuery('#confirm_user_email_errmsg').html("Invalid Email").css('color', 'red');
+                                jQuery('#confirm_user_email_errmsg').html("Invalid Email").addClass('has-error');
                             }
                         } else {
-                            jQuery('#confirm_user_email').css('border-color', 'red');
+                            jQuery('#confirm_user_email').addClass('has-error');
                         }
                     } else {
-                        jQuery('#user_email_errmsg').html("Invalid Email").css('color', 'red');
+                        jQuery('#user_email_errmsg').html("Invalid Email").addClass('has-error');
                     }
                 } else {
-                    jQuery('#user_email').css('border-color', 'red');
+                    jQuery('#user_email').addClass('has-error');
                 }
             } else {
-                jQuery('#last_name').css('border-color', 'red');
+                jQuery('#last_name').addClass('has-error');
             }
         } else {
-            jQuery('#first_name').css('border-color', 'red');
+            jQuery('#first_name').addClass('has-error');
+			jQuery('#first_name_errmsg').html("empty");
         }
     });
 

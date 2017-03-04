@@ -48,7 +48,10 @@
 								<?php etheme_search_form(); ?>
 							<?php endif; ?><?php */?>
 							<form action="<?php echo site_url();?>" id="searchform" class="hide-input" method="get"> 
-								<input name="kywrds" id="kywrds" class="form-control pull-left search-bar" placeholder="Search..." type="text">
+								<div class="input-group">
+									<span class="input-group-addon" id="search-icon"><i class="fa fa-search"></i></span>
+									<input name="kywrds" id="kywrds" class="form-control pull-left search-bar" placeholder="Search for new videos" type="text">
+								</div>
 								<input name="post_type" value="videos" type="hidden">
 								<input type="hidden" name="cntry" id="cntryId" value="" />
 								<button type="submit" class="btn medium-btn btn-black pull-right">Search</button>
