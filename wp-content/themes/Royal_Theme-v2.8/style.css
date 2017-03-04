@@ -264,13 +264,13 @@ body {
   overflow-x: hidden !important;
 }
 a {
-  text-decoration: none;
+  text-decoration: underline;
   -webkit-transition: color .25s ease;
   -moz-transition: color .25s ease;
   -o-transition: color .25s ease;
   -ms-transition: color .25s ease;
   transition: color .25s ease;
-  color: #000;
+  color: #6d4603;
   cursor: pointer;
 }
 a:hover {
@@ -15599,18 +15599,62 @@ html.st-menu-open body {
 
 /* CUSTOM CSS STARTS HERE */
 
-/*Typography*/
 
+/* =========== Typography CSS ============== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  	text-transform: inherit;
+}
 h5 {
     margin: 0;
-    text-transform: lowercase;
 }
 
-/* MARGINS */
 
+/* =========== MARGINS CSS ============== */
+/* this class overwrites all other margin classes in tablet view */
+@media (min-width: 768px) {
+  /* line 21, ../sass/base/_margins.scss */
+  .m-sm-0 {
+    margin-top: 0 !important;
+  }
+
+  /* line 22, ../sass/base/_margins.scss */
+  .m-t-sm-0 {
+    margin-top: 0 !important;
+  }
+
+  /* line 23, ../sass/base/_margins.scss */
+  .m-b-sm-0 {
+    margin-bottom: 0 !important;
+  }
+
+  /* line 24, ../sass/base/_margins.scss */
+  .m-l-sm-0 {
+    margin-left: 0 !important;
+  }
+
+  /* line 25, ../sass/base/_margins.scss */
+  .m-r-sm-0 {
+    margin-right: 0 !important;
+  }
+
+  /* line 28, ../sass/base/_margins.scss */
+  .m-b-sm-10 {
+    margin-bottom: 10px !important;
+  }
+}
 /* Margin top */
+
 .m-t-15{
 	margin-top:15px;
+}
+
+.m-t-80{
+	margin-top:80px;
 }
 
 
@@ -15635,8 +15679,203 @@ h5 {
 /*MARGINS END*/
 
 
+/*PADDING*/
+
+/* padding top */
+.p-v-80{
+	padding-top:80px;
+	padding-bottom:80px;
+}
 
 
+/* =========== BUTTONS CSS ============== */
+.btn {
+  font-weight: 700;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: 0;
+  text-transform: inherit;
+}
+.btn.btn-primary {
+  background-color: #dc9416;
+  color: #fff;
+  height: 44px;
+  padding-top: 7px;
+  font-size: 17px;
+}
+.btn.btn-primary:hover, .btn.btn-primary:focus {
+  background-color: #efa930;
+  border:0;
+}
+
+
+/* TYPES OF FORM CONTROLS */
+
+/* line 48, ../sass/base/_forms.scss */
+form label {
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+}
+@media (min-width: 768px) {
+  /* line 48, ../sass/base/_forms.scss */
+  form label {
+    font-weight: 400;
+  }
+}
+/* line 57, ../sass/base/_forms.scss */
+form.mini-label label {
+  font-size: 13px;
+}
+@media (min-width: 768px) {
+  /* line 57, ../sass/base/_forms.scss */
+  form.mini-label label {
+    font-size: 15px;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+/* line 66, ../sass/base/_forms.scss */
+form input[type="text"], form textarea, form input[type="email"], form input[type="password"],input[type="tel"], input[type="number"] {
+  /*@include prefix(appearance, none);*/
+  line-height: 1;
+  padding: 6px 5px 5px 10px;
+  outline: 0;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 1.2;
+  min-height: 44px;
+  font-weight: 300;
+  border: 1px solid #5d7e8b;
+  margin-bottom: 4px;
+}
+/* line 80, ../sass/base/_forms.scss */
+form input:focus, form input:active, form input:hover, form textarea:focus, form textarea:active, form textarea:hover {
+  outline: 0;
+}
+
+/* line 89, ../sass/base/_forms.scss */
+.form-horizontal .has-success .form-control-feedback {
+  right: 23px;
+  color: #fff;
+  top: 10px;
+  background: #82a214;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+}
+/* line 102, ../sass/base/_forms.scss */
+.form-horizontal .has-error input, .form-horizontal .has-error textarea {
+  background: #f9efee;
+  border: 1px solid #ea1b13;
+}
+/* line 106, ../sass/base/_forms.scss */
+.form-horizontal .has-error .form-control-feedback {
+  right: 23px;
+  color: #fff;
+  top: 10px;
+  background: #ea1b13;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  line-height: 26px;
+}
+/* line 121, ../sass/base/_forms.scss */
+.form-horizontal[type="checkbox"] {
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 0;
+  width: auto;
+  min-height: inherit;
+  zoom: 0.9;
+}
+/* line 129, ../sass/base/_forms.scss */
+.form-horizontal[type="search"] {
+  background: #fff url("../images/styles-images/icon-search.svg") no-repeat scroll 6px 6px;
+  padding: 6px 6px 6px 25px;
+}
+/* line 132, ../sass/base/_forms.scss */
+.form-horizontal[type="search"].search-md {
+  width: 155px;
+}
+/* line 136, ../sass/base/_forms.scss */
+.form-horizontal[type="submit"], .form-horizontal[type="reset"] {
+  min-width: 70px;
+  padding: 0 10px;
+  width: auto;
+}
+/* line 141, ../sass/base/_forms.scss */
+.form-horizontal[type="submit"] {
+  text-transform: uppercase;
+}
+/* line 144, ../sass/base/_forms.scss */
+.form-horizontal[type="reset"] {
+  text-transform: none;
+}
+/* line 149, ../sass/base/_forms.scss */
+.form-horizontal.no-border {
+  border: 0;
+}
+
+/* custom dropdown select */
+/* line 155, ../sass/base/_forms.scss */
+.custom-select-div {
+  width: 100%;
+}
+/* line 157, ../sass/base/_forms.scss */
+.custom-select-div button.dropdown-toggle.custom-select {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  text-transform: none;
+}
+/* line 161, ../sass/base/_forms.scss */
+.custom-select-div .dropdown-menu {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin: 0;
+}
+/* line 165, ../sass/base/_forms.scss */
+.custom-select-div .dropdown-menu li {
+  padding: 2px 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+/* line 170, ../sass/base/_forms.scss */
+.custom-select-div .dropdown-menu li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+/* line 180, ../sass/base/_forms.scss */
+.custom-select-div button {
+  text-align: left;
+  text-transform: none;
+}
+/* line 185, ../sass/base/_forms.scss */
+.custom-select-div button span {
+  float: right;
+  position: relative;
+  top: 6px;
+}
+
+/* =========== HEADER CSS ============== */
 
 header{
 	background:#2874F0;
@@ -15667,7 +15906,7 @@ header{
 }
 
 
-/*======HOME PAGE Css=======*/
+/*====== HOME PAGE Css=======*/
 
 
 .home .videos h3 {
@@ -15691,3 +15930,61 @@ header{
 	margin-bottom: 0px;
 }
 
+
+
+/*====== Register PAGE CSS=======*/
+.register {}
+
+
+.register .panel {
+		border: 1px solid #9f9f9f;
+		padding: 45px 20px;
+		border-radius: 0px;
+	}
+	
+.register .panel h2 {
+		padding: 20px 0;
+	}
+.register .panel p {
+	font-size: 15px;
+    line-height: 1.4;
+	}
+.register .panel .btn {
+	margin-top:20px;
+	}
+	
+/*====== Register viewer PAGE CSS=======*/
+	
+.register-viewer h1 {
+  margin-bottom: 4px;
+}
+.register-viewer .note {
+  margin: 26px 0 18px 0;
+}
+.register-viewer h6 {
+  color: #375765;
+}
+@media (min-width: 768px) {
+  .register-viewer h6 {
+    font-size: 13px;
+  }
+}
+.register-viewer form {
+  margin-top: 25px;
+}
+.register-viewer form .form-group {
+  margin-bottom: 5px;
+}
+@media (min-width: 768px) {
+  .register-viewer form .form-group {
+    height: 48px;
+  }
+}
+.register-viewer form h6 {
+  margin: 5px 0 14px 0;
+  line-height: 1.3;
+}
+	    
+	
+	
+	
