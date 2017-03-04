@@ -12,7 +12,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 <?php 
 	$user = wp_get_current_user();
 ?>
-	<h1>Welcome <?php echo $user->data->user_login;?> </h1>
+	<h1>Welcome <?php echo $user->data->user_login;?></h1><h4>(<?php echo $user->data->promoter_code;?>) </h4>
 	
 	<div class="container">
 		<table id="table_id" class="display" cellspacing="0" width="100%">

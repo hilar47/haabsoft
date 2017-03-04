@@ -19,6 +19,11 @@ if(isset($_POST['password']) && !empty($_POST['password'])) {
 if(isset($_POST['first_name']) && !empty($_POST['first_name'])) {
 	$display_name = $_POST['first_name'].' '.$_POST['last_name'];
 }
+if(isset($_POST['p_code']) && !empty($_POST['p_code'])) {
+	$p_code = $_POST['p_code'];
+} else {
+	$p_code = '';
+}
 // if(isset($_POST['address_1']) && !empty($_POST['address_1'])) {
 // 	$address = $_POST['address_1'].' '.$_POST['address_2'];
 // }
@@ -27,8 +32,9 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 	$sql = "SELECT * FROM wp_users where user_email='".$_POST['user_email']."'";
 	$result = $link->query($sql);
 	if ($result->num_rows == 0) {
-	    $sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,city,area_town,pincode,phone)
-VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['city']."','".$_POST['pin_code']."','".$_POST['phone']."')";
+	    $sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code)
+VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$_POST['area_town']."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."')";
+echo "SQL : ".$sql;
 		if ($link->query($sql) === TRUE) {
 			$last_id = $link->insert_id;
 		    $sql1 = "INSERT INTO wp_usermeta (user_id, meta_key, meta_value)
