@@ -8,8 +8,8 @@ get_header();
 //echo do_shortcode('[wppb-register]');
 //echo do_shortcode('[wppb-login]');
 ?>
-<div class="container">
-    <div class="outer">
+<div class="container register-global p-b-80">
+<div class="outer">
         <div id="success" class="alert alert-success" style="display:none;">
             <strong>You are registered Successfully!</strong> Please <a href="<?php echo site_url() . '/wp-admin'; ?>">click
                 here</a> to login.
@@ -18,78 +18,126 @@ get_header();
             <strong>Error Occured!!!</strong> Please submit the form again to register.
         </div>
     </div>
-    <h4 class="modal-title" id="modal_title">Sign up as Viewer</h4>
-    <form name="registerform" action="" method="post">
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">First Name</label>
-            <div class="col-10">
-                <input type="text" class="form-control" name="first_name" id="first_name" value="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
-            <input type="text" class="form-control" name="last_name" id="last_name" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">E-mail</label>
-            <input type="text" class="form-control" name="user_email" id="user_email" value="">
-            <span id="user_email_errmsg"></span>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Confirm E-mail</label>
-            <input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
-            <span id="confirm_user_email_errmsg"></span>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Password</label>
-            <input type="text" class="form-control" name="password" id="password" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
-            <input type="text" class="form-control" name="c_password" id="c_password" value="">
-        </div>
-        <!-- <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Address 1</label>
-            <input type="text" class="form-control" name="address_1" id="address_1" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Address 2</label>
-            <input type="text" class="form-control" name="address_2" id="address_2" value="">
-        </div> -->
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Country</label>
-            <input type="text" class="form-control" name="country" id="country" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">City</label>
-            <input type="text" class="form-control" name="city" id="city" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Area/Town</label>
-            <input type="text" class="form-control" name="area_town" id="area_town" value="">
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Post Code</label>
-            <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
-            <span id="pin_code_errmsg"></span>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Cell Phone</label>
-            <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
-            <span id="phone_errmsg"></span>
-            <span class="help-block"></span>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Accept Terms/Conditions</label>
-            <input type="checkbox" class="form-control" name="terms_conditions" id="terms_conditions" value="1">
+       	<div class="row">
+       	 <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+            <div class="col-sm-offset-1 col-sm-10">
+				<div class="row">
+					<h2 id="modal_title">Create user profile</h2>
+					<h6 class="m-0">All fields are required</h6>
+				</div>
+           </div>
+            <hr class="hidden-xs col-sm-12">
+            <form name="registerform" action="" method="post" class="form-horizontal mini-label">
+               <div class="col-sm-offset-1 col-sm-10">
+					<div class="row">
+						<div class="form-group has-feedback">
+							<label for="example-text-input" class="col-sm-5">First name<span class="text-red">*</span></label>
+							<div class="col-sm-7 m-b-sm-10">
+								 <input type="text" class="form-control" name="first_name" id="first_name" value="">
+                                 <span class="text-danger" id="first_name_errmsg"></span>
+								<?php /*?><span class="glyphicon glyphicon-ok form-control-feedback"></span><?php */?>
+							</div>
+						</div>
+						<div class="form-group has-feedback">
+							<label for="example-text-input" class="col-sm-5">Last name</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="text" class="form-control" name="last_name" id="last_name" value="">
+								<?php /*?><span class="glyphicon glyphicon-remove form-control-feedback"></span><?php */?>
+								<span class="text-danger">Last name too short</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Email address</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="text" class="form-control" name="user_email" id="user_email" value="">
+								 <h6>You will use this email to sign in to your profile after registration </h6>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Confirm email address</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Choose password</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="password" class="form-control" name="password" id="password" value="">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Confirm password</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="password" class="form-control" name="c_password" id="c_password" value="">
+							</div>
+						</div>
+                        <?php /*?><div class="form-group">
+							<label class="col-sm-5">Address 1</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="text" class="form-control" name="address_1" id="address_1" value="">
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-5">Address 2</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="address_2" id="address_2" value="">
+							</div>
+						</div><?php */?>
+                        <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Country</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="country" id="country" value="">
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">City</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="city" id="city" value="">
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Area/Town</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="area_town" id="area_town" value="">
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Pin Code</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					  <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
+                              <span id="pin_code_errmsg"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Phone number</label>
+							<div class="col-sm-7 m-b-sm-10">
+								<input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
+                                <span id="phone_errmsg"></span>
+                                <span class="help-block"></span>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-5"></label>
+							<div class="col-sm-7 m-b-sm-10">
+                                <input type="checkbox" class="form-control" name="terms_conditions" id="terms_conditions" value="1">
+                                I Agree with  <a href="javascript:void(0)">Terms and Conditions</a>
             <span id="terms_conditions_errmsg"></span>
             <span class="help-block"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+            <hr class="hidden-xs col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input type="hidden" id="model_hid_id" name="" value="0"/>
+                        <button type="button" class="btn btn-block btn-primary register">Create user profile</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <input type="hidden" id="model_hid_id" name="" value="0"/>
-        <button type="button" class="btn btn-info register">Register</button>
-    </form>
-
-</div>
+		</div>
+    </div>
 <?php
 get_footer();
 ?>
