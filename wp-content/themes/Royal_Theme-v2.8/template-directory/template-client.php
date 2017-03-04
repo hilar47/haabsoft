@@ -11,7 +11,8 @@ get_header();
 <div class="container">
     <div class="outer">
         <div id="success" class="alert alert-success" style="display:none;">
-            <strong>You are registered Successfully!</strong> Please <a href="<?php echo site_url().'/wp-admin';?>">click here</a> to login.
+            <strong>You are registered Successfully!</strong> Please <a href="<?php echo site_url() . '/wp-admin'; ?>">click
+                here</a> to login.
         </div>
         <div id="error" class="alert alert-danger" style="display:none;">
             <strong>Error Occured!!!</strong> Please submit the form again to register.
@@ -35,12 +36,25 @@ get_header();
             <span id="user_email_errmsg"></span>
         </div>
         <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Confirm E-mail</label>
+            <input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
+            <span id="confirm_user_email_errmsg"></span>
+        </div>
+        <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Password</label>
             <input type="text" class="form-control" name="password" id="password" value="">
         </div>
         <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
             <input type="text" class="form-control" name="c_password" id="c_password" value="">
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Country</label>
+            <input type="text" class="form-control" name="country" id="country" value="">
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">State</label>
+            <input type="text" class="form-control" name="state" id="state" value="">
         </div>
         <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">Address 1</label>
@@ -51,26 +65,40 @@ get_header();
             <input type="text" class="form-control" name="address_2" id="address_2" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Country</label>
-            <input type="text" class="form-control" name="country" id="country" value="">
-        </div>
-        <div class="form-group">
             <label for="example-text-input" class="col-2 col-form-label">City</label>
             <input type="text" class="form-control" name="city" id="city" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Pin Code</label>
+            <label for="example-text-input" class="col-2 col-form-label">Post Code</label>
             <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
             <span id="pin_code_errmsg"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Phone</label>
+            <label for="example-text-input" class="col-2 col-form-label">Cell Phone</label>
             <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
             <span id="phone_errmsg"></span>
             <span class="help-block"></span>
         </div>
-        <input type="hidden" id="model_hid_id" name="" value="2" />
-        <button type="button" class="btn btn-info register">Register</button>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Landline</label>
+            <input type="text" class="form-control" name="landline" id="landline" value="" maxlength="10">
+            <span id="phone_errmsg"></span>
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Agent Code</label>
+            <input type="text" class="form-control" name="agent_code" id="agent_code" value="">
+            <span id="agent_code_errmsg"></span>
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-2 col-form-label">Accept Terms/Conditions</label>
+            <input type="checkbox" class="form-control" name="terms_conditions" id="terms_conditions" value="1">
+            <span id="terms_conditions_errmsg"></span>
+            <span class="help-block"></span>
+        </div>
+        <input type="hidden" id="model_hid_id" name="" value="2"/>
+        <button type="button" class="btn btn-info client">Register</button>
     </form>
 
 </div>

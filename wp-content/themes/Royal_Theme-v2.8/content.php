@@ -70,7 +70,6 @@
 	    
 		<?php if($post_format != 'quote'): ?>
 			<?php
-			echo "ID : ".$postId;
 			global $content_item_meta;
 	      	$video_result = get_post_meta($postId, $content_item_meta->postId, true);
 	      	// echo "<pre>";
