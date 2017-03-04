@@ -1927,10 +1927,10 @@ body.admin-bar.woocommerce-demo-store {
   position: absolute;
   bottom: 0;
 }
-.white-popup-block .checkbox-label {
+/*.white-popup-block .checkbox-label {
   bottom: -15px;
   left: 15px;
-}
+}*/
 .checkbox-label input {
   display: inline-block;
 }

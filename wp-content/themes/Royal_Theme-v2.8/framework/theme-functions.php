@@ -4722,10 +4722,14 @@ if(!function_exists('et_promo_popup')) {
         ?>
             <div id="etheme-popup" class="white-popup-block mfp-hide mfp-with-anim zoom-anim-dialog">
                 <?php echo do_shortcode(etheme_get_option('pp_content')); ?>
-                <p class="checkbox-label">
-                    <input type="checkbox" value="do-not-show" name="showagain" id="showagain" class="showagain" />
-                    <label for="showagain"><?php _e("Don't show this popup again", ETHEME_DOMAIN); ?></label>
-                </p>
+                <div class="row">
+               		 <div class="col-xs-12">
+                        <p class="checkbox-label">
+                            <input type="checkbox" value="do-not-show" name="showagain" id="showagain" class="showagain" />
+                            <label for="showagain"><?php _e("I Agree with  Terms and Conditions", ETHEME_DOMAIN); ?></label>
+                        </p>
+                	 </div>
+                </div>
             </div>
             <style type="text/css">
                 #etheme-popup {

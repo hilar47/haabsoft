@@ -54,8 +54,12 @@ function wpse149143_edit_posts_views( $views ) {
 //Adding Custom fields in the add/edit user screen
 function custom_user_profile_fields($user){
     if(is_object($user)) {
-        $company = esc_attr( get_the_author_meta( 'company', $user->ID ) );
+        $company = get_the_author_meta( 'company', $user->ID );
     	$username = get_the_author_meta( 'select_md', $user->ID );
+        echo "<pre>----".$user->ID;
+        print_r($company);
+        print_r($username);
+        echo "</pre>";
     } else {
         $company = null;
     	$username = null;
@@ -69,10 +73,14 @@ function custom_user_profile_fields($user){
         		<?php
                     $is_selected = '';
         			$users = get_users( 'role=author' );
+
         		?>
             	<select name="select_md[]" multiple="multiple" id="select_md">
-                    <?php if(isset($users) && !empty($users)) {?>
+                    <?php if(isset($users) && !empty($users)) {
+
+                        ?>
                         <?php foreach($users as $user) {
+
                             $selected = (in_array($user->ID, $username)) ? 'selected="selected"' : '' ;
                             echo "<option value='".$user->ID."' ".$selected.">".$user->user_login."</option>";
                             }
@@ -171,7 +179,6 @@ function ap_pre_user_query($user_search) {
 // add_filter( 'gettext', 'change_publish_button', 10, 2 );
 
 function change_publish_button( $translation, $text ) {
-    
     if(current_user_can('author')){
         if ( $text == 'Publish' )
             return 'Pay';
@@ -236,6 +243,36 @@ function ST4_columns_content_only_videos($column_name, $post_ID) {
         $meta = get_post_meta($post_ID, $content_item_meta->get_the_id(), true);
         $video_upload = (isset($meta['video_upload']) && !empty($meta['video_upload']) ? $meta['video_upload'] : '');
         echo "<video controls style='width:200px;'><source src='".$video_upload."' type='video/mp4'></video>";
+    }
+}
+
+// ADD NEW COLUMN IN CUSTOM POST
+function videos_columns_head($defaults) {
+     
+    $defaults['renew'] = 'Renew';
+    $defaults['feedback'] = 'Feedback';
+    return $defaults;
+}
+
+add_filter('manage_videos_posts_columns', 'videos_columns_head');
+add_action('manage_videos_posts_custom_column', 'ST4_columns_content', 10, 2);
+
+// function ST4_get_featured_image($post_ID) {
+//     return 'link';
+// }
+
+function ST4_columns_head($defaults) {
+    $defaults['renew_link'] = 'Renew link';
+    $defaults['feedback_link'] = 'Renew link';
+    return $defaults;
+}
+ 
+// SHOW THE FEATURED IMAGE
+function ST4_columns_content($column_name, $post_ID) {
+    if ($column_name == 'renew') {
+        echo '<a href="">Renew</a>';
+    } else if($column_name == 'feedback') {
+        echo '<a href="">Feedback</a>';
     }
 }
 

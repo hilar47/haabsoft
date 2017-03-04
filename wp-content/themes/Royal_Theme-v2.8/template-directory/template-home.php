@@ -6,7 +6,8 @@ get_header();
 $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"));
 ?>
 <div>
-	<?php echo do_shortcode('[rev_slider alias="poster"]');?>
+	<?php /*?><?php echo do_shortcode('[rev_slider alias="poster"]');?><?php */?>
+    <img src="<?php echo site_url() . '/wp-content/themes/Royal_Theme-v2.8/images/custom-assets/banner.png'; ?>" alt="Sign up as viwer" class="center-block" />
 </div>
 <div class="container home">
 		<div class="row">
@@ -14,7 +15,7 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 		global $content_page_meta;
 		$meta = get_post_meta($post->ID, $content_page_meta->get_the_id(), true);
 		?>
-			<div class="col-xs-12 m-t-15">
+			<div class="col-xs-12 m-t-40 how-we-work">
 				<h2 class="text-center"><?php echo (isset($meta['section_title']) && !empty($meta['section_title']) ? $meta['section_title'] : '');?></h2>
 										<hr class="divider break">
 										<?php /*?><p style="font-size: 18px;"><?php echo (isset($meta['section_description']) && !empty($meta['section_description']) ? $meta['section_description'] : '');?></p><?php */?>
