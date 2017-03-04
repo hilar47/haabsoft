@@ -1,3 +1,9 @@
+<?php 
+/*
+Template Name: payment-product-details
+*/
+?>
+
 <?php
 //Include DB configuration file
 //include 'config.php';
@@ -6,15 +12,16 @@
 
 $project = explode('/', $_SERVER['PHP_SELF']);
 $actual_link = 'http://'.$_SERVER['HTTP_HOST'].'/'.$project[1].'/';
+
 ?>
 
 <?php
 
 // PayPal settings
 $paypal_email = 'hilarssandbox@gmail.com';
-$return_url = $actual_link.'payment-product-details.php';
+$return_url = site_url().'/payment-product-details';
 $cancel_url = $actual_link.'payment-cancelled.html';
-$notify_url = $actual_link.'payment-product-details.php';
+$notify_url = site_url().'/payment-product-details';
     
 
 $item_name = (isset($_POST['first_name']) && !empty($_POST['first_name']) ? $_POST['first_name'] : '');
@@ -93,6 +100,8 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
 
 
     //----------------------------
+    // echo "string";
+    // exit();
     $paypalURL = "https://www.sandbox.paypal.com/cgi-bin/webscr";
     $ch = curl_init($paypalURL);
     if ($ch == FALSE) {
@@ -140,6 +149,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
             //$res = fgets ($fp, 1024);
 
             if (strcmp($res, "VERIFIED") == 0) {
+                
                 // echo "yes";
                 // exit();
                 // Used for debugging
@@ -152,15 +162,34 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
                 if ($valid_txnid && $valid_price) {
                     
                     $orderid = updatePayments($data);
-                    
+
                     if ($orderid) {
-                        echo "Item id : ".$data['item_number'];
-                        $query = array(
-                            'ID' => $data['item_number'],
-                            'post_status' => 'publish',
-                        );
-                        $post_id = wp_update_post( $query, true );
-                        echo "Id : ".$post_id;
+                        // echo "Item id : ".$data['item_number'];
+                        // exit();
+                        // $query1 = array(
+                        //     'ID' => $data['item_number'],
+                        //     'post_status' => 'publish',
+                        // );
+                        // echo "here in update";
+                        // print_r($query1);
+                        global $wpdb;
+                        $update_post = $wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."posts set post_status ='publish' where ID = ".$data['item_number']));
+                        
+            
+                        //exit();
+                        // $post_id = wp_update_post( $query1, true );
+                        // echo "here".$post_id;
+                        // exit();
+                        if ( is_wp_error( $update_post ) ) {
+                                 echo $post_id->get_error_message();
+                        }
+                        else {
+                            $url = site_url()."/wp-admin/post.php?post=".$data['item_number']."&action=edit";
+                            
+                             wp_redirect($url);
+                             exit();
+                        }
+                        
                         exit();
                         echo "Payment has been made & successfully inserted into the Database";
                     } else {
@@ -174,7 +203,8 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
                 }
             
             } else if (strcmp ($res, "INVALID") == 0) {
-                
+                echo "no";
+                exit();
                 echo "PAYMENT INVALID & INVESTIGATE MANUALY!";
                 exit();
                 // E-mail admin or alert user

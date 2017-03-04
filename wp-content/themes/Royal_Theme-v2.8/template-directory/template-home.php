@@ -3,6 +3,7 @@
 Template Name: Home
 */
 get_header();
+$get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"));
 ?>
 <div>
 	<?php echo do_shortcode('[rev_slider alias="poster"]');?>
@@ -37,6 +38,7 @@ get_header();
 										<hr class="divider break">
 										<p style="font-size: 18px;"><?php echo (isset($meta['video_section_description']) && !empty($meta['video_section_description']) ? $meta['video_section_description'] : '');?></p><?php */?>
 										<?php
+										//echo $_POST['countryKey'];
 										//for a given post type, return all
 										$post_type = 'videos';
 										$tax = 'videos_category';
@@ -48,7 +50,13 @@ get_header();
 										      "$tax" => $tax_term->slug,
 										      'post_status' => 'publish',
 										      'posts_per_page' => -1,
-										      'caller_get_posts'=> 1
+										      'caller_get_posts'=> 1,
+										      'meta_query' => array(
+													array(
+										                'key' => $content_item_meta->get_the_name('country'),
+										                'value'=> $get_country_name->country_name
+											        )
+												)
 										    );
 
 										    $my_query = null;

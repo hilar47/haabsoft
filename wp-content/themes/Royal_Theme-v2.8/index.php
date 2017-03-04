@@ -14,6 +14,14 @@
 	'meta_query' => array(
 			'relation' => 'OR',
 	        array(
+                'key' => $content_item_meta->get_the_name('video_category'),
+                'value'=> $_GET['ctgry']
+	        ),
+	        array(
+                'key' => $content_item_meta->get_the_name('video_subcategory'),
+                'value'=> $_GET['sctgry']
+	        ),
+	        array(
                 'key' => $content_item_meta->get_the_name('country'),
                 'value'=> $_GET['cntry']
 	        ),
