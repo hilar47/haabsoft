@@ -1,7 +1,7 @@
 <?php if (etheme_get_option('top_bar')): ?>
 	<div class="top-bar">
 		<div class="container">
-				<div class="languages-area">
+				<!--<div class="languages-area">
 					<?php if((!function_exists('dynamic_sidebar') || !dynamic_sidebar('languages-sidebar'))): ?>
 						<div class="languages">
 							<ul class="links">
@@ -18,7 +18,7 @@
 							</ul>
 						</div>
 					<?php endif; ?>	
-				</div>
+				</div>-->
 
 				
 				<div class="top-links">

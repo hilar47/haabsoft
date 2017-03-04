@@ -1169,9 +1169,9 @@ if(!function_exists('etheme_search_form')) {
         ?>
             <div class="header-search ">
                 <?php if($search_view == 'modal'): ?>
-                    <div class="et-search-trigger">
-                        <a class="popup-with-form" href="#searchModal"><i class="fa fa-search"></i> <span><?php _e('Search', ETHEME_DOMAIN); ?></span></a>
-                    </div>
+                    <!--<div class="et-search-trigger">
+                        <a class="popup-with-form" href="#searchModal"><i class="fa fa-search"></i> <span>--><?php /*?><?php _e('Search', ETHEME_DOMAIN); ?><?php */?><!--</span></a>
+                    </div>-->
                 <?php else : ?>
                     <div class="et-search-trigger search-dropdown">
                         <div><i class="fa fa-search"></i></div>

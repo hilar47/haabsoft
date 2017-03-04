@@ -238,3 +238,23 @@ function ST4_columns_content_only_videos($column_name, $post_ID) {
         echo "<video controls style='width:200px;'><source src='".$video_upload."' type='video/mp4'></video>";
     }
 }
+
+
+// Add Login/Logout menu item in top bar
+function add_login_logout_navitem($items, $args ) {
+ if ( !(is_user_logged_in()) ) {
+   $login_item = '<li id="menu-item-login" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="'.site_url().'/wp-login.php">Login</a></li>';
+ 
+ }else {
+     $login_item = '<li id="menu-item-logout" class="menu-item menu-item-type-post_type menu-item-object-page">'.wp_loginout($_SERVER['REQUEST_URI'], false).'</li>
+';
+ }
+ $items .= $login_item;
+ return $items;
+}
+add_filter('wp_nav_menu_items', 'add_login_logout_navitem', 10, 2);
+add_action('wp_logout','go_home');
+function go_home(){
+  wp_redirect( site_url() );
+  exit();
+}

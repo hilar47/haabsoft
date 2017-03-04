@@ -51,13 +51,11 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
              <?php if ($fbg != ''): ?>style="background-color:<?php echo $fbg; ?>"<?php endif; ?>>
             <div class="container">
                 <div class="row-copyrights">
-                    <div class="pull-left">
                         <?php if (is_active_sidebar('footer9')): ?>
                             <?php dynamic_sidebar('footer9'); ?>
                         <?php else: ?>
                             <?php if ($fd) etheme_footer_demo('footer9'); ?>
                         <?php endif; ?>
-                    </div>
                     <div class="clearfix visible-xs"></div>
                     <div class="copyright-payment pull-right">
                         <?php if (is_active_sidebar('footer10')): ?>
