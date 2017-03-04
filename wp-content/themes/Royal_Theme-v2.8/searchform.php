@@ -8,6 +8,40 @@
 <form action="<?php echo home_url( '/' ); ?>" id="searchform" class="hide-input" method="get"> 
 	<div class="form-horizontal modal-form">
 		<div class="form-group has-border">
+			<label>Category : </label>
+			<div class="col-xs-10">
+				<?php 
+					$post_type = 'videos';
+					$categorytax = 'videos_category';
+					$tax_categoryterms = get_terms($categorytax);
+				?>
+				<select name="ctgry" id="ctgry">
+					<option>Select</option>
+					<?php foreach($tax_categoryterms as $catgry){?>
+					<option value="<?php echo $catgry->name;?>"><?php echo $catgry->name;?></option>
+					<?php } ?>
+				</select>
+				<!-- <input type="text" name="ctgry" id="ctgry" class="form-control" placeholder="<?php //esc_attr_e( 'Search...', ETHEME_DOMAIN ); ?>" /> -->
+			</div>
+		</div>
+		<div class="form-group has-border">
+			<label>Sub Category : </label>
+			<div class="col-xs-10">
+				<?php 
+					$post_type = 'videos';
+					$scategorytax = 'videos_subcategory';
+					$tax_subcategoryterms = get_terms($scategorytax);
+				?>
+				<select name="sctgry" id="sctgry">
+					<option>Select</option>
+					<?php foreach($tax_subcategoryterms as $scatgry){?>
+					<option value="<?php echo $scatgry->name;?>"><?php echo $scatgry->name;?></option>
+					<?php } ?>
+				</select>
+				<!-- <input type="text" name="sctgry" id="sctgry" class="form-control" placeholder="<?php //esc_attr_e( 'Search...', ETHEME_DOMAIN ); ?>" /> -->
+			</div>
+		</div>
+		<div class="form-group has-border">
 			<label>Country : </label>
 			<div class="col-xs-10">
 				<input type="text" name="cntry" id="cntry" class="form-control" placeholder="<?php esc_attr_e( 'Search...', ETHEME_DOMAIN ); ?>" />

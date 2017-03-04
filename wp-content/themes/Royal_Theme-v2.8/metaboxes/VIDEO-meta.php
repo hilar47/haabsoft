@@ -31,7 +31,7 @@
 			<div class="my_meta_control metabox">
 				<div class="row">
 					<div class="col-sm-12">
-						<label>Select Category</label>
+						<label>Category</label>
 						<?php $metabox->the_field('video_category'); ?>
 						<?php 
 						$video_category = get_terms(array(
@@ -55,7 +55,7 @@
 						</p>
 					</div>
 					<div class="col-sm-12">
-						<label>Select SubCategory</label>
+						<label>SubCategory</label>
 						<?php $metabox->the_field('video_subcategory'); ?>
 						<?php 
 						$video_subcategory = get_terms(array(
@@ -84,18 +84,13 @@
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
-						<label>Address 1</label>
+						<label>Address</label>
 						<?php $metabox->the_field('address1'); ?>
 						<textarea name="<?php $metabox->the_name(); ?>"><?php $metabox->the_value(); ?></textarea>
 					</div>
 					<div class="col-sm-12">
-						<label>Address 2</label>
-						<?php $metabox->the_field('address2'); ?>
-						<textarea name="<?php $metabox->the_name(); ?>"><?php $metabox->the_value(); ?></textarea>
-					</div>
-					<div class="col-sm-12">
-						<label>Email</label>
-						<?php $metabox->the_field('email'); ?>
+						<label>City</label>
+						<?php $metabox->the_field('city'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
@@ -104,23 +99,18 @@
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
-						<label>State</label>
-						<?php $metabox->the_field('state'); ?>
-						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
-					</div>
-					<div class="col-sm-12">
-						<label>City</label>
-						<?php $metabox->the_field('city'); ?>
-						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
-					</div>
-					<div class="col-sm-12">
-						<label>Pin Code</label>
+						<label>Postal Code</label>
 						<?php $metabox->the_field('pin_code'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
-						<label>Phone</label>
-						<?php $metabox->the_field('phone'); ?>
+						<label>Website</label>
+						<?php $metabox->the_field('website'); ?>
+						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
+					</div>
+					<div class="col-sm-12">
+						<label>Email</label>
+						<?php $metabox->the_field('email'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
@@ -129,14 +119,18 @@
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
-						<label>Watsapp no</label>
-						<?php $metabox->the_field('watsapp_no'); ?>
+						<label>Phone</label>
+						<?php $metabox->the_field('phone'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 					<div class="col-sm-12">
-						<label>Website</label>
-						<?php $metabox->the_field('website'); ?>
-						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
+						<label>Upload Video</label>
+						<?php $metabox->the_field('video_upload'); ?>
+						<?php $wpalchemy_media_access->setGroupName('section_video_link' . $mb->get_the_index())->setInsertButtonLabel('Insert'); ?>
+						<p class="media-input">
+							<?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
+							<?php echo $wpalchemy_media_access->getButton(); ?>
+						</p>
 					</div>
 					<div class="col-sm-12">
 						<label>Caption Line</label>
@@ -148,14 +142,15 @@
 						<?php $metabox->the_field('promotional_code'); ?>
 						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
+					<!--<div class="col-sm-12">
+						<label>State</label>-->
+						<?php //$metabox->the_field('state'); ?>
+						<!--<p><input type="text" name="<?php //$metabox->the_name(); ?>" value="<?php //$metabox->the_value(); ?>"/><!--</p>
+					</div>-->
 					<div class="col-sm-12">
-						<label>Upload Video</label>
-						<?php $metabox->the_field('video_upload'); ?>
-						<?php $wpalchemy_media_access->setGroupName('section_video_link' . $mb->get_the_index())->setInsertButtonLabel('Insert'); ?>
-						<p class="media-input">
-							<?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
-							<?php echo $wpalchemy_media_access->getButton(); ?>
-						</p>
+						<label>Watsapp no</label>
+						<?php $metabox->the_field('watsapp_no'); ?>
+						<p><input type="text" name="<?php $metabox->the_name(); ?>" value="<?php $metabox->the_value(); ?>"/></p>
 					</div>
 				</div>
 			</div>

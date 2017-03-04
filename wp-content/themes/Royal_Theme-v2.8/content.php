@@ -69,17 +69,49 @@
 		<?php endif; ?>
 	    
 		<?php if($post_format != 'quote'): ?>
+			<?php
+			echo "ID : ".$postId;
+			global $content_item_meta;
+	      	$video_result = get_post_meta($postId, $content_item_meta->postId, true);
+	      	// echo "<pre>";
+	      	// print_r($video_result);
+	      	// echo "</pre>";
+	      	
+			?>
 	        <h6 class="active"><?php the_category(',&nbsp;') ?></h6>
-	
-	        <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-	        
+			<div class="video-search" data-id="<?php echo $postId;?>"><video style='width:100px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video></div>
+			
+	        <h2 class="entry-title"><?php the_title(); ?></h2>
+	        <h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
+	        <!-- Modal -->
+			  <div class="modal fade" id="myModal_<?php echo $postId;?>" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Video</h4>
+			        </div>
+			        <div class="modal-body">
+			          <video controls style='width:200px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
+			          <h2 class="entry-title"><?php the_title(); ?></h2>
+	        			<h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
 	        <?php if(etheme_get_option('blog_byline') && etheme_get_option('blog_layout') != 'timeline'): ?>
 	            <div class="meta-post">
-	                    <?php _e('Posted on', ETHEME_DOMAIN) ?>
-	                    <?php the_time(get_option('date_format')); ?> 
-	                    <?php _e('at', ETHEME_DOMAIN) ?> 
-	                    <?php the_time(get_option('time_format')); ?>
-	                    <?php _e('by', ETHEME_DOMAIN);?> <span class="vcard"> <span class="fn"><?php the_author_posts_link(); ?></span></span>
+	                    <?php //_e('Posted on', ETHEME_DOMAIN) ?>
+	                    <?php //the_time(get_option('date_format')); ?> 
+	                    <?php //_e('at', ETHEME_DOMAIN) ?> 
+	                    <?php //the_time(get_option('time_format')); ?>
+	                    <?php _e('Posted by', ETHEME_DOMAIN);?> <span class="vcard"> <span class="fn"><?php the_author_posts_link(); ?></span></span>
 	                    <?php // Display Comments 
 	
 	                            if(comments_open() && !post_password_required()) {
