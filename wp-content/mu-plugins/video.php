@@ -95,6 +95,60 @@ add_action( 'init', 'videos_taxonomy');
 }
 add_filter('gettext','custom_expert_title');*/
 
+/*Admin Hook To add popup modal on wp-list page ========Start========*/
+function video_footer_model() {
+    global $pagenow ,$post, $post_type;
+
+    if( $post_type == 'videos' ) {
+
+        //$output = '<div class="my-div">';
+        //$output .= '<h2>'. __('My custom content (HTML/PHP)', 'program') .'</h2>';
+        //$output .= '</div>';
+		
+		
+		$output = '<div class="modal fade " id="modal-renew" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">';
+		$output .= '<div class="modal-dialog modal-lg" role="document">';
+		$output .= '<div class="modal-content">';
+		$output .= '<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Renew Modal</h4>
+					</div>
+					<div class="modal-body">
+						This will be the content
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>';
+		$output .= '</div>';
+		$output .= '</div>';
+		$output .= '</div>';
+		
+		$output .= '<div class="modal fade " id="modal-feedback" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">';
+		$output .= '<div class="modal-dialog modal-lg" role="document">';
+		$output .= '<div class="modal-content">';
+		$output .= '<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Feedback Modal</h4>
+					</div>
+					<div class="modal-body">
+						This will be the content
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>';
+		$output .= '</div>';
+		$output .= '</div>';
+		$output .= '</div>';
+		
+
+        echo $output;
+    }
+}
+add_action('admin_footer','video_footer_model');
+/*Admin Hook To add popup modal on wp-list page ========End========*/
+
 function generate_videos_html($atts) {
 	extract(shortcode_atts(array(
 		'show_items'		=> '7',
