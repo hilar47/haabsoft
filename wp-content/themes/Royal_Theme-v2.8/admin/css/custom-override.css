@@ -927,3 +927,53 @@ select.form-control {
   background: #900404 !important;
   color: #ffffff !important;
 }*/
+
+
+
+/* ADMIN CSS */
+.login h1 a{
+    background:url("http://localhost/haabsoft/wp-content/themes/Royal_Theme-v2.8/images/haabsoft-logo.png") no-repeat;
+    background-size:100%;
+    pointer-events:none;
+}
+.login.wp-core-ui .button-group.button-large .button, .wp-core-ui .button.button-large {
+    background: #dc9416 none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 15px 2px;
+    text-shadow: none;
+}
+.login form {
+    background: #fbf8d3 none repeat scroll 0 0;
+    border: 1px solid #d1cd99;
+    box-shadow: none;
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 26px 24px 46px;
+}
+.login form .input, .login form input[type="checkbox"], .login input[type="text"] {
+    background: #fbfbfb none repeat scroll 0 0;
+    border: 1px solid #d1cd99;
+}
+.login #nav {
+    color: #dc9416;
+    float: left;
+    margin: 10px 0;
+    padding: 0;
+    text-align: left;
+    width: 50%;
+}
+.login #backtoblog{
+    float: right;
+    font-size: 13px;
+    margin: 10px 0;
+    padding: 0;
+    text-align: right;
+    width: 50%;
+}
+.login #nav a, .login #backtoblog a{
+    color:#dc9416;
+}
