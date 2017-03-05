@@ -115,7 +115,8 @@ class My_List_Table extends WP_List_Table {
 			//print_r($user_data);
 			//echo "</pre>";
 			$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'"';
-			$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->ID.'"';
+			//$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client"'.$post->ID.'" value="'.$post->ID.'"';
+			$reminder_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->video_id.'"';
 			
 			
 			// Do your stuff, e.g.

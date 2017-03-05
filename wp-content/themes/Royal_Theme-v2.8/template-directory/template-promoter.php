@@ -89,6 +89,12 @@ get_header();
           					   <input type="text" class="form-control" name="country" id="country" value="">
 							</div>
 						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">State</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="state" id="state" value="">
+							</div>
+						</div>
                         <div class="form-group">
 							<label for="example-text-input" class="col-sm-5">City<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">

@@ -327,9 +327,9 @@ function sendInvoice(){
 			//echo $_POST['invoice_data'];
 			//$tempData = html_entity_decode($_POST['invoice_data']);
 			$cleanData = json_decode($tempData);
-			echo "<pre>";
-			print_r($_POST['invoice_data']);
-			echo "</pre>";
+			// echo "<pre>";
+			// print_r($_POST['invoice_data']);
+			// echo "</pre>";
 			
 			$message = 'Hi Admin,<br>Please send me the commission for the below mentioned videos.<br/><br/><table><thead><tr><th>Video Id</th><th>Expiry Date</th><th>Video Code</th><th>Client Code</th><th>Client Name</th></tr> ';
 			
@@ -338,21 +338,27 @@ function sendInvoice(){
 				foreach($_POST['invoice_data'] as $invoice){
 					
 					$message .= '<tr><td>'.$invoice['video_id'].'</td><td>'.$invoice['exp_date'].'</td><td>'.$invoice['video_code'].'</td><td>'.$invoice['clientcode'].'</td><td>'.$invoice['clientname'].'</td><tr>';
+                    $message .= $invoice['clientname'];
 				}
 			}
 			$message .= '</table>';
 			
-			$return_op = "<br><br>Regards,<br>Haab Soft";
+			$return_op = "<br><br>Regards,<br>HaabSoft";
 			//echo get_administrator_email();
 			$to = get_administrator_email();
 			$subject = 'Deposit Commission of promoter';
 			$body = $message;
 			//echo $message;
 			$headers = array('Content-Type: text/html; charset=UTF-8');
-            echo "here";
-            exit();
+            // echo "here";
+            // echo "To : ".$to.'<br />';
+            // echo "subject : ".$subject.'<br />';
+            // echo "body : ".$body.'<br />';
+            // echo "headers : ".$headers.'<br />';
+            // exit();
 			$result = wp_mail( $to, $subject, $body, $headers );
-			die();
+            echo $result;
+			exit();
 			echo json_encode($result);
 		}
 	}
