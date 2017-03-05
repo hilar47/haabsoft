@@ -23,7 +23,7 @@ get_header();
             <div class="col-sm-offset-1 col-sm-10">
 				<div class="row">
 					<h2 id="modal_title">Create Promoter profile</h2>
-					<h6 class="m-0">All fields are required</h6>
+					<h6 class="m-0">All <span class="text-red">*</span> fields are required</h6>
 				</div>
            </div>
             <hr class="hidden-xs col-sm-12">
@@ -35,6 +35,7 @@ get_header();
 							<div class="col-sm-7 m-b-sm-10">
 								 <input type="text" class="form-control" name="first_name" id="first_name" value="">
                                  <span class="text-danger" id="first_name_errmsg"></span>
+                                 <h6>You will use this email to sign in to your profile after registration </h6>
 								<?php /*?><span class="glyphicon glyphicon-ok form-control-feedback"></span><?php */?>
 							</div>
 						</div>
@@ -43,14 +44,12 @@ get_header();
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="last_name" id="last_name" value="">
 								<?php /*?><span class="glyphicon glyphicon-remove form-control-feedback"></span><?php */?>
-								<span class="text-danger">Last name too short</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="example-text-input" class="col-sm-5">Email address<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="user_email" id="user_email" value="">
-								 <h6>You will use this email to sign in to your profile after registration </h6>
 							</div>
 						</div>
 						<div class="form-group">
