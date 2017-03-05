@@ -176,6 +176,7 @@ function ap_pre_user_query($user_search) {
 //     //$meta = get_users( $post->post_author );
 //     $meta = get_user_by( 'ID', $post->post_author );
     
+//     //$email = $meta->data->user_email;
 //     $email = $meta->data->user_email;
 //     $body = sprintf( 'Hey there is a new entry!
 //         See <%s>',
@@ -186,7 +187,8 @@ function ap_pre_user_query($user_search) {
 //     wp_mail( $email, 'New entry!', $body );
 // }
 
-// add_filter( 'gettext', 'change_publish_button', 10, 2 );
+//change test of publish to pay
+add_filter( 'gettext', 'change_publish_button', 10, 2 );
 
 function change_publish_button( $translation, $text ) {
     if(current_user_can('author')){
@@ -322,9 +324,7 @@ function go_home(){
 }
 
 
-//Function to get the title and other attributes of promo page
-
-//wp_enqueue_script('jquery');
+//send invoice
 function sendInvoice(){
 	
 	if($_POST){
@@ -333,7 +333,7 @@ function sendInvoice(){
 			//$decoded = json_decode($_POST['invoice_data']);
 			//echo $_POST['invoice_data'];
 			//$tempData = html_entity_decode($_POST['invoice_data']);
-			$cleanData = json_decode($tempData);
+			//$cleanData = json_decode($tempData);
 			// echo "<pre>";
 			// print_r($_POST['invoice_data']);
 			// echo "</pre>";
@@ -352,8 +352,9 @@ function sendInvoice(){
 			
 			$return_op = "<br><br>Regards,<br>HaabSoft";
 			//echo get_administrator_email();
-			$to = get_administrator_email();
-			$subject = 'Deposit Commission of promoter';
+			//$to = get_administrator_email();
+			$to = 'pranayvernekar92@gmail.com';
+            $subject = 'Deposit Commission of promoter';
 			$body = $message;
 			//echo $message;
 			$headers = array('Content-Type: text/html; charset=UTF-8');
@@ -365,8 +366,7 @@ function sendInvoice(){
             // exit();
 			$result = wp_mail( $to, $subject, $body, $headers );
             echo $result;
-			exit();
-			echo json_encode($result);
+            //echo json_encode($result);
 		}
 	}
 	else{
@@ -377,6 +377,40 @@ function sendInvoice(){
 }
 add_action('wp_ajax_sendInvoice', 'sendInvoice');
 add_action('wp_ajax_nopriv_sendInvoice', 'sendInvoice');
+
+//send reminder
+function sendReminder(){
+    
+    if($_POST){
+        
+        if(!empty($_POST['reminder_data'])){
+            //$decoded = json_decode($_POST['invoice_data']);
+            //echo $_POST['invoice_data'];
+            //$tempData = html_entity_decode($_POST['invoice_data']);
+            //$cleanData = json_decode($tempData);
+            $message = 'Hi  "'.$_POST['reminder_data'][0]['clientname'].'",<br>This is the reminder regarding the payment of the video uploaded on "'.$_POST['reminder_data'][0]['posteddate'].'" whose expiry is on "'.$_POST['reminder_data'][0]['exp_date'].'"';
+            
+            
+            $return_op = "<br><br>Regards,<br>HaabSoft";
+            //echo get_administrator_email();
+            $to = $_POST['reminder_data']['email'];
+            $subject = 'Payment reminder';
+            $body = $message;
+            //echo $message;
+            $headers = array('Content-Type: text/html; charset=UTF-8');
+
+            $result = wp_mail( $to, $subject, $body, $headers );
+            echo $result;
+        }
+    }
+    else{
+        echo "in else";
+        echo json_encode(false);
+    }
+    
+}
+add_action('wp_ajax_sendReminder', 'sendReminder');
+add_action('wp_ajax_nopriv_sendReminder', 'sendReminder');
 function get_administrator_email(){
 	$email = '';
 	$blogusers = get_users('role=Administrator');

@@ -42,9 +42,9 @@ class My_List_Table extends WP_List_Table {
 		
 		
 
-		//echo "<pre>";
-		//print_r($pageposts);
-		//echo "</pre>";
+		// echo "<pre>";
+		// print_r($pageposts);
+		// echo "</pre>";
 		
 		$data = array();
 		//echo WP_CONTENT_DIR;
@@ -114,15 +114,16 @@ class My_List_Table extends WP_List_Table {
 			$user_data = get_user_by(  "ID", $post->post_author )->data;
 			//print_r($user_data);
 			//echo "</pre>";
-			$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'"';
+			$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'" />';
 			//$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client"'.$post->ID.'" value="'.$post->ID.'"';
-			$reminder_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->video_id.'"';
+			$reminder_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-posteddate="'.$post->post_date.'" data-clientname="'.$user_data->display_name.'" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" data-email="'.$user_data->user_email.'" value="'.$post->video_id.'" />';
 			
 			
 			// Do your stuff, e.g.
 			$new_data = '';
 			$new_data = array(
 				'clientname' 			=> $user_data->display_name,
+				'clientemail' 			=> $user_data->user_email,
 				'clientcode'    		=> $post->client_code,
 				'videocode'      		=> 'VID_'.$post->video_id,
 				'expdate'				=> $exp_date,
@@ -141,6 +142,7 @@ class My_List_Table extends WP_List_Table {
 
 		$columns = array(
 			'clientname' 			=> 'Client Name',
+			'clientemail' 			=> 'Client Email',
 			'clientcode'    		=> 'Client Code',
 			'videocode'      		=> 'Video Code',
 			'expdate'				=> 'Exp. Date',
@@ -201,6 +203,7 @@ class My_List_Table extends WP_List_Table {
 	function column_default( $item, $column_name ) {
 		switch( $column_name ) {
 			case 'clientname':
+			case 'clientemail':
 			case 'clientcode':
 			case 'videocode':
 			case 'expdate':
@@ -218,6 +221,7 @@ class My_List_Table extends WP_List_Table {
 	function get_sortable_columns() {
 		$sortable_columns = array(
 			'clientname'			=> array('clientname',false),
+			'clientemail'			=> array('clientemail',false),
 			'clientcode' 			=> array('clientcode',false),
 			'videocode'   			=> array('videocode',false),
 			'expdate'   			=> array('expdate',false),

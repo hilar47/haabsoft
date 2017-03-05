@@ -99,7 +99,17 @@ jQuery(document).ready(function(){
 				//$(".text-description").html(response.description);
 				//$(".form-header").html(response.form_description);
 				//$(".form_footer").html(response.form_footer);
-				console.log(response);
+				if(response == 1){
+					jQuery(".wrap").before("<div class='update-nag notice-success block-alert'>Invoice sent to administration<span class='is-dismissable'></span></div>");
+					setTimeout(function(){
+					     window.location.reload();
+					}, 5000);
+				} else if (response == 0) {
+					jQuery(".wrap").before("<div class='update-nag notice-error block-alert'>An error occured.<span class='is-dismissable'></span></div>");
+					setTimeout(function(){
+					     window.location.reload();
+					}, 5000);
+				}
 			}
 		});
 	});
@@ -117,8 +127,10 @@ jQuery(document).ready(function(){
 					'video_code'	: jQuery(this).data('videocode'),
 					'clientcode'	: jQuery(this).data('clientcode'),
 					'clientname'	: jQuery(this).data('clientname'),
+					'posteddate'	: jQuery(this).data('posteddate'),
+					'email'			: jQuery(this).data('email'),
 				};
-				data_to_send[i] = video_details;
+				data_to_remind[i] = video_details;
 				i = i +1;
 			}
 			else{
@@ -134,8 +146,8 @@ jQuery(document).ready(function(){
 			type : 'POST',
 			dataType: 'json',
 			data : {
-				"invoice_data"	: data_to_send,
-				'action' 		: 'sendInvoice'
+				"reminder_data"	: data_to_remind,
+				'action' 		: 'sendReminder'
 			},
 			success : function( response ) {
 				//console.log(response);
@@ -145,7 +157,17 @@ jQuery(document).ready(function(){
 				//$(".text-description").html(response.description);
 				//$(".form-header").html(response.form_description);
 				//$(".form_footer").html(response.form_footer);
-				console.log(response);
+				if(response == 1){
+					jQuery(".wrap").before("<div class='update-nag notice-success block-alert'>Reminder sent to client<span class='is-dismissable'></span></div>");
+					setTimeout(function(){
+					     window.location.reload();
+					}, 5000);
+				} else if (response == 0) {
+					jQuery(".wrap").before("<div class='update-nag notice-error block-alert'>An error occured.<span class='is-dismissable'></span></div>");
+					setTimeout(function(){
+					     window.location.reload();
+					}, 5000);
+				}
 			}
 		});
 	});
