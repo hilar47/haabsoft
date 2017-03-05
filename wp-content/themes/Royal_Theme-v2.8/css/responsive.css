@@ -3889,3 +3889,12 @@ h3.search-title{
 .navbar-right button.medium-btn{
     padding: 15px 28px 14px !important;
 }
+.form-control:focus{
+    border-color: #ababab;
+}
+.header-type-6 .menu-wrapper .menu-main-container > ul > li > a, .header-type-7 .menu-wrapper .menu-main-container > ul > li > a, .header-type-8 .menu-wrapper .menu-main-container > ul > li > a, .header-type-10 .menu-wrapper .menu-main-container > ul > li > a, .header-type-12 .menu-wrapper .menu-main-container > ul > li > a{
+    letter-spacing: 1px;
+}
+#menu-top-bar li.current-menu-item a{
+    background-color: transparent;
+}
