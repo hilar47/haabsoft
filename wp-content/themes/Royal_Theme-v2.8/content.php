@@ -214,7 +214,9 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="modal-title">Video Information</h5>
+                        
+                    <!-- Comments -->    
+                    <h5 class="modal-title">Comments</h5>
                        	<div class="row comment">
                         	<div class="col-sm-12">	
                                 <div class="media">
