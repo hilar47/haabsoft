@@ -89,20 +89,20 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 					echo "error";
 				}
 			} else {
-				// $sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$agent_code."')";
-				// if ($link->query($sql) === TRUE) {
-				// 	//Last insert id
-				// 	$last_id = $link->insert_id;
-				// 	$sql1 = "INSERT INTO wp_usermeta (user_id, meta_key, meta_value) VALUES ('".$last_id."', 'nickname','".$_POST['first_name']."'),('".$last_id."', 'first_name','".$_POST['first_name']."'),('".$last_id."', 'last_name','".$_POST['last_name']."'),('".$last_id."', 'description',''),('".$last_id."', 'rich_editing','true'),('".$last_id."', 'comment_shortcuts','false'),('".$last_id."', 'admin_color','fresh'),('".$last_id."', 'use_ssl','0'),('".$last_id."', 'show_admin_bar_front','true'),('".$last_id."', 'locale',''),('".$last_id."', 'wp_capabilities','".serialize($serialise_array)."'),('".$last_id."', 'wp_user_level','".$_POST['model_hid_id']."'),('".$last_id."', 'company',''),('".$last_id."', 'select_md',''),('".$last_id."', 'dismissed_wp_pointers','')";
-				// 	if ($link->query($sql1) === TRUE) {
-				// 		echo "success";
-				// 	} else {
-				// 		echo "error";
-				// 	}
-				// } else {
-				// 	echo "error";
-				// }
-				echo 'invalid-code';
+				$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$agent_code."')";
+				if ($link->query($sql) === TRUE) {
+					//Last insert id
+					$last_id = $link->insert_id;
+					$sql1 = "INSERT INTO wp_usermeta (user_id, meta_key, meta_value) VALUES ('".$last_id."', 'nickname','".$_POST['first_name']."'),('".$last_id."', 'first_name','".$_POST['first_name']."'),('".$last_id."', 'last_name','".$_POST['last_name']."'),('".$last_id."', 'description',''),('".$last_id."', 'rich_editing','true'),('".$last_id."', 'comment_shortcuts','false'),('".$last_id."', 'admin_color','fresh'),('".$last_id."', 'use_ssl','0'),('".$last_id."', 'show_admin_bar_front','true'),('".$last_id."', 'locale',''),('".$last_id."', 'wp_capabilities','".serialize($serialise_array)."'),('".$last_id."', 'wp_user_level','".$_POST['model_hid_id']."'),('".$last_id."', 'company',''),('".$last_id."', 'select_md',''),('".$last_id."', 'dismissed_wp_pointers','')";
+					if ($link->query($sql1) === TRUE) {
+						echo "success";
+					} else {
+						echo "error";
+					}
+				} else {
+					echo "error";
+				}
+				//echo 'invalid-code';
 			}
 		// } else {
 		// 	echo 'invalid-code';

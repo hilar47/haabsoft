@@ -69,9 +69,9 @@ class My_List_Table extends WP_List_Table {
 		
 		//$posts = $query->posts;
 		
-		//echo "<pre>";
-		//print_r($query);
-		//echo "</pre>";
+		echo "<pre>";
+		print_r($pageposts);
+		echo "</pre>";
 		//echo $custom_metabox->get_the_id();
 		
 		foreach($pageposts as $post) {
