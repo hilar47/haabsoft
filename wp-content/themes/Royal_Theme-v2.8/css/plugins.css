@@ -1918,10 +1918,29 @@ body.admin-bar.woocommerce-demo-store {
   color: #222;
   top: -2px !important;
 }
-.white-popup-block .mfp-close {
-  right: -6px !important;
-  top: -40px;
+.white-popup-block button.mfp-close:before {
+  content: "OK"
 }
+.white-popup-block .mfp-close {
+    background: url("http://localhost/haabsoft/wp-content/themes/Royal_Theme-v2.8/images/btn-ok.png") no-repeat scroll center center / 70px auto;
+    bottom: 0;
+    display: block;
+    left: 43%;
+    padding: 17px 50px;
+    position: relative;
+    right: inherit !important;
+    top: -10px;
+    width: auto;
+    opacity: 1;
+}
+.white-popup-block .mfp-close:hover {
+    background: url("http://localhost/haabsoft/wp-content/themes/Royal_Theme-v2.8/images/btn-ok.png") no-repeat scroll center center / 70px auto;
+}
+#etheme-popup{
+    height: 590px!important;
+}
+
+
 .checkbox-label {
   text-align: center;
   position: absolute;

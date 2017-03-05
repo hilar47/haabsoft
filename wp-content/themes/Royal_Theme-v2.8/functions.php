@@ -29,6 +29,13 @@ function admin_style() {
 }
 add_action('admin_enqueue_scripts', 'admin_style');
 
+// Styling for login page admin
+function my_login_stylesheet() {
+    wp_enqueue_style( 'custom-login', get_template_directory_uri().'/admin/css/custom-override.css' );
+   // wp_enqueue_script( 'custom-login', get_stylesheet_directory_uri() . '/style-login.js' );
+}
+add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+
 //Restrict users to their own posts
 function posts_for_current_author($query) {
     global $pagenow;
@@ -302,3 +309,4 @@ function go_home(){
   wp_redirect( site_url() );
   exit();
 }
+

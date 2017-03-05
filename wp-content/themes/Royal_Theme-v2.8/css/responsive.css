@@ -3878,6 +3878,9 @@ h3.search-title{
 .header-logo{
     top:-5px;
 }
+.fixed-header .header-logo{
+    top:0;
+}
 .sidebar-position-left article .play-icon{
     left: 35%;
     position: absolute;
@@ -3897,4 +3900,93 @@ h3.search-title{
 }
 #menu-top-bar li.current-menu-item a{
     background-color: transparent;
+}
+.banner-home{
+    background: rgba(0, 0, 0, 0) url("http://localhost/haabsoft/wp-content/themes/Royal_Theme-v2.8/images/banner-bg.jpg") no-repeat scroll 0 0;
+    color: #031744;
+    padding: 100px 0;
+    text-align: center;
+}
+.banner-home h1{
+    font-size: 60px;
+    font-weight: 500;
+}
+.banner-home h3{
+    margin-top: 20px;
+}
+
+.wpb_wrapper.videos{
+  margin: 10px 0 0;
+    padding: 10px 0 40px;
+    text-align: center;
+}
+.wpb_wrapper.videos h2{
+    
+}
+
+.wpb_wrapper.videos h3{
+    border-bottom: 3px solid #e9dbaa;
+    color: #002e80;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 20px auto 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 50%;
+    text-transform: uppercase;
+}
+.home .videos .video-disc{
+    border: 0 none;
+}
+.video-holder{
+    border: 1px solid #b9b8b8;
+    margin: 10px 0.5%;
+    padding: 10px;
+    width: 32.3%;
+}
+.video-holder h5{
+    font-size: 19px;
+    line-height: 1.5;
+}
+.video-holder p{
+    font-size: 11px;
+}
+.video-holder p span{
+    font-style: italic;
+    font-weight: 600;
+}
+.video-holder h6{
+    margin: 5px 0;
+    color: #565656;
+}
+.page-template-default .content.col-md-9{
+    width:100%;
+    left: 0;
+}
+.contact-info{
+    background: #f4f2f2 none repeat scroll 0 0;
+    border: 1px solid #dedbdb;
+    padding: 10px 0;
+}
+a.toggle-title{
+    text-decoration: none;
+}
+textarea{
+    border: 1px solid #5d7e8b !important;
+    border-radius: 5px !important;
+}
+.contact-form button{
+    background:#dc9416!important;
+}
+
+video::-internal-media-controls-download-button {
+   display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+   overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+   width: calc(100% + 30px); /* Adjust as needed */
 }

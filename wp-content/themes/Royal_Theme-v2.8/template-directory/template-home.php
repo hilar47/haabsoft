@@ -6,7 +6,7 @@ get_header();
 $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"));
 ?>
 	<?php /*?><?php echo do_shortcode('[rev_slider alias="poster"]');?><?php */?>
-    <div class="homepage-hero-module">
+    <!--<div class="homepage-hero-module">
 		<div class="video-container">
 			<div class="filter"></div>
 			<video autoplay loop class="fillWidth">
@@ -17,7 +17,12 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 				<img src="wp-content/themes/Royal_Theme-v2.8/videos/cover.jpg" alt="">
 			</div>
 		</div>
-	</div>
+	</div>-->
+<div class="banner-home">
+    <!--<img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/banner-bg.jpg" />-->
+    <h1>HAABSOFT VIDEOS</h1>
+    <h3>WATCH OUR VIDEOS COLLECTION</h3>
+</div>
 
 <div class="container home">
 		<div class="row">
@@ -27,7 +32,7 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 		?>
 			<div class="col-xs-12 m-t-40 how-we-work">
 				<h2 class="text-center"><?php echo (isset($meta['section_title']) && !empty($meta['section_title']) ? $meta['section_title'] : '');?></h2>
-										<hr class="divider break">
+										<!--<hr class="divider break">-->
 										<?php /*?><p style="font-size: 18px;"><?php echo (isset($meta['section_description']) && !empty($meta['section_description']) ? $meta['section_description'] : '');?></p><?php */?>
 					<?php
 				if(isset($meta['reference_callout']) && !empty($meta['reference_callout'])) {
@@ -48,9 +53,6 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 		<div class="wpb_wrapper videos">
             <h3>FEATURED VIDEOS</h3>
             <div class="container">
-                <?php /*?><h2><?php echo (isset($meta['video_section_title']) && !empty($meta['video_section_title']) ? $meta['video_section_title'] : '');?></h2>
-                <hr class="divider break">
-                <p style="font-size: 18px;"><?php echo (isset($meta['video_section_description']) && !empty($meta['video_section_description']) ? $meta['video_section_description'] : '');?></p><?php */?>
                 <?php
 										//echo $_POST['countryKey'];
 										//for a given post type, return all
@@ -75,7 +77,7 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 										    $my_query = null;
 										    $my_query = new WP_Query($args);
 										    if( $my_query->have_posts() ) { ?>
-										    <h3><?php if(isset($tax_term->name) && !empty($tax_term->name)) { echo $tax_term->name; } ?></h3>
+										    
 										    	<div class="row">
 										    	<?php
 										      while ($my_query->have_posts()) : $my_query->the_post(); 
@@ -83,11 +85,12 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 										      	$video_meta = get_post_meta($post->ID);
 										    ?>
 										        
-										        <div class="col-xs-12 col-sm-4 m-b-20">
+										        <div class="col-xs-12 col-sm-4 m-b-20 video-holder">
 										        	<video class="img-responsive" controls><source src="<?php if(isset($video_meta['video_upload'][0]) && !empty($video_meta['video_upload'][0])) { echo $video_meta['video_upload'][0]; } ?>" type="video/mp4"></video>
 													<div class="video-disc">
-														<h5><?php if(isset($video_meta['caption_line'][0]) && !empty($video_meta['caption_line'][0])) { echo $video_meta['caption_line'][0]; } ?></h5>
-													<p>Uploaded by : <?php $recent_author = get_user_by( 'ID', $post->post_author ); echo $author_display_name = $recent_author->display_name; ?></p>
+                                                        <h5><?php the_title(); ?></h5>
+														<h6><?php if(isset($video_meta['caption_line'][0]) && !empty($video_meta['caption_line'][0])) { echo $video_meta['caption_line'][0]; } ?></h6>
+													<p>Uploaded by: <span><?php $recent_author = get_user_by( 'ID', $post->post_author ); echo $author_display_name = $recent_author->display_name; ?></span></p>
 													</div>
 										        	
 										        </div>
@@ -109,10 +112,6 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Row Backgrounds -->
-				<p></p>
-				<div class="post-navigation">
 				</div>
 			</div>
 		</div>

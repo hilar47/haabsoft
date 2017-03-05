@@ -35,7 +35,7 @@
 
 				</div>
 
-				<?php get_sidebar(); ?>
+				
 
 			</div><!-- end row-fluid -->
 
