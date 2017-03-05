@@ -63,10 +63,6 @@ function custom_user_profile_fields($user){
     if(is_object($user)) {
         $company = get_the_author_meta( 'company', $user->ID );
     	$username = get_the_author_meta( 'select_md', $user->ID );
-        echo "<pre>----".$user->ID;
-        print_r($company);
-        print_r($username);
-        echo "</pre>";
     } else {
         $company = null;
     	$username = null;
@@ -349,21 +345,22 @@ function sendInvoice(){
 			$return_op = "<br><br>Regards,<br>Haab Soft";
 			//echo get_administrator_email();
 			$to = get_administrator_email();
-			$subject = 'Deposit Comission of promoter';
+			$subject = 'Deposit Commission of promoter';
 			$body = $message;
 			//echo $message;
 			$headers = array('Content-Type: text/html; charset=UTF-8');
-
+            echo "here";
+            exit();
 			$result = wp_mail( $to, $subject, $body, $headers );
-			
-			//echo "here";
+			die();
 			echo json_encode($result);
 		}
 	}
 	else{
+        echo "in else";
 		echo json_encode(false);
 	}
-	die();
+	
 }
 add_action('wp_ajax_sendInvoice', 'sendInvoice');
 add_action('wp_ajax_nopriv_sendInvoice', 'sendInvoice');
