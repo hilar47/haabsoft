@@ -198,6 +198,7 @@ function change_publish_button( $translation, $text ) {
 add_action('publish_videos', 'check_user_publish', 10, 2);
 
 function check_user_publish ($post_id, $post) {
+    global $wpdb;
     $postDate = strtotime( $post->post_date );
     $modifiedDate = strtotime( $post->post_modified );
     if($postDate == $modifiedDate){
@@ -219,6 +220,20 @@ function check_user_publish ($post_id, $post) {
                      wp_redirect($url);
                      exit();
                 }
+            }
+        } else {
+            if(current_user_can('editor')){
+                $pay_data = array(
+                    'txnid' => '',
+                    'payment_amount' => '',
+                    'payment_status' => '',
+                    'commission_amount' => '10',
+                    'commission_status' => '',
+                    'itemid' => $post->ID,
+                    'createdtime' => $post->post_date
+                );
+                $wpdb->insert('payments', $pay_data);
+                $new_id = $wpdb->insert_id;
             }
         }
     }
