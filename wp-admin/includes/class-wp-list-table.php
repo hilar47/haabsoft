@@ -1141,11 +1141,11 @@ class WP_List_Table {
 		<?php $this->display_rows_or_placeholder(); ?>
 	</tbody>
 
-	<tfoot>
+	<!--<tfoot>
 	<tr>
-		<?php $this->print_column_headers( false ); ?>
+		<?php //$this->print_column_headers( false ); ?>
 	</tr>
-	</tfoot>
+	</tfoot>-->
 
 </table>
 <?php

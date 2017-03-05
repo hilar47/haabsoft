@@ -15,6 +15,7 @@
 </style>
 <div class="my_meta_control metabox">
 <?php 
+	//global $content_item_meta;
 	global $wpalchemy_media_access;
 ?>
 <?php if(get_post_type()=='videos'){ ?>
@@ -165,4 +166,4 @@
 	    jQuery('#postdivrich').css('display', 'none');
 	});
 </script>
-
+</div>

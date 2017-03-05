@@ -22,7 +22,7 @@ get_header();
        	 <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
             <div class="col-sm-offset-1 col-sm-10">
 				<div class="row">
-					<h2 id="modal_title">Create Client profile</h2>
+					<h2 id="modal_title">Create Promoter profile</h2>
 					<h6 class="m-0">All fields are required</h6>
 				</div>
            </div>

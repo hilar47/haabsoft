@@ -796,7 +796,7 @@ if(!function_exists('et_page_heading')) {
                     <div class="row">
                         <div class="col-md-12 a-center">
                             <h1 class="title"><span><?php echo et_get_the_title(); ?></span></h1>
-                            <?php etheme_breadcrumbs(); ?>
+                            <?php /*?><?php etheme_breadcrumbs(); ?><?php */?>
                         </div>
                     </div>
                 </div>
