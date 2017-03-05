@@ -27,29 +27,54 @@ class My_List_Table extends WP_List_Table {
 		));
 	}
 	
-	function get_data(){
+	function get_data($search = NULL){
 		//include_once WP_CONTENT_DIR . '/wpalchemy/MetaBox.php';
 		//include_once WP_CONTENT_DIR . '/wpalchemy/MediaAccess.php';
 		global $content_item_meta;
+		
+		global $wpdb;
+		
+		$querystr = "SELECT wp_posts.*,wp_users.* FROM wp_posts, wp_users  WHERE 1=1 AND (((wp_posts.post_title LIKE '%".$search."%') OR (wp_posts.post_excerpt LIKE '%".$search."%') OR (wp_posts.post_content LIKE '%".$search."%') OR (wp_users.display_name LIKE '%".$search."%'))) AND wp_posts.post_type = 'videos' AND (wp_posts.post_status = 'publish' OR wp_posts.post_status = 'future' OR wp_posts.post_status = 'draft' OR wp_posts.post_status = 'pending' OR wp_posts.post_status = 'private') AND wp_posts.post_author = wp_users.ID  ORDER BY wp_posts.post_date DESC";
+		$pageposts = $wpdb->get_results($querystr, OBJECT);
+		//$results = $wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'_posts p,'.$wpdb->prefix.'_users u WHERE u.user_id = p.post_author;'));
 
+		
+		
+		
+
+		//echo "<pre>";
+		//print_r($pageposts);
+		//echo "</pre>";
+		
 		$data = array();
 		//echo WP_CONTENT_DIR;
 		
 		//GET METABOX DATA FOR CURRENT POST
 		
+		/*if($search != NULL){
+			$query = new WP_Query(array(
+				'post_type' 		=> 'videos',
+				'posts_per_page'	=>-1,
+				's' 				=> $search
+			));
+			//echo "Preparing Search";
+		}
+		else{
+			$query = new WP_Query(array(
+				'post_type' 		=> 'videos',
+				'posts_per_page'	=>-1,
+			));
+		}*/
 		
-		$query = new WP_Query(array(
-			'post_type' 		=> 'videos',
-			'posts_per_page'	=>-1,
-		));
-		$posts = $query->posts;
+		
+		//$posts = $query->posts;
 		
 		//echo "<pre>";
-		//print_r($posts);
+		//print_r($query);
 		//echo "</pre>";
 		//echo $custom_metabox->get_the_id();
 		
-		foreach($posts as $post) {
+		foreach($pageposts as $post) {
 			
 			$meta = get_post_meta($post->ID, $content_item_meta->get_the_id(), true);
 		
@@ -61,8 +86,8 @@ class My_List_Table extends WP_List_Table {
 			$user_data = get_user_by(  "ID", $post->post_author )->data;
 			//print_r($user_data);
 			//echo "</pre>";
-			$invoice_to_client = '<input type="checkbox" id="invoice_to_client'.$post->ID.'" value="'.$post->ID.'"';
-			$reminder_to_client = '<input type="checkbox" id="reminder_to_client'.$post->ID.'" value="'.$post->ID.'"';
+			$invoice_to_client = '<input type="checkbox" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->ID.'"';
+			$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->ID.'"';
 			// Do your stuff, e.g.
 			$new_data = '';
 			$new_data = array(
@@ -97,9 +122,9 @@ class My_List_Table extends WP_List_Table {
 		return $columns;
 	}
 
-	function prepare_items(){
+	function prepare_items($search = NULL){
 		
-		$this->example_data = $this->get_data();
+		$this->example_data = $this->get_data($search);
 
 		$columns = $this->get_columns();
 		$hidden = array();
@@ -227,15 +252,37 @@ function my_add_menu_items(){
 }
 add_action( 'admin_menu', 'my_add_menu_items' );
 
+/*Add plugin specific scripts*/
+add_action('admin_enqueue_scripts', 'video_plugin_js');
+function video_plugin_js() {
+	//wp_enqueue_style('bootstrap-css',  get_template_directory_uri().'/css/bootstrap.min.css');
+	wp_enqueue_script( 'videos-admin-script', get_stylesheet_directory_uri() . '/js_admin/video-js.js' );
+}
+
 function my_render_list_page(){
 	$myListTable = new My_List_Table();
 	echo '<div class="wrap"><h2> All Client Video List </h2>';
 	
-	$myListTable->prepare_items();
+	//Fetch, prepare, sort, and filter our data...
+	if( isset($_POST['s']) ){
+			//echo "inhere";
+		$myListTable->prepare_items($_POST['s']);
+	} 
+	else {
+		$myListTable->prepare_items();
+	}
+	
+	//$myListTable->prepare_items();
+	
+	
 	echo '<form method="post">
-  	<input type="hidden" name="page" value="my_list_test" />';
+  	<input type="hidden" name="page" value="all_client_video_list" />';
   	echo $myListTable->search_box('search', 'search_id'); 
 	echo '</form>';
 	$myListTable->display();
+	echo '<div class="btn_container">
+		<input type="submit" id="send-invoice" class="button" value="Send Invoice" disabled="disabled">
+		<input type="submit" id="send-reminder" class="button" value="Send Reminder" disabled="disabled">
+		</div>';
 	echo '</div>'; 
 }
