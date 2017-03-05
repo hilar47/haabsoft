@@ -24,6 +24,11 @@ if(isset($_POST['p_code']) && !empty($_POST['p_code'])) {
 } else {
 	$p_code = '';
 }
+if(isset($_POST['c_code']) && !empty($_POST['c_code'])) {
+	$c_code = $_POST['c_code'];
+} else {
+	$c_code = '';
+}
 if(isset($_POST['area_town']) && !empty($_POST['area_town'])) {
 	$area_town = $_POST['area_town'];
 } else {
@@ -33,6 +38,11 @@ if(isset($_POST['agent_code']) && !empty($_POST['agent_code'])) {
 	$agent_code = $_POST['agent_code'];
 } else {
 	$agent_code = 'NULL';
+}
+if(isset($_POST['state']) && !empty($_POST['state'])) {
+	$state = $_POST['state'];
+} else {
+	$state = 'NULL';
 }
 if(isset($_POST['address_1']) && !empty($_POST['address_1'])) {
 	$address = $_POST['address_1'].' '.$_POST['address_2'];
@@ -48,7 +58,7 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 			$result = $link->query($sql_query);
 			if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
-				$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$agent_code."')";
+				$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,address,country,state,city,area_town,pincode,phone,promoter_code,client_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$address."','".$_POST['country']."','".$state."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$c_code."','".$agent_code."')";
 				if ($link->query($sql) === TRUE) {
 					//Last insert id
 					$last_id = $link->insert_id;
@@ -56,12 +66,19 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 					if ($link->query($sql1) === TRUE) {
 						$sql3 = "SELECT meta_value from wp_usermeta where user_id = '".$row['ID']."' and meta_key = 'select_md'";
 						$result3 = $link->query($sql3);
+						
 						if ($result3->num_rows > 0) {
 							$row3 = $result3->fetch_assoc();
-							$fetch_mata_value = $row3['meta_value'];
-							$ser_fetch_mata_value = unserialize($fetch_mata_value);
-							//$ser_fetch_mata_value = $last_id; 
-							array_push($ser_fetch_mata_value, $last_id);
+							if(!empty($row3['meta_value'])) {
+								$fetch_mata_value = $row3['meta_value'];
+								$ser_fetch_mata_value = unserialize($fetch_mata_value);
+								//$ser_fetch_mata_value = $last_id; 
+								array_push($ser_fetch_mata_value, $last_id);
+							} else {
+								$ser_fetch_mata_value =array();
+								$ser_fetch_mata_value[0] = $last_id;
+							}
+							
 							$sql2 = "UPDATE wp_usermeta set meta_value = '".serialize($ser_fetch_mata_value)."' where user_id = '".$row['ID']."' and meta_key = 'select_md'";
 							if ($link->query($sql2) === TRUE) {
 								echo 'success';
@@ -82,7 +99,7 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 					$sql_query = "SELECT * FROM wp_users where promoter_code = '".$agent_code."'";
 					$result = $link->query($sql_query);
 					if ($result->num_rows > 0) {
-						$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$agent_code."')";
+						$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,address,country,state,city,area_town,pincode,phone,promoter_code,client_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$address."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$c_code."','".$agent_code."')";
 						if ($link->query($sql) === TRUE) {
 							//Last insert id
 							$last_id = $link->insert_id;
@@ -99,7 +116,7 @@ if(isset($_POST['user_email']) && !empty($_POST['user_email'])){
 						echo "invalid-code";
 					}
 				} else {
-					$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,country,state,city,area_town,pincode,phone,promoter_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$agent_code."')";
+					$sql = "INSERT INTO wp_users (user_login, user_pass, user_nicename, user_email, user_url, user_registered,user_activation_key,user_status,display_name,address,country,state,city,area_town,pincode,phone,promoter_code,client_code,agent_code) VALUES ('".$_POST['first_name']."', '".$pass."','".$_POST['first_name']."','".$_POST['user_email']."','','".$current_date_time."','','','".$display_name."','".$address."','".$_POST['country']."','".$_POST['state']."','".$_POST['city']."','".$area_town."','".$_POST['pin_code']."','".$_POST['phone']."','".$p_code."','".$c_code."','".$agent_code."')";
 					if ($link->query($sql) === TRUE) {
 						//Last insert id
 						$last_id = $link->insert_id;

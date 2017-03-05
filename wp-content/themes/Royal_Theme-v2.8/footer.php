@@ -136,6 +136,14 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
             return false;
         }
     });
+    jQuery("#landline").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            //display error message
+            jQuery("#landline_errmsg").html("Enter Digits Only").css('color', 'red').show().fadeOut("slow");
+            return false;
+        }
+    });
 
     jQuery("#first_name,#last_name,#user_email,#password,#c_password,#address_1,#address_2,#country,#city,#pin_code,#phone").keyup(function (e) {
         jQuery(this).css('border-color', '#d5d5d5');

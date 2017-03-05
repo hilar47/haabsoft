@@ -95,7 +95,7 @@ get_header();
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">State</label>
+							<label for="example-text-input" class="col-sm-5">State<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="state" id="state" value="">
 							</div>
@@ -115,14 +115,14 @@ get_header();
 							</div>
 						</div>
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Pin Code</label>
+							<label for="example-text-input" class="col-sm-5">Post Code<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					  <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
                               <span id="pin_code_errmsg"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Phone number</label>
+							<label for="example-text-input" class="col-sm-5">Phone number<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
                                 <span id="phone_errmsg"></span>

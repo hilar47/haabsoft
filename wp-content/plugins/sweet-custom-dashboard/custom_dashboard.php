@@ -12,9 +12,9 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 <?php 
 	$user = wp_get_current_user();
 ?>
-	<h1>Welcome <?php echo $user->data->user_login;?></h1><h4>(<?php echo $user->data->promoter_code;?>) </h4>
+	<h3>Welcome <?php echo ucfirst($user->data->user_login);?>, your code is : <?php if($user->roles[0] == 'author' ) { echo $user->data->client_code; } else if($user->roles[0] == 'editor') { echo $user->data->promoter_code; }?></h3>
 	
-	<div class="container">
+	<!-- <div class="container">
 		<table id="table_id" class="display" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>
@@ -69,7 +69,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		            </tr>
 		        </tbody>
 		</table>
-	</div>
+	</div> -->
 	
 
 </div>

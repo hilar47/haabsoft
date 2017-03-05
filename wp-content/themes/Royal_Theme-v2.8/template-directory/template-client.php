@@ -22,7 +22,7 @@ get_header();
        	 <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
             <div class="col-sm-offset-1 col-sm-10">
 				<div class="row">
-					<h2 id="modal_title">Create user profile</h2>
+					<h2 id="modal_title">Create client profile</h2>
 					<h6 class="m-0">All <span class="text-red">*</span> fields are required</h6>
 				</div>
            </div>
@@ -76,6 +76,20 @@ get_header();
 							</div>
 						</div>
                         <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">Country<span class="text-red">*</span></label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="country" id="country" value="">
+                               <span class="text-danger" id="country_errmsg"></span>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="example-text-input" class="col-sm-5">State<span class="text-red">*</span></label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="state" id="state" value="">
+                               <span class="text-danger" id="state_errmsg"></span>
+							</div>
+						</div>
+                        <div class="form-group">
 							<label class="col-sm-5">Address 1<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="address_1" id="address_1" value="">
@@ -89,28 +103,21 @@ get_header();
 							</div>
 						</div>
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Country<span class="text-red">*</span></label>
-							<div class="col-sm-7 m-b-sm-10">
-          					   <input type="text" class="form-control" name="country" id="country" value="">
-                               <span class="text-danger" id="country_errmsg"></span>
-							</div>
-						</div>
-                        <div class="form-group">
 							<label for="example-text-input" class="col-sm-5">City<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="city" id="city" value="">
                                <span class="text-danger" id="city_errmsg"></span>
 							</div>
 						</div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
 							<label for="example-text-input" class="col-sm-5">Area/Town<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="area_town" id="area_town" value="">
                                <span class="text-danger" id="area_town_errmsg"></span>
 							</div>
-						</div>
+						</div> -->
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Pin Code<span class="text-red">*</span></label>
+							<label for="example-text-input" class="col-sm-5">Post Code<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					  <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
                               <span class="text-danger" id="pin_code_errmsg"></span>
@@ -125,15 +132,15 @@ get_header();
 							</div>
 						</div>
                         <div class="form-group">
-                            <label for="example-text-input" class="col-sm-5">Landline</label>
+                            <label for="example-text-input" class="col-sm-5">Landline<span class="text-red">*</span></label>
                             <div class="col-sm-7 m-b-sm-10">
                                 <input type="text" class="form-control" name="landline" id="landline" value="" maxlength="10">
-                                <span class="text-danger" id="phone_errmsg"></span>
+                                <span class="text-danger" id="landline_errmsg"></span>
                                 <span class="help-block"></span>
                             </div>
         				</div>
                         <div class="form-group">
-                            <label for="example-text-input" class="col-sm-5">Promoter Code</label>
+                            <label for="example-text-input" class="col-sm-5">Agent Code<span class="text-red">*</span></label>
                             <div class="col-sm-7 m-b-sm-10">
                                 <input type="text" class="form-control" name="agent_code" id="agent_code" value="">
                                 <span class="text-danger" id="agent_code_errmsg"></span>
@@ -156,7 +163,7 @@ get_header();
                     <div class="col-sm-6 col-sm-offset-3">
                         <input type="hidden" id="model_hid_id" name="" value="2"/>
         				<input type="hidden" name="client_code" id="client_code" value=""/>
-                        <button type="button" class="btn btn-block btn-primary client">Create user profile</button>
+                        <button type="button" class="btn btn-block btn-primary client">Create client profile</button>
                     </div>
                 </div>
             </form>
