@@ -52,57 +52,56 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
                 <hr class="divider break">
                 <p style="font-size: 18px;"><?php echo (isset($meta['video_section_description']) && !empty($meta['video_section_description']) ? $meta['video_section_description'] : '');?></p><?php */?>
                 <?php
-                //echo $_POST['countryKey'];
-                //for a given post type, return all
-                $post_type = 'videos';
-                $tax = 'videos_category';
-                $tax_terms = get_terms($tax);
-                if ($tax_terms) {
-                  foreach ($tax_terms  as $tax_term) {
-                    $args=array(
-                      'post_type' => $post_type,
-                      "$tax" => $tax_term->slug,
-                      'post_status' => 'publish',
-                      'posts_per_page' => -1,
-                      'caller_get_posts'=> 1,
-                      'meta_query' => array(
-                            array(
-                                'key' => $content_item_meta->get_the_name('country'),
-                                'value'=> $get_country_name->country_name
-                            )
-                        )
-                    );
+										//echo $_POST['countryKey'];
+										//for a given post type, return all
+										// $post_type = 'videos';
+										// $tax = 'videos_category';
+										// $tax_terms = get_terms($tax);
+										// if ($tax_terms) {
+										  // foreach ($tax_terms  as $tax_term) {
+										    $args=array(
+										      'post_type' => 'videos',
+										      'post_status' => 'publish',
+										      'posts_per_page' => -1,
+										      'caller_get_posts'=> 1,
+										      'meta_query' => array(
+													array(
+										                'key' => $content_item_meta->get_the_name('country'),
+										                'value'=> $get_country_name->country_name
+											        )
+												)
+										    );
 
-                    $my_query = null;
-                    $my_query = new WP_Query($args);
-                    if( $my_query->have_posts() ) { ?>
-                    <h3><?php if(isset($tax_term->name) && !empty($tax_term->name)) { echo $tax_term->name; } ?></h3>
-                        <div class="row">
-                        <?php
-                      while ($my_query->have_posts()) : $my_query->the_post(); 
-                        global $content_item_meta;
-                        $video_meta = get_post_meta($post->ID, $content_item_meta->get_the_id(), true);
-                            ?>
-
-                        <div class="col-xs-12 col-sm-4 m-b-20">
-                            <video class="img-responsive" controls><source src="<?php if(isset($video_meta['video_upload']) && !empty($video_meta['video_upload'])) { echo $video_meta['video_upload']; } ?>" type="video/mp4"></video>
-                            <div class="video-disc">
-                                <h5>Lorem ipsum dolor sit amet, consectetur</h5>
-                            <p>Uploaded by : Rohit Raul</p>
-                            </div>
-
-                        </div>
-                        <?php
-
-                      endwhile;
-                      ?>
-                      </div>
-                      <?php
-                    }
-                    wp_reset_query();
-                  }
-                }
-                ?>
+										    $my_query = null;
+										    $my_query = new WP_Query($args);
+										    if( $my_query->have_posts() ) { ?>
+										    <h3><?php if(isset($tax_term->name) && !empty($tax_term->name)) { echo $tax_term->name; } ?></h3>
+										    	<div class="row">
+										    	<?php
+										      while ($my_query->have_posts()) : $my_query->the_post(); 
+										      	global $content_item_meta;
+										      	$video_meta = get_post_meta($post->ID);
+										    ?>
+										        
+										        <div class="col-xs-12 col-sm-4 m-b-20">
+										        	<video class="img-responsive" controls><source src="<?php if(isset($video_meta['video_upload'][0]) && !empty($video_meta['video_upload'][0])) { echo $video_meta['video_upload'][0]; } ?>" type="video/mp4"></video>
+													<div class="video-disc">
+														<h5><?php if(isset($video_meta['caption_line'][0]) && !empty($video_meta['caption_line'][0])) { echo $video_meta['caption_line'][0]; } ?></h5>
+													<p>Uploaded by : <?php $recent_author = get_user_by( 'ID', $post->post_author ); echo $author_display_name = $recent_author->display_name; ?></p>
+													</div>
+										        	
+										        </div>
+										        <?php
+										           
+										      endwhile;
+										      ?>
+										      </div>
+										      <?php
+										    }
+										    wp_reset_query();
+										  //}
+										//}
+										?>
                 </div>
             </div>
 

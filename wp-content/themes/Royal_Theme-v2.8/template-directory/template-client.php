@@ -21,72 +21,72 @@ get_header();
     <h4 class="modal-title" id="modal_title">Sign up as Client</h4>
     <form name="registerform" action="" method="post">
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">First Name</label>
+            <label for="example-text-input" class="col-2 col-form-label">First Name<span class="text-red">*</span></label>
             <div class="col-10">
                 <input type="text" class="form-control" name="first_name" id="first_name" value="">
             </div>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
+            <label for="example-text-input" class="col-2 col-form-label">Last Name<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="last_name" id="last_name" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">E-mail</label>
+            <label for="example-text-input" class="col-2 col-form-label">E-mail<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="user_email" id="user_email" value="">
             <span id="user_email_errmsg"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Confirm E-mail</label>
+            <label for="example-text-input" class="col-2 col-form-label">Confirm E-mail<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
             <span id="confirm_user_email_errmsg"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Password</label>
+            <label for="example-text-input" class="col-2 col-form-label">Password<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="password" id="password" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
+            <label for="example-text-input" class="col-2 col-form-label">Confirm Password<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="c_password" id="c_password" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Country</label>
+            <label for="example-text-input" class="col-2 col-form-label">Country<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="country" id="country" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">State</label>
+            <label for="example-text-input" class="col-2 col-form-label">State<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="state" id="state" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Address 1</label>
+            <label for="example-text-input" class="col-2 col-form-label">Address 1<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="address_1" id="address_1" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Address 2</label>
+            <label for="example-text-input" class="col-2 col-form-label">Address 2<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="address_2" id="address_2" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">City</label>
+            <label for="example-text-input" class="col-2 col-form-label">City<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="city" id="city" value="">
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Post Code</label>
+            <label for="example-text-input" class="col-2 col-form-label">Post Code<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="pin_code" id="pin_code" value="">
             <span id="pin_code_errmsg"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Cell Phone</label>
+            <label for="example-text-input" class="col-2 col-form-label">Cell Phone<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="phone" id="phone" value="" maxlength="10">
             <span id="phone_errmsg"></span>
             <span class="help-block"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Landline</label>
+            <label for="example-text-input" class="col-2 col-form-label">Landline<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="landline" id="landline" value="" maxlength="10">
             <span id="phone_errmsg"></span>
             <span class="help-block"></span>
         </div>
         <div class="form-group">
-            <label for="example-text-input" class="col-2 col-form-label">Agent Code</label>
+            <label for="example-text-input" class="col-2 col-form-label">Agent Code<span class="text-red">*</span></label>
             <input type="text" class="form-control" name="agent_code" id="agent_code" value="">
             <span id="agent_code_errmsg"></span>
             <span class="help-block"></span>
@@ -98,6 +98,7 @@ get_header();
             <span class="help-block"></span>
         </div>
         <input type="hidden" id="model_hid_id" name="" value="2"/>
+        <input type="hidden" name="client_code" id="client_code" value=""/>
         <button type="button" class="btn btn-info client">Register</button>
     </form>
 
