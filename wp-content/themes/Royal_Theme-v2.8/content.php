@@ -23,9 +23,9 @@
     $postClass .= ' content-'.etheme_get_option('blog_layout');
 ?>
 
-
 <article <?php post_class($postClass); ?> id="post-<?php the_ID(); ?>" >
-	<div>
+	
+	<div class="row">
 		<?php if($post_format == 'quote' || $post_format == 'video'): ?>
 	    
 	            <?php the_excerpt(); ?>
@@ -77,40 +77,24 @@
 	      	// echo "</pre>";
 	      	
 			?>
-	        <h6 class="active"><?php the_category(',&nbsp;') ?></h6>
-			<div class="video-search" data-id="<?php echo $postId;?>"><video style='width:100px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video></div>
-			
-	        <h2 class="entry-title"><?php the_title(); ?></h2>
-	        <h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
-	        <!-- Modal -->
-			  <div class="modal fade" id="myModal_<?php echo $postId;?>" role="dialog">
-			    <div class="modal-dialog">
-			    
-			      <!-- Modal content-->
-			      <div class="modal-content">
-			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <h4 class="modal-title">Video</h4>
-			        </div>
-			        <div class="modal-body">
-			          <video controls style='width:200px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
-			          <h2 class="entry-title"><?php the_title(); ?></h2>
-	        			<h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
-			        </div>
-			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        </div>
-			      </div>
-			      
-			    </div>
-			  </div>
-	        <?php if(etheme_get_option('blog_byline') && etheme_get_option('blog_layout') != 'timeline'): ?>
-	            <div class="meta-post">
+        	<div class="col-sm-3">
+        		<div class="video-search" data-id="<?php echo $postId;?>">
+                    <img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/play-icon.png" class="play-icon" />
+        			<video><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
+        		</div>
+        	</div>
+        	
+        	<div class="col-sm-9">
+        		<h2 class="entry-title" data-id="<?php echo $postId;?>"><?php the_title(); ?></h2>
+        		<h6 class="category-text"><span>Category:</span> <?php echo $video_result['video_category'][0]; ?></h6>
+        		<h6 class="caption-text"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
+        		<?php if(etheme_get_option('blog_byline') && etheme_get_option('blog_layout') != 'timeline'): ?>
+	            <div class="posted-by">
 	                    <?php //_e('Posted on', ETHEME_DOMAIN) ?>
 	                    <?php //the_time(get_option('date_format')); ?> 
 	                    <?php //_e('at', ETHEME_DOMAIN) ?> 
 	                    <?php //the_time(get_option('time_format')); ?>
-	                    <?php _e('Posted by', ETHEME_DOMAIN);?> <span class="vcard"> <span class="fn"><?php the_author_posts_link(); ?></span></span>
+	                    <?php _e('Uploaded by:', ETHEME_DOMAIN);?> <span class="vcard"> <span class="fn"><?php the_author_posts_link(); ?></span></span>
 	                    <?php // Display Comments 
 	
 	                            if(comments_open() && !post_password_required()) {
@@ -133,9 +117,33 @@
 	                     ?>
 	            </div>
 	        <?php endif; ?>
+        	</div>
+	        
+	        <!-- Modal -->
+			  <div class="modal fade" id="myModal_<?php echo $postId;?>" role="dialog">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Video</h4>
+			        </div>
+			        <div class="modal-body">
+			          <video controls style='width:200px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
+			          <h2 class="entry-title"><?php the_title(); ?></h2>
+	        			<h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
 	    <?php endif; ?>
 	
-	    <?php if($post_format != 'quote' && $post_format != 'video' && $post_format != 'gallery'): ?>
+	   <?php /*?> <?php if($post_format != 'quote' && $post_format != 'video' && $post_format != 'gallery'): ?>
 	        <div class="content-article entry-content">
 	        		<?php the_excerpt(); ?>
 	        		<a href="<?php the_permalink(); ?>" class="more-link"><span class="btn big filled pull-right read-more"><?php _e('Read More', ET_DOMAIN); ?></span></a>
@@ -144,7 +152,7 @@
 	        <div class="content-article entry-content">
 	            <?php echo $filtered_content; ?>
 	        </div>
-	    <?php endif; ?>
+	    <?php endif; ?><?php */?>
     </div>
     <?php if(etheme_get_option('blog_byline') && etheme_get_option('blog_layout') == 'timeline'): ?>
         <div class="meta-post-timeline">

@@ -443,7 +443,7 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
         jQuery('#promoter_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
     })
 
-    jQuery('.video-search').click(function () {
+    jQuery('.video-search, .sidebar-position-left article h2.entry-title').click(function () {
         var id = jQuery(this).data('id');
         jQuery('#myModal_'+id).modal('show');
     });

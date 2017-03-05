@@ -3796,3 +3796,96 @@
 .post-type-archive .page-heading {
 	display: none;
 }
+
+/* Search page */
+.sidebar .sidebar-widget select {
+    max-width: 100%;
+    width: 100%;
+}
+.sidebar .widget_search .form-group.has-border{
+	padding-bottom: 20px;
+    width: 100%;
+}
+.sidebar .widget_search .form-group label{
+	color: #5d5d5d;
+}
+.sidebar .widget_search .form-group select{
+	background:rgba(0, 0, 0, 0) url("http://localhost/haabsoft/wp-content/themes/Royal_Theme-v2.8/images/select-arrow2.jpg") no-repeat scroll right center;
+	-webkit-appearance: none;
+}
+.sidebar .widget_search .form-group.form-button{
+	float: none;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+.sidebar .widget_search .form-group.form-button button{
+	height: 35px;
+    width: 100px;
+}
+.btn.medium, .button.medium, button.btn.medium-btn {
+    background: #dc9416 none repeat scroll 0 0;
+    font-size: 13px !important;
+    line-height: 15px !important;
+    padding: 6px 18px !important;
+}
+h3.search-title{
+	border-bottom: 2px solid #e8daa9;
+    color: #002e80;
+    padding-bottom: 5px;
+}
+.sidebar-position-left article{
+	border: 1px solid #c0c7cf;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+.sidebar-position-left article video{
+	width:100%;
+}
+.sidebar-position-left article .video-search{
+	
+}
+.sidebar-position-left article h2.entry-title {
+    font-size: 22px;
+    font-weight: normal;
+	cursor:pointer;
+}
+.sidebar-position-left article h6.category-text{
+	color: #000;
+    font-style: italic;
+}
+.sidebar-position-left article h6.category-text span{
+	 color: #5d5d5d;
+    font-style: normal;
+}
+.sidebar-position-left article .posted-by{
+	color: #000;
+    font-style: italic;
+	font-size: 11px;
+}
+.sidebar-position-left article .posted-by span{
+	 color: #5d5d5d;
+    font-style: normal;
+}
+.sidebar-position-left article .posted-by a{
+	color: #5d5d5d;
+    pointer-events: none;
+    text-decoration: none;
+}
+.sidebar-position-left article .caption-text{
+	font-size: 13px;
+}
+.header-logo{
+    top:-5px;
+}
+.sidebar-position-left article .play-icon{
+    left: 35%;
+    position: absolute;
+    top: 20%;
+    width: 60px;
+    cursor:pointer;
+    opacity: 0.8;
+}
+.navbar-right button.medium-btn{
+    padding: 15px 28px 14px !important;
+}
