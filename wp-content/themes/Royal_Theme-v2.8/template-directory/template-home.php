@@ -19,7 +19,7 @@ $get_country_name = json_decode(file_get_contents("http://freegeoip.net/json/"))
 		</div>
 	</div>-->
 <div class="banner-home">
-    <!--<img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/banner-bg.jpg" />-->
+    <img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/banner-bg.jpg" />
     <h1>HAABSOFT VIDEOS</h1>
     <h3>WATCH OUR VIDEOS COLLECTION</h3>
 </div>
