@@ -83,23 +83,127 @@
 	        <h2 class="entry-title"><?php the_title(); ?></h2>
 	        <h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
 	        <!-- Modal -->
-			  <div class="modal fade" id="myModal_<?php echo $postId;?>" role="dialog">
-			    <div class="modal-dialog">
+			  <div class="modal fade video-popup" id="myModal_<?php echo $postId;?>" role="dialog">
+			    <div class="modal-dialog"> 
 			    
 			      <!-- Modal content-->
 			      <div class="modal-content">
-			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			          <h4 class="modal-title">Video</h4>
-			        </div>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			       
 			        <div class="modal-body">
-			          <video controls style='width:200px;'><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
-			          <h2 class="entry-title"><?php the_title(); ?></h2>
-	        			<h6 class="entry-title"><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></h6>
-			        </div>
-			        <div class="modal-footer">
+			          <video controls class="width100"><source src='<?php echo (isset($video_result['video_upload'][0]) && !empty($video_result['video_upload'][0]) ? $video_result['video_upload'][0] : ''); ?>' type='video/mp4'></video>
+			          <h4 class="entry-title"><?php the_title(); ?></h4>
+	        			<p><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></p>
+                        <h5 class="modal-title">Video Information</h5>
+                       	<div class="row">
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-link" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['website'][0]) && !empty($video_result['website'][0]) ? $video_result['website'][0] : ''); ?>	</p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['email'][0]) && !empty($video_result['email'][0]) ? $video_result['email'][0] : ''); ?></p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-phone-square" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['landline'][0]) && !empty($video_result['landline'][0]) ? $video_result['landline'][0] : ''); ?></p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-mobile" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['phone'][0]) && !empty($video_result['phone'][0]) ? $video_result['phone'][0] : ''); ?></p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['watsapp_no'][0]) && !empty($video_result['watsapp_no'][0]) ? $video_result['watsapp_no'][0] : ''); ?></p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p><?php echo (isset($video_result['address1'][0]) && !empty($video_result['address1'][0]) ? $video_result['address1'][0] : ''); ?><br /><?php echo (isset($video_result['city'][0]) && !empty($video_result['city'][0]) ? $video_result['city'][0] : ''); ?>&nbsp;<?php echo (isset($video_result['country'][0]) && !empty($video_result['country'][0]) ? $video_result['country'][0] : ''); ?><br /><?php echo (isset($video_result['pin_code'][0]) && !empty($video_result['pin_code'][0]) ? $video_result['pin_code'][0] : ''); ?></p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p>Google link</p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p>Facebook</p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-youtube-square" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p>Youtube</p>
+                            </div>
+                        </div>
+                        <div class="media col-sm-3">
+                            <div class="media-left">
+                              <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                            </div>
+                            <div class="media-body">
+                              <p>Twitter</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="modal-title">Video Information</h5>
+                       	<div class="row comment">
+                        	<div class="col-sm-12">	
+                                <div class="media">
+                                <div class="media-left col-sm-1">
+                                  <img src="<?php echo site_url() . '/wp-content/themes/Royal_Theme-v2.8/images/custom-assets/comment-avtar.png'; ?>"  alt="comment-avter" />
+                                </div>
+                                <div class="media-body col-sm-11">
+                                    <input type="textarea" class="form-control" name="" value="">
+                                    <button type="button" class="btn btn-default-alt pull-right m-t-15" data-dismiss="modal">send</button>
+                                </div>
+                            </div>
+                                <div class="media">
+                                <div class="media-left col-sm-1">
+                                   <img src="<?php echo site_url() . '/wp-content/themes/Royal_Theme-v2.8/images/custom-assets/comment-avtar.png'; ?>"  alt="comment-avter" />
+                                </div>
+                                <div class="media-body col-sm-11">
+                                    <h5 class="media-heading">John Doe</h5>
+                                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum...</p>
+                                </div>
+                            </div>	
+                            </div>
+                        </div>
+			    </div>
+			       <?php /*?> <div class="modal-footer">
 			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        </div>
+			        </div><?php */?>
 			      </div>
 			      
 			    </div>
