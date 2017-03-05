@@ -295,7 +295,7 @@ a.active:hover {
 p {
   margin-bottom: 20px;
   color: #767676;
-  line-height: 1.8;
+  line-height: 1.4;
 }
 p.active,
 em.active,
@@ -2398,7 +2398,7 @@ body.bordered .st-menu {
   top: -160px;
   left: 0;
   width: 100%;
-  z-index: 10001;
+  z-index: 1000;
   background-color: #2874f0;
   -webkit-transition: 0.4s all ease-in-out;
   -moz-transition: 0.4s all ease-in-out;
@@ -15599,6 +15599,15 @@ html.st-menu-open body {
 
 /* CUSTOM CSS STARTS HERE */
 
+/* Media CSS */
+.media-body, .media-left, .media-right {
+    display: table-cell;
+    vertical-align: top;
+}
+.media-left, .media>.pull-left {
+    padding-right: 10px;
+}
+
 
 /* =========== Typography CSS ============== */
 h1,
@@ -15722,6 +15731,14 @@ h5 {
   height: 44px;
   padding-top: 7px;
   font-size: 17px;
+}
+.btn.btn-default-alt {
+  height: 28px;
+  font-size: 13px;
+  width: 121px;
+  padding-top: 5px;
+  background-color: #929292;
+  color: #fff;
 }
 .btn.btn-primary:hover, .btn.btn-primary:focus {
   background-color: #efa930;
@@ -16188,10 +16205,65 @@ header.header .menu-wrapper li.current-menu-item, header.header .menu-wrapper li
 	display: none;
 }
 /*====== Video-popup CSS=======*/
+
+.modal.video-popup{
+	    overflow-y: inherit;
+	}
 .video-popup{
-    top:20px;
-    }
-    
+	top:20px;
+	height: 100%;
+	}
+	
 .video-popup .modal-dialog{
-    width:60%;
-    }
+	width:60%;
+	}
+	
+.video-popup .modal-dialog h4 {
+    border-bottom: 2px solid #e9dbaa;
+    padding-bottom: 3px;
+    margin: 30px 0 7px 0;
+    color: #333333;
+}
+
+.video-popup .modal-dialog h5 {
+    border-bottom: 2px solid #e8e8e8;
+    padding-bottom: 3px;
+    margin: 30px 0 7px 0;
+    color: #333333;
+}
+.video-popup .fa {
+    font-size: 18px;
+    color: #6c6c6c;
+}
+
+.video-popup .media:first-child {
+    margin-top: 15px;
+}
+
+.video-popup .comment {
+	
+}
+.video-popup .comment h5{
+	margin-top:0px;
+	}
+	
+	
+/*====== global-popup CSS=======*/	
+	
+ .close {
+    margin-top: -16px;
+    background: #999999!important;
+    opacity: 0.9;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    border: 4px solid #cccccc!important;
+    margin-right: -16px;
+}
+
+.close:hover, .close:focus {
+    color: #fff;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

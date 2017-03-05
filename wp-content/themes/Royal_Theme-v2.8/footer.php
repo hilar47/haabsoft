@@ -154,10 +154,16 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
         jQuery('#myModal').modal('show');
 
     });
-    function randomString(length, chars) {
-        var result = '';
-        for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
-        return 'PROMO_'+result;
+    function randomString(length, chars, val) {
+        if(val == 1){
+            var result = '';
+            for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+            return 'PROMO_'+result;
+        } else {
+            var result = '';
+            for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+            return 'CLI_'+result;
+        }
     }
     jQuery('#user_email_errmsg')
     jQuery('.register').click(function () {
@@ -291,6 +297,7 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
     });
 
     jQuery('.client').click(function () {
+        var c_code = jQuery('#client_code').val();
         var first_name = jQuery('#first_name').val();
         var last_name = jQuery('#last_name').val();
         var user_email = jQuery('#user_email').val();
@@ -326,7 +333,7 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                             if (jQuery.trim(pin_code).length != 0) {
                                                                 if (jQuery.trim(phone).length != 0) {
                                                                     if (phone.length >= 10) {
-                                                                        if(jQuery.trim(agent_code).length != 0){
+                                                                        //if(jQuery.trim(agent_code).length != 0){
                                                                             if(checked == 1){
                                                                                 var path = '<?php echo get_template_directory_uri();?>';
                                                                                 var url = path + '/template-directory/register_client.php';
@@ -349,7 +356,8 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                                                         landline: landline,
                                                                                         agent_code: agent_code,
                                                                                         phone: phone,
-                                                                                        model_hid_id: model_hid_id
+                                                                                        model_hid_id: model_hid_id,
+                                                                                        c_code: c_code,
                                                                                     },
                                                                                     success: function (msg) {
                                                                                         console.log(msg);
@@ -376,9 +384,9 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                                                 
                                                                                 jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").css('color', 'red');
                                                                             }
-                                                                        } else {
-                                                                            jQuery('#agent_code_errmsg').html("Enter code").css('color', 'red');
-                                                                        }
+                                                                        // } else {
+                                                                        //     jQuery('#agent_code_errmsg').html("Enter code").css('color', 'red');
+                                                                        // }
                                                                     } else {
                                                                         jQuery('#phone_errmsg').html("Enter Valid Number").css('color', 'red');
                                                                     }
@@ -440,7 +448,8 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                 jQuery('#cntryId').val(storedData);
             }
         });
-        jQuery('#promoter_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+        jQuery('#promoter_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 1));
+        jQuery('#client_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 2));
     })
 
     jQuery('.video-search, .sidebar-position-left article h2.entry-title').click(function () {
