@@ -72,6 +72,8 @@
 			<div class="content <?php esc_attr_e( $l['content-class'] ); ?>">
 		
 				<div class="<?php if ($content_layout == 'grid'): ?>blog-masonry row<?php endif ?>">
+				
+					<h3 class="search-title">Search Results</h3>
 					<?php if($the_query->have_posts()): 
 						while($the_query->have_posts()) : $the_query->the_post(); ?>
 
