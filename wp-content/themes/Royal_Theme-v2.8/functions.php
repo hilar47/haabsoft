@@ -302,3 +302,62 @@ function go_home(){
   wp_redirect( site_url() );
   exit();
 }
+
+
+//Function to get the title and other attributes of promo page
+
+//wp_enqueue_script('jquery');
+function sendInvoice(){
+	
+	if($_POST){
+		
+		if(!empty($_POST['invoice_data'])){
+			//$decoded = json_decode($_POST['invoice_data']);
+			//echo $_POST['invoice_data'];
+			//$tempData = html_entity_decode($_POST['invoice_data']);
+			$cleanData = json_decode($tempData);
+			echo "<pre>";
+			print_r($_POST['invoice_data']);
+			echo "</pre>";
+			
+			$message = 'Hi Admin,<br>Please send me the commission for the below mentioned videos.<br/><br/><table><thead><tr><th>Video Id</th><th>Expiry Date</th><th>Video Code</th><th>Client Code</th><th>Client Name</th></tr> ';
+			
+			if(!empty($_POST['invoice_data']) && isset($_POST['invoice_data'])){
+				
+				foreach($_POST['invoice_data'] as $invoice){
+					
+					$message .= '<tr><td>'.$invoice['video_id'].'</td><td>'.$invoice['exp_date'].'</td><td>'.$invoice['video_code'].'</td><td>'.$invoice['clientcode'].'</td><td>'.$invoice['clientname'].'</td><tr>';
+				}
+			}
+			$message .= '</table>';
+			
+			$return_op = "<br><br>Regards,<br>Haab Soft";
+			//echo get_administrator_email();
+			$to = get_administrator_email();
+			$subject = 'Deposit Comission of promoter';
+			$body = $message;
+			//echo $message;
+			$headers = array('Content-Type: text/html; charset=UTF-8');
+
+			$result = wp_mail( $to, $subject, $body, $headers );
+			
+			//echo "here";
+			echo json_encode($result);
+		}
+	}
+	else{
+		echo json_encode(false);
+	}
+	die();
+}
+add_action('wp_ajax_sendInvoice', 'sendInvoice');
+add_action('wp_ajax_nopriv_sendInvoice', 'sendInvoice');
+function get_administrator_email(){
+	$email = '';
+	$blogusers = get_users('role=Administrator');
+	//print_r($blogusers);
+	foreach ($blogusers as $user) {
+		$email = $user->user_email;
+	}
+	return $email;
+}
