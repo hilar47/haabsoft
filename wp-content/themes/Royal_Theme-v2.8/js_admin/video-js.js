@@ -65,8 +65,6 @@ jQuery(document).ready(function(){
 		jQuery(".invoice_to_client").each(function(){
 			if(jQuery(this).is(":checked")){
 				//I have nothign to do here this is just a condition.
-			}
-			else{
 				var video_details = {
 					'video_id' 		: jQuery(this).val(),
 					'exp_date'		: jQuery(this).data('expdate'),
@@ -76,6 +74,9 @@ jQuery(document).ready(function(){
 				};
 				data_to_send[i] = video_details;
 				i = i +1;
+			}
+			else{
+				
 			}
 		});
 		//var serialized_data = JSON.stringify(data_to_send);
