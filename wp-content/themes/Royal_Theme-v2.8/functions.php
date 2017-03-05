@@ -240,8 +240,8 @@ function ST4_columns_head_only_videos($defaults) {
 function ST4_columns_content_only_videos($column_name, $post_ID) {
     if($column_name == 'videos') {
         global $content_item_meta;
-        $meta = get_post_meta($post_ID, $content_item_meta->get_the_id(), true);
-        $video_upload = (isset($meta['video_upload']) && !empty($meta['video_upload']) ? $meta['video_upload'] : '');
+        $meta = get_post_meta($post_ID);
+        $video_upload = (isset($meta['video_upload'][0]) && !empty($meta['video_upload'][0]) ? $meta['video_upload'][0] : '');
         echo "<video controls style='width:200px;'><source src='".$video_upload."' type='video/mp4'></video>";
     }
 }

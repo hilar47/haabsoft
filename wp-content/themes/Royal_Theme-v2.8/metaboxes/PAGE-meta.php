@@ -1,6 +1,6 @@
 <div class="my_meta_control metabox">
 <?php 
-	global $wpalchemy_media_access;
+	global $content_page_meta;
 ?>
 <?php if(get_the_ID()=='22879'){ ?>
 	<div class="postbox section-background">
@@ -20,7 +20,7 @@
 				
 				<label>Section Description</label>
 			    <?php $metabox->the_field('section_description'); ?>
-			    <p><textarea name="<?php $metabox->the_name(); ?>" value=""><?php $metabox->the_value(); ?></textarea></p>
+			    <p><textarea name="<?php $metabox->the_name(); ?>"><?php $metabox->the_value(); ?></textarea></p>
 				
 				<?php while($metabox->have_fields_and_multi('reference_callout')): ?>
 					<?php $metabox->the_group_open(); ?>
@@ -99,7 +99,7 @@
 				
 				<label>Description</label>
 			    <?php $metabox->the_field('video_section_description'); ?>
-			    <p><textarea name="<?php $metabox->the_name(); ?>" value=""><?php $metabox->the_value(); ?></textarea></p>
+			    <p><textarea name="<?php $metabox->the_name(); ?>"><?php $metabox->the_value(); ?></textarea></p>
 			</div>
 		</div>
 	</div>
@@ -111,4 +111,4 @@
 	    jQuery('#postdivrich').css('display', 'none');
 	});
 </script>
-
+</div>

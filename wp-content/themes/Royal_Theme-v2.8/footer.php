@@ -23,27 +23,27 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
 
 
     <?php if ((is_active_sidebar('footer2') || $fd) && empty($custom_footer)): ?>
-        <footer class="main-footer main-footer-<?php echo esc_attr($ft); ?> text-color-<?php echo $fcolor; ?>"
-                <?php if ($fbg != ''): ?>style="background-color:<?php echo $fbg; ?>"<?php endif; ?>>
+        <div class="footer-top footer-top-<?php echo esc_attr($ft); ?>">
             <div class="container">
-                <?php if (!is_active_sidebar('footer2')) : ?>
-                    <?php if ($fd) etheme_footer_demo('footer2'); ?>
+                <?php if (!is_active_sidebar('footer1')) : ?>
+                    <?php if ($fd) etheme_footer_demo('footer1'); ?>
                 <?php else: ?>
-                    <?php dynamic_sidebar('footer2'); ?>
+                    <?php dynamic_sidebar('footer1'); ?>
                 <?php endif; ?>
-                <?php do_action('etheme_after_footer_widgets'); ?>
             </div>
-
-        </footer>
+        </div>
     <?php endif; ?>
 
     <?php if (!empty($custom_footer)): ?>
-        <footer class="main-footer main-footer-<?php echo esc_attr($ft); ?> text-color-<?php echo $fcolor; ?>"
-                <?php if ($fbg != ''): ?>style="background-color:<?php echo $fbg; ?>"<?php endif; ?>>
+        <div class="footer-top footer-top-<?php echo esc_attr($ft); ?>">
             <div class="container">
-                <?php echo et_get_block($custom_footer); ?>
+                <?php if (!is_active_sidebar('footer1')) : ?>
+                    <?php if ($fd) etheme_footer_demo('footer1'); ?>
+                <?php else: ?>
+                    <?php dynamic_sidebar('footer1'); ?>
+                <?php endif; ?>
             </div>
-        </footer>
+        </div>
     <?php endif; ?>
 
     <?php if ((is_active_sidebar('footer9') || is_active_sidebar('footer10') || $fd) && empty($custom_footer)): ?>
