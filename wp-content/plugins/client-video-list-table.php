@@ -34,7 +34,7 @@ class My_List_Table extends WP_List_Table {
 		
 		global $wpdb;
 		
-		$querystr = "SELECT wp_posts.*,wp_users.* FROM wp_posts, wp_users  WHERE 1=1 AND (((wp_posts.post_title LIKE '%".$search."%') OR (wp_posts.post_excerpt LIKE '%".$search."%') OR (wp_posts.post_content LIKE '%".$search."%') OR (wp_users.display_name LIKE '%".$search."%'))) AND wp_posts.post_type = 'videos' AND (wp_posts.post_status = 'publish' OR wp_posts.post_status = 'future' OR wp_posts.post_status = 'draft' OR wp_posts.post_status = 'pending' OR wp_posts.post_status = 'private') AND wp_posts.post_author = wp_users.ID  ORDER BY wp_posts.post_date DESC";
+		$querystr = "SELECT wp_posts.*,wp_users.*,wp_posts.ID as video_id,payments.* FROM wp_posts, wp_users,payments WHERE 1=1 AND payments.itemid=wp_posts.ID AND (((wp_posts.post_title LIKE '%".$search."%') OR (wp_posts.post_excerpt LIKE '%".$search."%') OR (wp_posts.post_content LIKE '%".$search."%') OR (wp_users.display_name LIKE '%".$search."%'))) AND wp_posts.post_type = 'videos' AND (wp_posts.post_status = 'publish' OR wp_posts.post_status = 'future' OR wp_posts.post_status = 'draft' OR wp_posts.post_status = 'pending' OR wp_posts.post_status = 'private') AND wp_posts.post_author = wp_users.ID  ORDER BY wp_posts.post_date DESC";
 		$pageposts = $wpdb->get_results($querystr, OBJECT);
 		//$results = $wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'_posts p,'.$wpdb->prefix.'_users u WHERE u.user_id = p.post_author;'));
 
@@ -69,15 +69,43 @@ class My_List_Table extends WP_List_Table {
 		
 		//$posts = $query->posts;
 		
-		echo "<pre>";
-		print_r($pageposts);
-		echo "</pre>";
+		//echo "<pre>";
+		//print_r($pageposts);
+		//echo "</pre>";
 		//echo $custom_metabox->get_the_id();
 		
 		foreach($pageposts as $post) {
 			
 			$meta = get_post_meta($post->ID, $content_item_meta->get_the_id(), true);
-		
+			
+			
+			$expiry_date = strtotime("+7 day", strtotime($post->post_date));
+			$exp_date = date("d-m-Y H:i:s", $expiry_date);
+			$exp_stat = '';
+			if($expiry_date < strtotime(date("Y-m-d H:i:s"))){
+				$exp_stat = "Expired";
+			}
+			else{
+				$exp_stat = "Active";
+			}
+			
+			$disable_invoice = '';
+			$commission_status = '';
+			if($post->commission_status){
+				$commission_status = 'Yes';
+				$disable_invoice = 'disabled="disabled"';
+			}
+			else{
+				$commission_status = 'No';
+			}
+			$commission_due = '';
+			if($post->commission_status){
+				$commission_due = 'No';
+			}
+			else{
+				$commission_due = 'Yes';
+			}
+			
 		//echo "<pre>";
 		//print_r($meta);
 		//echo "</pre>";
@@ -86,18 +114,20 @@ class My_List_Table extends WP_List_Table {
 			$user_data = get_user_by(  "ID", $post->post_author )->data;
 			//print_r($user_data);
 			//echo "</pre>";
-			$invoice_to_client = '<input type="checkbox" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->ID.'"';
+			$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'"';
 			$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->ID.'"';
+			
+			
 			// Do your stuff, e.g.
 			$new_data = '';
 			$new_data = array(
 				'clientname' 			=> $user_data->display_name,
-				'clientcode'    		=> $post->ID,
-				'videocode'      		=> $post->ID,
-				'expdate'				=> $post->ID,
-				'expstatus'      		=> $post->ID,
-				'commissionreceived'    => $post->ID,
-				'commissiondue'      	=> $post->ID,
+				'clientcode'    		=> $post->client_code,
+				'videocode'      		=> 'VID_'.$post->video_id,
+				'expdate'				=> $exp_date,
+				'expstatus'      		=> $exp_stat,
+				'commissionreceived'    => $commission_status,
+				'commissiondue'      	=> $commission_due,
 				'invoicetoclient'      	=> $invoice_to_client,
 				'remindertoclient'		=> $reminder_to_client,
 			);
@@ -116,7 +146,7 @@ class My_List_Table extends WP_List_Table {
 			'expstatus'      		=> 'Exp. Status',
 			'commissionreceived'    => 'Commission Received',
 			'commissiondue'      	=> 'Commission Due',
-			'invoicetoclient'      	=> 'Invoice to Client',
+			'invoicetoclient'      	=> 'Invoice to Admin',
 			'remindertoclient'		=> 'Reminder to Client',
 		);
 		return $columns;
@@ -284,5 +314,6 @@ function my_render_list_page(){
 		<input type="submit" id="send-invoice" class="button" value="Send Invoice" disabled="disabled">
 		<input type="submit" id="send-reminder" class="button" value="Send Reminder" disabled="disabled">
 		</div>';
-	echo '</div>'; 
+	echo '</div>';
+	echo '<script>var BASE_URL = "'.get_site_url().'";</script>'; 
 }
