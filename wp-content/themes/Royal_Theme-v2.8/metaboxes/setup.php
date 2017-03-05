@@ -14,7 +14,7 @@ function metabox_style() {
 }*/
 
 // include the class in your theme or plugin
-include_once WP_CONTENT_DIR . '/WPAlchemy/MetaBox.php';
+include_once WP_CONTENT_DIR . '/wpalchemy/MetaBox.php';
 // include css to help style our custom meta boxes
 add_action( 'init', 'my_metabox_styles' );
 function my_metabox_styles(){
