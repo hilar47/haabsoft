@@ -4,13 +4,11 @@ $etheme_theme_data = wp_get_theme( get_stylesheet_directory() . '/style.css' );
 require_once( get_template_directory() . '/framework/init.php' );
 
 include_once 'metaboxes/setup.php';
-//include_once 'metaboxes/VIDEO-spec.php';
-//include_once 'metaboxes/VIDEO-meta.php';
-//include_once 'metaboxes/PAGE-spec.php';
+include_once 'metaboxes/VIDEO-spec.php';
+include_once 'metaboxes/PAGE-spec.php';
 
 //Add custom admin styles css
 function admin_style() {
-	global $post_type;
     // wp_enqueue_script( 'my_custom_script', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' );
 	wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin/css/custom-override.css');
 	wp_enqueue_script( 'my_custom_script', get_template_directory_uri().'/js_admin/admin_scripts.js' );
@@ -19,19 +17,10 @@ function admin_style() {
 	//wp_enqueue_script( 'my_custom_script', get_template_directory_uri().'/admin/js/test.js' );
 	//wp_enqueue_style('bootstrap', "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css");
     wp_enqueue_style('font-awsome', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css");
-    //wp_enqueue_style('boot', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+    // wp_enqueue_style('boot', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 	// wp_enqueue_style('datatables', "https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css");
-	if( 'videos' == $post_type ){
-		wp_enqueue_style('bootstrap-css',  get_template_directory_uri().'/css/bootstrap.min.css');
-		wp_enqueue_script( 'bootstrap-js', "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" );
-    	wp_enqueue_script( 'videos-admin-script', get_stylesheet_directory_uri() . '/js_admin/video-js.js' );
-		
-	}
-	
 }
 add_action('admin_enqueue_scripts', 'admin_style');
-
-
 
 //Restrict users to their own posts
 function posts_for_current_author($query) {
@@ -251,8 +240,8 @@ function ST4_columns_head_only_videos($defaults) {
 function ST4_columns_content_only_videos($column_name, $post_ID) {
     if($column_name == 'videos') {
         global $content_item_meta;
-        $meta = get_post_meta($post_ID, $content_item_meta->get_the_id(), true);
-        $video_upload = (isset($meta['video_upload']) && !empty($meta['video_upload']) ? $meta['video_upload'] : '');
+        $meta = get_post_meta($post_ID);
+        $video_upload = (isset($meta['video_upload'][0]) && !empty($meta['video_upload'][0]) ? $meta['video_upload'][0] : '');
         echo "<video controls style='width:200px;'><source src='".$video_upload."' type='video/mp4'></video>";
     }
 }
@@ -281,9 +270,9 @@ function ST4_columns_head($defaults) {
 // SHOW THE FEATURED IMAGE
 function ST4_columns_content($column_name, $post_ID) {
     if ($column_name == 'renew') {
-        echo '<a href="javascript:void(0);">Renew</a>';
+        echo '<a href="">Renew</a>';
     } else if($column_name == 'feedback') {
-        echo '<a href="javascript:void(0);">Feedback</a>';
+        echo '<a href="">Feedback</a>';
     }
 }
 
