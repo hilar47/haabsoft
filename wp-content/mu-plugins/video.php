@@ -33,7 +33,7 @@ function register_videos() {
         'labels' => $labels,
         'hierarchical' => true,
         'description' => 'Video Filtered By Awards Category',
-        'supports' => array( 'title', 'thumbnail', 'page-attributes','editor','author'),
+        'supports' => array( 'title', 'thumbnail', 'page-attributes','editor','author', 'comments'),
         'taxonomies' => array( 'videos_category' ),
         'public' => true,
         'show_ui' => true,

@@ -70,10 +70,6 @@ function custom_user_profile_fields($user){
     if(is_object($user)) {
         $company = get_the_author_meta( 'company', $user->ID );
     	$username = get_the_author_meta( 'select_md', $user->ID );
-        echo "<pre>----".$user->ID;
-        print_r($company);
-        print_r($username);
-        echo "</pre>";
     } else {
         $company = null;
     	$username = null;
@@ -205,6 +201,7 @@ function change_publish_button( $translation, $text ) {
 add_action('publish_videos', 'check_user_publish', 10, 2);
 
 function check_user_publish ($post_id, $post) {
+    global $wpdb;
     $postDate = strtotime( $post->post_date );
     $modifiedDate = strtotime( $post->post_modified );
     if($postDate == $modifiedDate){
@@ -226,6 +223,20 @@ function check_user_publish ($post_id, $post) {
                      wp_redirect($url);
                      exit();
                 }
+            }
+        } else {
+            if(current_user_can('editor')){
+                $pay_data = array(
+                    'txnid' => '',
+                    'payment_amount' => '',
+                    'payment_status' => '',
+                    'commission_amount' => '10',
+                    'commission_status' => '',
+                    'itemid' => $post->ID,
+                    'createdtime' => $post->post_date
+                );
+                $wpdb->insert('payments', $pay_data);
+                $new_id = $wpdb->insert_id;
             }
         }
     }
@@ -310,3 +321,68 @@ function go_home(){
   exit();
 }
 
+
+//Function to get the title and other attributes of promo page
+
+//wp_enqueue_script('jquery');
+function sendInvoice(){
+	
+	if($_POST){
+		
+		if(!empty($_POST['invoice_data'])){
+			//$decoded = json_decode($_POST['invoice_data']);
+			//echo $_POST['invoice_data'];
+			//$tempData = html_entity_decode($_POST['invoice_data']);
+			$cleanData = json_decode($tempData);
+			// echo "<pre>";
+			// print_r($_POST['invoice_data']);
+			// echo "</pre>";
+			
+			$message = 'Hi Admin,<br>Please send me the commission for the below mentioned videos.<br/><br/><table><thead><tr><th>Video Id</th><th>Expiry Date</th><th>Video Code</th><th>Client Code</th><th>Client Name</th></tr> ';
+			
+			if(!empty($_POST['invoice_data']) && isset($_POST['invoice_data'])){
+				
+				foreach($_POST['invoice_data'] as $invoice){
+					
+					$message .= '<tr><td>'.$invoice['video_id'].'</td><td>'.$invoice['exp_date'].'</td><td>'.$invoice['video_code'].'</td><td>'.$invoice['clientcode'].'</td><td>'.$invoice['clientname'].'</td><tr>';
+                    $message .= $invoice['clientname'];
+				}
+			}
+			$message .= '</table>';
+			
+			$return_op = "<br><br>Regards,<br>HaabSoft";
+			//echo get_administrator_email();
+			$to = get_administrator_email();
+			$subject = 'Deposit Commission of promoter';
+			$body = $message;
+			//echo $message;
+			$headers = array('Content-Type: text/html; charset=UTF-8');
+            // echo "here";
+            // echo "To : ".$to.'<br />';
+            // echo "subject : ".$subject.'<br />';
+            // echo "body : ".$body.'<br />';
+            // echo "headers : ".$headers.'<br />';
+            // exit();
+			$result = wp_mail( $to, $subject, $body, $headers );
+            echo $result;
+			exit();
+			echo json_encode($result);
+		}
+	}
+	else{
+        echo "in else";
+		echo json_encode(false);
+	}
+	
+}
+add_action('wp_ajax_sendInvoice', 'sendInvoice');
+add_action('wp_ajax_nopriv_sendInvoice', 'sendInvoice');
+function get_administrator_email(){
+	$email = '';
+	$blogusers = get_users('role=Administrator');
+	//print_r($blogusers);
+	foreach ($blogusers as $user) {
+		$email = $user->user_email;
+	}
+	return $email;
+}

@@ -133,6 +133,7 @@
 	        			<p><?php echo (isset($video_result['caption_line'][0]) && !empty($video_result['caption_line'][0]) ? $video_result['caption_line'][0] : ''); ?></p>
                         <h5 class="modal-title">Video Information</h5>
                        	<div class="row">
+                        <?php if(isset($video_result['website'][0]) && !empty($video_result['website'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                               <i class="fa fa-link" aria-hidden="true"></i>
@@ -141,6 +142,8 @@
                               <p><?php echo (isset($video_result['website'][0]) && !empty($video_result['website'][0]) ? $video_result['website'][0] : ''); ?>	</p>
                             </div>
                         </div>
+                        <?php } ?>
+                        <?php if(isset($video_result['email'][0]) && !empty($video_result['email'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                              <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -149,6 +152,8 @@
                               <p><?php echo (isset($video_result['email'][0]) && !empty($video_result['email'][0]) ? $video_result['email'][0] : ''); ?></p>
                             </div>
                         </div>
+                        <?php } ?>
+                        <?php if(isset($video_result['landline'][0]) && !empty($video_result['landline'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                               <i class="fa fa-phone-square" aria-hidden="true"></i>
@@ -157,6 +162,8 @@
                               <p><?php echo (isset($video_result['landline'][0]) && !empty($video_result['landline'][0]) ? $video_result['landline'][0] : ''); ?></p>
                             </div>
                         </div>
+                        <?php } ?>
+                        <?php if(isset($video_result['phone'][0]) && !empty($video_result['phone'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                               <i class="fa fa-mobile" aria-hidden="true"></i>
@@ -165,6 +172,8 @@
                               <p><?php echo (isset($video_result['phone'][0]) && !empty($video_result['phone'][0]) ? $video_result['phone'][0] : ''); ?></p>
                             </div>
                         </div>
+                        <?php } ?>
+                        <?php if(isset($video_result['watsapp_no'][0]) && !empty($video_result['watsapp_no'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                               <i class="fa fa-whatsapp" aria-hidden="true"></i>
@@ -173,6 +182,8 @@
                               <p><?php echo (isset($video_result['watsapp_no'][0]) && !empty($video_result['watsapp_no'][0]) ? $video_result['watsapp_no'][0] : ''); ?></p>
                             </div>
                         </div>
+                        <?php } ?>
+                        <?php if(isset($video_result['address1'][0]) && !empty($video_result['address1'][0]) || isset($video_result['city'][0]) && !empty($video_result['city'][0]) || isset($video_result['country'][0]) && !empty($video_result['country'][0]) || isset($video_result['pin_code'][0]) && !empty($video_result['pin_code'][0])) { ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
                               <i class="fa fa-location-arrow" aria-hidden="true"></i>
@@ -181,9 +192,10 @@
                               <p><?php echo (isset($video_result['address1'][0]) && !empty($video_result['address1'][0]) ? $video_result['address1'][0] : ''); ?><br /><?php echo (isset($video_result['city'][0]) && !empty($video_result['city'][0]) ? $video_result['city'][0] : ''); ?>&nbsp;<?php echo (isset($video_result['country'][0]) && !empty($video_result['country'][0]) ? $video_result['country'][0] : ''); ?><br /><?php echo (isset($video_result['pin_code'][0]) && !empty($video_result['pin_code'][0]) ? $video_result['pin_code'][0] : ''); ?></p>
                             </div>
                         </div>
+                        <?php } ?>
                         <div class="media col-sm-3">
                             <div class="media-left">
-                              <i class="fa fa-map-marker" aria-hidden="true"></i>
+                              <?php //if(isset($video_result['website'][0]) && !empty($video_result['website'][0])) { ?><i class="fa fa-map-marker" aria-hidden="true"></i><?php //} ?>
                             </div>
                             <div class="media-body">
                               <p>Google link</p>
@@ -191,7 +203,7 @@
                         </div>
                         <div class="media col-sm-3">
                             <div class="media-left">
-                              <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                              <?php //if(isset($video_result['website'][0]) && !empty($video_result['website'][0])) { ?><i class="fa fa-facebook-square" aria-hidden="true"></i><?php //} ?>
                             </div>
                             <div class="media-body">
                               <p>Facebook</p>
@@ -199,7 +211,7 @@
                         </div>
                         <div class="media col-sm-3">
                             <div class="media-left">
-                              <i class="fa fa-youtube-square" aria-hidden="true"></i>
+                              <?php //if(isset($video_result['website'][0]) && !empty($video_result['website'][0])) { ?><i class="fa fa-youtube-square" aria-hidden="true"></i><?php //} ?>
                             </div>
                             <div class="media-body">
                               <p>Youtube</p>
@@ -207,7 +219,7 @@
                         </div>
                         <div class="media col-sm-3">
                             <div class="media-left">
-                              <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                              <?php //if(isset($video_result['website'][0]) && !empty($video_result['website'][0])) { ?><i class="fa fa-twitter-square" aria-hidden="true"></i><?php //} ?>
                             </div>
                             <div class="media-body">
                               <p>Twitter</p>
@@ -224,8 +236,12 @@
                                   <img src="<?php echo site_url() . '/wp-content/themes/Royal_Theme-v2.8/images/custom-assets/comment-avtar.png'; ?>"  alt="comment-avter" />
                                 </div>
                                 <div class="media-body col-sm-11">
-                                    <input type="textarea" class="form-control" name="" value="">
-                                    <button type="button" class="btn btn-default-alt pull-right m-t-15" data-dismiss="modal">send</button>
+                                    <!-- <input type="textarea" class="form-control" name="" value="">
+                                    <button type="button" class="btn btn-default-alt pull-right m-t-15" data-dismiss="modal">send</button> -->
+                                    <form name="post" action="<?php echo get_option('siteurl'); ?>/wp-admin/comment.php?action=editcomment&c=<?php comment_ID() ?>" method="post" id="post">
+                                        <textarea class="form-control"><?php comment_text() ?></textarea>
+                                        <input class="btn btn-default-alt pull-right m-t-15" type="submit" name="submit" value="Update" />
+                                    </form>
                                 </div>
                             </div>
                                 <div class="media">
@@ -234,7 +250,7 @@
                                 </div>
                                 <div class="media-body col-sm-11">
                                     <h5 class="media-heading">John Doe</h5>
-                                    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum...</p>
+                                    <p><?php comments_template( ' ', true );?></p>
                                 </div>
                             </div>	
                             </div>

@@ -243,10 +243,10 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                                             });
                                                                         } else {
                                                                             
-                                                                            jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").addClass('has-error');
+                                                                            jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").addClass('text-danger');
                                                                         }
                                                                     } else {
-                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").addClass('has-error');
+                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").addClass('text-danger');
                                                                     }
                                                                 } else {
                                                                     jQuery('#phone').addClass('has-error');
@@ -256,9 +256,11 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                             }
                                                         } else {
                                                             jQuery('#city').addClass('has-error');
+															jQuery('#city_errmsg').html("You can't leave this empty.");
                                                         }
                                                     } else {
                                                         jQuery('#country').addClass('has-error');
+														jQuery('#country_errmsg').html("You can't leave this empty.");
                                                     }
                                                 // } else {
                                                 //     jQuery('#address_1').css('border-color', 'red');
@@ -268,31 +270,36 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                             }
                                         } else {
                                             jQuery('#c_password').addClass('has-error');
+											jQuery('#c_password_errmsg').html("You can't leave this empty.");
                                         }
                                     } else {
                                         jQuery('#password').addClass('has-error');
+										jQuery('#password_errmsg').html("You can't leave this empty.");
                                     }
                                 } else {
-                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").addClass('has-error');
+                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").addClass('text-danger');
                                 }
                             } else {
-                                jQuery('#confirm_user_email_errmsg').html("Invalid Email").addClass('has-error');
+                                jQuery('#confirm_user_email_errmsg').html("Please enter a valid email").addClass('text-danger');
                             }
                         } else {
                             jQuery('#confirm_user_email').addClass('has-error');
+							jQuery('#confirm_user_email_errmsg').html("You can't leave this empty.");
                         }
                     } else {
-                        jQuery('#user_email_errmsg').html("Invalid Email").addClass('has-error');
+                        jQuery('#user_email_errmsg').html("Please enter a valid email.").addClass('text-danger');
                     }
                 } else {
                     jQuery('#user_email').addClass('has-error');
+					jQuery('#user_email_errmsg').html("You can't leave this empty.");
                 }
             } else {
                 jQuery('#last_name').addClass('has-error');
+				jQuery('#last_name_errmsg').html("You can't leave this empty.");
             }
         } else {
             jQuery('#first_name').addClass('has-error');
-			jQuery('#first_name_errmsg').html("empty");
+			jQuery('#first_name_errmsg').html("You can't leave this empty.");
         }
     });
 
@@ -376,64 +383,77 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                                                                                             //$('#myModal').modal('hide');
                                                                                             jQuery('#user_exist').css('display', 'block');
                                                                                         } else if (msg == 'invalid-code') {
-                                                                                                jQuery('#agent_code_errmsg').html("invalid code").css('color', 'red');
+                                                                                                jQuery('#agent_code_errmsg').html("invalid code").addClass('text-danger');
                                                                                         }
                                                                                     }
                                                                                 });
                                                                             } else {
                                                                                 
-                                                                                jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").css('color', 'red');
+                                                                                jQuery('#terms_conditions_errmsg').html("Accept the terms and conditions").addClass('text-danger');
                                                                             }
                                                                         // } else {
                                                                         //     jQuery('#agent_code_errmsg').html("Enter code").css('color', 'red');
                                                                         // }
                                                                     } else {
-                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").css('color', 'red');
+                                                                        jQuery('#phone_errmsg').html("Enter Valid Number").addClass('text-danger');
                                                                     }
                                                                 } else {
-                                                                    jQuery('#phone').css('border-color', 'red');
+                                                                    jQuery('#phone').addClass('has-error');
+																	jQuery('#phone_errmsg').html("You can't leave this empty.");
                                                                 }
                                                             } else {
-                                                                jQuery('#pin_code').css('border-color', 'red');
+                                                                jQuery('#pin_code').addClass('has-error');
+																jQuery('#pin_code_errmsg').html("You can't leave this empty.");
                                                             }
                                                         } else {
-                                                            jQuery('#city').css('border-color', 'red');
+                                                            jQuery('#city').addClass('has-error');
+															jQuery('#city_errmsg').html("You can't leave this empty.");
                                                         }
                                                     } else {
-                                                        jQuery('#country').css('border-color', 'red');
+                                                        jQuery('#country').addClass('has-error');
+														jQuery('#country_errmsg').html("You can't leave this empty.");
+
                                                     }
                                                 } else {
-                                                    jQuery('#address_1').css('border-color', 'red');
+                                                    jQuery('#address_1').addClass('has-error');
+													jQuery('#address_1_errmsg').html("You can't leave this empty.");
                                                 }
                                             } else {
-                                                jQuery('#c_password').css('border-color', 'red');
+                                                jQuery('#c_password').addClass('has-error');
                                             }
                                         } else {
-                                            jQuery('#c_password').css('border-color', 'red');
+                                            jQuery('#c_password').addClass('has-error');
+											jQuery('#c_password_errmsg').html("You can't leave this empty.");
                                         }
                                     } else {
-                                        jQuery('#password').css('border-color', 'red');
+										jQuery('#password').addClass('has-error');
+										jQuery('#password_errmsg').html("You can't leave this empty.");
                                     }
                                 } else {
-                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").css('color', 'red');
+                                    jQuery('#confirm_user_email_errmsg').html("Email does not match").addClass('text-danger');
                                 }
                             } else {
-                                jQuery('#confirm_user_email_errmsg').html("Invalid Email").css('color', 'red');
+                                jQuery('#confirm_user_email_errmsg').html("Please enter a valid email.").addClass('text-danger');
                             }
                         } else {
-                            jQuery('#confirm_user_email').css('border-color', 'red');
+                            jQuery('#confirm_user_email').addClass('has-error');
+							jQuery('#confirm_user_email_errmsg').html("You can't leave this empty.");
                         }
                     } else {
-                        jQuery('#user_email_errmsg').html("Invalid Email").css('color', 'red');
+						jQuery('#user_email_errmsg').html("Please enter a valid email.").addClass('text-danger');
                     }
                 } else {
-                    jQuery('#user_email').css('border-color', 'red');
+					jQuery('#user_email').addClass('has-error');
+					jQuery('#user_email_errmsg').html("You can't leave this empty.");
                 }
             } else {
-                jQuery('#last_name').css('border-color', 'red');
+			jQuery('#last_name').addClass('has-error');
+			jQuery('#last_name_errmsg').html("You can't leave this empty.");
+
             }
         } else {
-            jQuery('#first_name').css('border-color', 'red');
+			jQuery('#first_name').addClass('has-error');
+			jQuery('#first_name_errmsg').html("You can't leave this empty.");
         }
     });
 

@@ -23,7 +23,7 @@ get_header();
             <div class="col-sm-offset-1 col-sm-10">
 				<div class="row">
 					<h2 id="modal_title">Create user profile</h2>
-					<h6 class="m-0">All fields are required</h6>
+					<h6 class="m-0">All <span class="text-red">*</span> fields are required</h6>
 				</div>
            </div>
             <hr class="hidden-xs col-sm-12">
@@ -34,41 +34,45 @@ get_header();
 							<label for="example-text-input" class="col-sm-5">First name<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								 <input type="text" class="form-control" name="first_name" id="first_name" value="">
+                                 <h6>You will use this Username to sign in to your profile after registration </h6>
                                  <span class="text-danger" id="first_name_errmsg"></span>
 								<?php /*?><span class="glyphicon glyphicon-ok form-control-feedback"></span><?php */?>
 							</div>
 						</div>
 						<div class="form-group has-feedback">
-							<label for="example-text-input" class="col-sm-5">Last name</label>
+							<label for="example-text-input" class="col-sm-5">Last name<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="last_name" id="last_name" value="">
+                                <span class="text-danger" id="last_name_errmsg"></span>
 								<?php /*?><span class="glyphicon glyphicon-remove form-control-feedback"></span><?php */?>
-								<span class="text-danger">Last name too short</span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Email address</label>
+							<label for="example-text-input" class="col-sm-5">Email address<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="user_email" id="user_email" value="">
-								 <h6>You will use this email to sign in to your profile after registration </h6>
+                                <span class="text-danger" id="user_email_errmsg"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Confirm email address</label>
+							<label for="example-text-input" class="col-sm-5">Confirm email address<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="text" class="form-control" name="confirm_user_email" id="confirm_user_email" value="">
+                                <span class="text-danger" id="confirm_user_email_errmsg"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Choose password</label>
+							<label for="example-text-input" class="col-sm-5">Choose password<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="password" class="form-control" name="password" id="password" value="">
+                                <span class="text-danger" id="password_errmsg"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Confirm password</label>
+							<label for="example-text-input" class="col-sm-5">Confirm password<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
 								<input type="password" class="form-control" name="c_password" id="c_password" value="">
+                                <span class="text-danger" id="c_password_errmsg"></span>
 							</div>
 						</div>
                         <?php /*?><div class="form-group">
@@ -84,21 +88,30 @@ get_header();
 							</div>
 						</div><?php */?>
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Country</label>
+							<label for="example-text-input" class="col-sm-5">Country<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="country" id="country" value="">
+                               <span class="text-danger" id="country_errmsg"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="example-text-input" class="col-sm-5">State</label>
+							<div class="col-sm-7 m-b-sm-10">
+          					   <input type="text" class="form-control" name="state" id="state" value="">
 							</div>
 						</div>
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">City</label>
+							<label for="example-text-input" class="col-sm-5">City<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="city" id="city" value="">
+                               <span class="text-danger" id="city_errmsg"></span>
 							</div>
 						</div>
                         <div class="form-group">
-							<label for="example-text-input" class="col-sm-5">Area/Town</label>
+							<label for="example-text-input" class="col-sm-5">Area/Town<span class="text-red">*</span></label>
 							<div class="col-sm-7 m-b-sm-10">
           					   <input type="text" class="form-control" name="area_town" id="area_town" value="">
+                               <span class="text-danger" id="area_town_errmsg"></span>
 							</div>
 						</div>
                         <div class="form-group">
@@ -120,7 +133,7 @@ get_header();
 							<label class="col-sm-5"></label>
 							<div class="col-sm-7 m-b-sm-10">
                                 <input type="checkbox" class="form-control" name="terms_conditions" id="terms_conditions" value="1">
-                                I Agree with  <a href="javascript:void(0)">Terms and Conditions</a>
+                                I Agree with  <a href="javascript:void(0)">Terms and Conditions</a><br />
             <span id="terms_conditions_errmsg"></span>
             <span class="help-block"></span>
 							</div>
