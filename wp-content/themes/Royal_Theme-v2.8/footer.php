@@ -499,7 +499,6 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
             var BASE_URL = '<?php echo site_url();?>';
             jQuery.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng='+la+','+lo+'&sensor=true',
                  success: function(data){
-                    alert(data.results[0].formatted_address);
                     for (var i = 0; i < data.results[4].address_components.length; i++) { 
                         for (var j = 0; j < data.results[4].address_components[i].types.length; j++) { 
                             if(data.results[4].address_components[i].types[j] == 'country') { 
