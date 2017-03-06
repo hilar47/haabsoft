@@ -20,7 +20,7 @@ get_header();
 		</div>
 	</div>-->
 <div class="banner-home">
-    <img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/banner-bg.jpg" />
+    <?php /*?><img src="<?php echo content_url();?>/themes/Royal_Theme-v2.8/images/banner-bg.jpg" /><?php */?>
     <h1>HAABSOFT VIDEOS</h1>
     <h3>WATCH OUR VIDEOS COLLECTION</h3>
 </div>
