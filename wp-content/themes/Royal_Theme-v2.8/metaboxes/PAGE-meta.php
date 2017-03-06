@@ -1,8 +1,11 @@
 <div class="my_meta_control metabox">
 <?php 
+	global $wpalchemy_media_access;
 	global $content_page_meta;
 ?>
-<?php if(get_the_ID()=='22879'){ ?>
+<?php 
+//echo get_the_ID();
+if(get_the_ID()=='22879'){ ?>
 	<div class="postbox section-background">
 		<button type="button" class="handlediv button-link" aria-expanded="true">
 			<span class="screen-reader-text">Toggle panel: Page Layout</span>

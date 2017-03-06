@@ -53,7 +53,7 @@
 									<input name="kywrds" id="kywrds" class="form-control pull-left search-bar" placeholder="Search for new videos" type="text">
 								</div>
 								<input name="post_type" value="videos" type="hidden">
-								<input type="hidden" name="cntry" id="cntryId" value="" />
+								<input type="hidden" name="cntry" data-lati="" data-longi="" id="cntryId" value="" />
 								<button type="submit" class="btn medium-btn btn-black pull-right">Search</button>
 							</form>
 						</div>

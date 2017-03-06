@@ -411,6 +411,46 @@ function sendReminder(){
 }
 add_action('wp_ajax_sendReminder', 'sendReminder');
 add_action('wp_ajax_nopriv_sendReminder', 'sendReminder');
+
+//fetch related videos from custom post type
+function sendLocation(){
+    if($_POST){
+        
+        if(!empty($_POST['location'])){
+
+            global $content_item_meta;
+        
+            global $wpdb;
+            
+            $querystr = "SELECT $wpdb->posts.*  FROM $wpdb->posts, $wpdb->postmeta
+                WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id  AND $wpdb->postmeta.meta_key = 'country'  AND $wpdb->postmeta.meta_value = '".$_POST['location']."'  AND $wpdb->posts.post_status = 'publish'  AND $wpdb->posts.post_type = 'videos' AND $wpdb->posts.post_date < NOW() ORDER BY $wpdb->posts.post_date DESC";
+
+             $video_results = $wpdb->get_results($querystr, OBJECT);
+             if($video_results) {
+                //echo "in if";
+                $retunResult = '';
+                 foreach($video_results as $result) {
+                    $recent_author = get_user_by( 'ID', $post->post_author ); 
+                    $meta = get_post_meta($result->ID);
+                    $retunResult .= '<div class="col-xs-12 col-sm-4 m-b-20 video-holder"><video class="img-responsive" controls><source src="'.$meta['video_upload'][0].'" type="video/mp4"></video><div class="video-disc"><h5>'.$result->post_name.'</h5><h6>'.$meta['caption_line'][0].'</h6><p>Uploaded by: <span>'.$recent_author->display_name.'</span></p></div></div>';
+
+                 }
+                 echo $retunResult;
+             } else {
+                //echo "in else";
+                echo json_encode(0);
+             }
+        }
+    }
+    else{
+        echo "in else";
+        echo json_encode(false);
+    }
+    
+die();    
+}
+add_action('wp_ajax_sendLocation', 'sendLocation');
+add_action('wp_ajax_nopriv_sendLocation', 'sendLocation');
 function get_administrator_email(){
 	$email = '';
 	$blogusers = get_users('role=Administrator');
