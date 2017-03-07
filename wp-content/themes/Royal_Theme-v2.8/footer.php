@@ -466,6 +466,7 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
     });
 
     jQuery(document).ready(function () {
+
         // jQuery.getJSON("http://freegeoip.net/json/", function (data) {
         //     var country = data.country_name;
         //     var ip = data.ip;
@@ -496,7 +497,7 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
             jQuery('#cntryId').attr("data-longi",longi);
             var la = jQuery('#cntryId').data("lati");
             var lo = jQuery('#cntryId').data("longi");
-            var BASE_URL = '<?php echo site_url();?>';
+            
             jQuery.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng='+la+','+lo+'&sensor=true',
                  success: function(data){
                     for (var i = 0; i < data.results[4].address_components.length; i++) { 
@@ -517,25 +518,28 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
                  }
 
             });
-            var storedData = localStorage.getItem('country');
-            var country_name = jQuery('#cntryId').val(storedData);
-            jQuery.ajax({
-                url : BASE_URL+"/wp-admin/admin-ajax.php",
-                type : 'POST',
-                dataType: 'html',
-                data : {
-                    "location"  : storedData,
-                    "action"        : 'sendLocation'
-                },
-                success : function( response ) {
-                    if(response == 0) {
-                        jQuery('#videoSection').html('Enable the Share Location');
-                    } else {
-                        jQuery('#videoSection').html(response);
-                    }
-                }
-            });
         }
+
+        var storedData = localStorage.getItem('country');
+        //alert(storedData);
+        var BASE_URL = '<?php echo site_url();?>';
+        var country_name = jQuery('#cntryId').val(storedData);
+        jQuery.ajax({
+            url : BASE_URL+"/wp-admin/admin-ajax.php",
+            type : 'POST',
+            dataType: 'html',
+            data : {
+                "location"  : storedData,
+                "action"        : 'sendLocation'
+            },
+            success : function( response ) {
+                if(response == 0) {
+                    jQuery('#videoSection').html('Enable the Share Location');
+                } else {
+                    jQuery('#videoSection').html(response);
+                }
+            }
+        });
         console.log('fsf');
         console.log(getLocation());
 
