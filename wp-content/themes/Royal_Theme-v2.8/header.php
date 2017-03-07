@@ -18,6 +18,46 @@
 
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/994b84cd61.js"></script>
+	<script type="text/javascript">
+		 jQuery(document).ready(function () {
+	        function getLocation() {
+	            if (navigator.geolocation) {
+	                navigator.geolocation.getCurrentPosition(showPosition);
+	            } else { 
+	                //x.innerHTML = "Geolocation is not supported by this browser.";
+	            }
+	        }
+
+	        function showPosition(position) {
+	            var lati = position.coords.latitude;
+	            var longi = position.coords.longitude;
+	            jQuery('#cntryId').attr("data-lati",lati);
+	            jQuery('#cntryId').attr("data-longi",longi);
+	            var la = '15.3640718';//jQuery('#cntryId').data("lati");
+	            var lo = '73.9295156';//jQuery('#cntryId').data("longi");
+	            jQuery.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng='+la+','+lo+'&sensor=true',
+	                 success: function(data){
+	                    for (var i = 0; i < data.results[4].address_components.length; i++) { 
+	                        for (var j = 0; j < data.results[4].address_components[i].types.length; j++) { 
+	                            if(data.results[4].address_components[i].types[j] == 'country') { 
+	                                var country_code = data.results[4].address_components[i].long_name;
+	                                localStorage.setItem('country', country_code); 
+	                                var storedData = localStorage.getItem('country');
+	                                if (storedData != '') {
+	                                    jQuery('#cntryId').val(storedData);
+	                                }
+	                            } 
+	                        } 
+	                    }
+	                    //console.log(data);
+	                    //alert(data.results[0].formatted_address);
+	                     /*or you could iterate the components for only the city and state*/
+	                 }
+	            });
+	        }
+	        console.log(getLocation());
+    })
+	</script>
 </head>
 
 <body <?php body_class(); ?>>

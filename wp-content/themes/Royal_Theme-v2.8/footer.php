@@ -466,18 +466,81 @@ $custom_footer = etheme_get_custom_field('custom_footer', et_get_page_id());
     });
 
     jQuery(document).ready(function () {
-        jQuery.getJSON("http://freegeoip.net/json/", function (data) {
-            var country = data.country_name;
-            var ip = data.ip;
-            localStorage.setItem('country', country);
-            var storedData = localStorage.getItem('country');
-            console.log(storedData);
-            if (storedData != '') {
-                jQuery('#cntryId').val(storedData);
-            }
-        });
+        // jQuery.getJSON("http://freegeoip.net/json/", function (data) {
+        //     var country = data.country_name;
+        //     var ip = data.ip;
+        //     localStorage.setItem('country', country);
+        //     var storedData = localStorage.getItem('country');
+        //     console.log(storedData);
+        //     if (storedData != '') {
+        //         jQuery('#cntryId').val(storedData);
+        //     }
+        // });
         jQuery('#promoter_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 1));
         jQuery('#client_code').val(randomString(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 2));
+
+        //var x = document.getElementById("cntryId");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                //x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var lati = position.coords.latitude;
+            var longi = position.coords.longitude;
+            jQuery('#cntryId').attr("data-lati",lati);
+            jQuery('#cntryId').attr("data-longi",longi);
+            var la = jQuery('#cntryId').data("lati");
+            var lo = jQuery('#cntryId').data("longi");
+            var BASE_URL = '<?php echo site_url();?>';
+            jQuery.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng='+la+','+lo+'&sensor=true',
+                 success: function(data){
+                    for (var i = 0; i < data.results[4].address_components.length; i++) { 
+                        for (var j = 0; j < data.results[4].address_components[i].types.length; j++) { 
+                            if(data.results[4].address_components[i].types[j] == 'country') { 
+                                var country_code = data.results[4].address_components[i].long_name;
+                                localStorage.setItem('country', country_code); 
+                                
+                                // if (storedData != '') {
+                                //     jQuery('#cntryId').val(storedData);
+                                // }
+                            } 
+                        } 
+                    }
+                    //console.log(data);
+                    //alert(data.results[0].formatted_address);
+                     /*or you could iterate the components for only the city and state*/
+                 }
+
+            });
+            var storedData = localStorage.getItem('country');
+            var country_name = jQuery('#cntryId').val(storedData);
+            jQuery.ajax({
+                url : BASE_URL+"/wp-admin/admin-ajax.php",
+                type : 'POST',
+                dataType: 'html',
+                data : {
+                    "location"  : storedData,
+                    "action"        : 'sendLocation'
+                },
+                success : function( response ) {
+                    if(response == 0) {
+                        jQuery('#videoSection').html('Enable the Share Location');
+                    } else {
+                        jQuery('#videoSection').html(response);
+                    }
+                }
+            });
+        }
+        console.log('fsf');
+        console.log(getLocation());
+
+        
+
     })
 
     jQuery('.video-search, .sidebar-position-left article h2.entry-title').click(function () {
