@@ -1,0 +1,826 @@
+[10/27/2014 4:57 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.33]IPN POST Vars Received By Paypal_IPN Response API:
+residence_country=US 
+invoice=abc1234 
+address_city=San Jose 
+first_name=John 
+payer_id=TESTBUYERID01 
+shipping=3.04 
+mc_fee=0.44 
+txn_id=562952838 
+receiver_email=seller@paypalsandbox.com 
+quantity=1 
+custom=xyz123 
+payment_date=04:24:11 27 Oct 2014 PDT 
+address_country_code=US 
+address_zip=95131 
+tax=2.02 
+item_name=something 
+address_name=John Smith 
+last_name=Smith 
+receiver_id=seller@paypalsandbox.com 
+item_number=AK-1234 
+verify_sign=An5ns1Kso7MWUdW4ErQKJJJ4qi4-A5PwaWrmWU.sAlTApJT72YDDjj3m 
+address_country=United States 
+payment_status=Completed 
+address_status=confirmed 
+business=seller@paypalsandbox.com 
+payer_email=buyer@paypalsandbox.com 
+notify_version=2.1 
+txn_type=web_accept 
+test_ipn=1 
+payer_status=unverified 
+mc_currency=USD 
+mc_gross=12.34 
+address_state=CA 
+mc_gross1=9.34 
+payment_type=instant 
+address_street=123, any street 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Date: Mon, 27 Oct 2014 11:27:57 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: c9MWDuvPtT9GIMyPc3jwol1VSlO=iHxWNdqF4Tod_0FfiZqTvLX4HxxgjFAlG5xs-_jk-wveqoX1AJ6Z_ciAf-ygE-9iSGQ3NeEiw17OnK77inVWDc7ISBEZlxmEwyrLaX-CaCo-r8gQCQgFT7vNRDb-zuoWjve-rz_GWv90bAma-VLHWMzZkA2jTB0AluA7H0l-y4wDlotQ2aj85I44TTxjUsLPTaaJQ_EaWBsdXNiIqzBbfqQ9XUb599Q1kI9LFoFAyALRBNlPGCH0iM_1EgCuE986E-tt3xedB-N3keYRX2nNyeFJv_2gott6SNVnCNElFogolTuUh_gZ4_1FnbY96gCPob08A1s6MieDldznYsCVv-RsFWJP_WT-7WrhjcaVsgAZKwHOOGTNa9VY7QD3Y5GLFU81OK-vipHjtZgsw1QqOUmRl1vWT2m8Gcl-cpoU6dpU3-N6iXbW4FVU-LK; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Thu, 24-Oct-2024 11:27:58 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Wed, 26-Oct-2016 11:27:58 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.72.108.11.1414409277983614; path=/; expires=Wed, 19-Oct-44 11:27:57 GMT
+Connection: close
+Set-Cookie: X-PP-SILOVER=name%3DSANDBOX3.WEB.1%26silo_version%3D880%26app%3Dslingshot%26TIME%3D1026313812; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.72.128.11.1414409277973259; path=/; expires=Wed, 19-Oct-44 11:27:57 GMT
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=14400
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=UTF-8
+
+8
+VERIFIED
+0
+
+
+
+[10/27/2014 5:00 PM] - FAIL: Validation post isn't from PayPal!
+[From:117.204.139.154|117.204.139.154]IPN POST Vars Received By Paypal_IPN Response API:
+IPN Response from Paypal Server:
+
+
+[10/27/2014 5:24 PM] - FAIL: Validation post isn't from PayPal!
+[From:117.204.139.154|117.204.139.154]IPN POST Vars Received By Paypal_IPN Response API:
+IPN Response from Paypal Server:
+
+
+[10/27/2014 5:24 PM] - FAIL: Validation post isn't from PayPal!
+[From:117.204.139.154|117.204.139.154]IPN POST Vars Received By Paypal_IPN Response API:
+IPN Response from Paypal Server:
+
+
+[08/03/2015 8:26 AM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=62.00 
+invoice=0816363266 
+protection_eligibility=Ineligible 
+address_status=confirmed 
+payer_id=7GUAZKPVDRHKQ 
+tax=0.00 
+address_street=125 Highgrove Drive 
+payment_date=01:26:00 Aug 03, 2015 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=30024 
+first_name=Chandler 
+mc_fee=3.03 
+address_country_code=US 
+address_name=Chandler Osborne 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Suwanee 
+quantity=1 
+verify_sign=A5j7z61MRYzv0uJWakLZbpwKfW5EA2uRX-eCLk2IoxuTcLopV8mTdyEJ 
+payer_email=co00443@georgiasouthern.edu 
+txn_id=10415301BM7221257 
+payment_type=instant 
+last_name=Osborne 
+address_state=GA 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=3.03 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+receipt_id=1157-1245-5788-2286 
+handling_amount=0.00 
+transaction_subject=Do it Yourself Package 
+payment_gross=62.00 
+shipping=0.00 
+ipn_track_id=241ec5c4195ac 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: 91595d4eec417
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: dcg12-origin-www-2.paypal.com
+Date: Mon, 03 Aug 2015 08:26:14 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=yj_M3ZDjHJxD8UMdUS7ZuUF0iM1m4F7DU_-uY_QtGWRlYc_-NDJg-uWYG6QkXZqoS8obL91Gh82EEi_oRT3y_7lHpQCvTegXCL0NIpu4FDy1DYHZknD9gMEYtc7wTNj2cesw6AMz4mXH_db_PET_3IvFaxlIGvfxYiOnghbYKCXIj0EyeohSVn66VZs4S4t-CZdLw4FauS9X4a18R-AG3PfbMbSiMTtznuB6D8eNjJDH8iCl5WiRSu-fkkDI061S8KWHi-J2ggfG-RtIv1hrlv_6wT3lNg0_qkeYEKdDibAnWCGEnhBz-hnupWpH49NcaGK4jAZwtP-wN8EXNLBjJ3b-qY3ERTn3b49q5RuMN0vJt1I_EIA8Je4tGQlBSOcdLXAHEL0zUCnKJztlMfEuz2GLjIfuC5nZ5awEjuDAuROoqGFkwP4tLQ3xNM0; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Thu, 31-Jul-2025 08:26:14 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Wed, 02-Aug-2017 08:26:14 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.17.1.14.1438590373974934; path=/; expires=Wed, 26-Jul-45 08:26:13 GMT
+Set-Cookie: X-PP-SILOVER=name%3DLIVE11.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D2770714453; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.17.1.7.1438590373967465; path=/; expires=Wed, 26-Jul-45 08:26:13 GMT
+Set-Cookie: AKDC=dcg12-origin-www-2.paypal.com; expires=Mon, 03-Aug-2015 08:56:14 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[11/27/2015 11:28 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=324.00 
+invoice=0535413611 
+protection_eligibility=Eligible 
+address_status=confirmed 
+payer_id=UX9X3ESMF2YG6 
+tax=0.00 
+address_street=1500 Fielding Dr 
+payment_date=15:28:02 Nov 27, 2015 PST 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=60026-7760 
+first_name=NEHA 
+mc_fee=14.56 
+address_country_code=US 
+address_name=NEHA SHARMA 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Glenview 
+quantity=1 
+verify_sign=Any4um6QRKTYyoX.7luqMWLxU.iNAcsvVywrOdil1hcdVJ7EGAdHBpWV 
+payer_email=nsharma44@gmail.com 
+txn_id=64M97448AE459071K 
+payment_type=instant 
+last_name=SHARMA 
+address_state=IL 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=14.56 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=324.00 
+shipping=0.00 
+ipn_track_id=e5d917f374ec9 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: ae0dda5d7d03a
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: dcg11-origin-www-2.paypal.com
+Date: Fri, 27 Nov 2015 23:28:17 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=JpK6xLF2AiiBRC-OzeehbaJLfp66z40ufCM1_HrJBMVz8ohg4U0S-NAeIbCNz90L1e2W5RYjNUWmVlMKhv_VFD0EIsgLR4M8OMNnaE1hXaP11dHtPaa5nJUdstlqQxvfbABmaAukimJEg8HOleRldzS_Txp0mvUsa0kcq1jvnxu1EJcjn48GkRTIxZrygm3kyy0mJU0F6aLJE67olSE9AstuBT8YeNu3mi1GkZcSnckLAOVgJD1LscalXL2IHrfGbF85HbDFIlPgpD3qh1KOBnNln9hnoYzkMyNxFennqVCbRjkg_3qdvPG_zMMqoiuMzcW9fTi_N_W8p3Ap7yYbmyQNPZddYIzmFDe2D36fITIK-j3KnF_KYK1oDMkbGORXykAa2HTQDFjLwOrHqRuMEZJ7aGPHYrtNF97YN-_QuCdxBvHFBr9pTQpLF4C; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Mon, 24-Nov-2025 23:28:16 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sun, 26-Nov-2017 23:28:16 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: Apache=10.16.0.148.1448666896519372; path=/; expires=Sun, 19-Nov-45 23:28:16 GMT
+Set-Cookie: X-PP-SILOVER=name%3DLIVE9.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D283596886; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.16.0.209.1448666896511847; path=/; expires=Sun, 19-Nov-45 23:28:16 GMT
+Set-Cookie: AKDC=dcg11-origin-www-2.paypal.com; expires=Fri, 27-Nov-2015 23:58:17 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[12/17/2015 10:21 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=248.00 
+invoice=2211052354 
+protection_eligibility=Ineligible 
+address_status=unconfirmed 
+payer_id=V4S6C6LCGKDQW 
+tax=0.00 
+address_street=635 N Dearborn St Apt 2303 
+payment_date=14:20:44 Dec 17, 2015 PST 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=60654 
+first_name=Erik 
+mc_fee=11.21 
+address_country_code=US 
+address_name=Erik Balko 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Chicago 
+quantity=1 
+verify_sign=AWcgwRjCfr7oKCfIqkA-aQ2Umw2bAN6g.hdkFU5LPnIWERNaxPtn7E07 
+payer_email=ERIKBALKO@gmail.com 
+txn_id=51914572AH1472126 
+payment_type=instant 
+last_name=Balko 
+address_state=IL 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=11.21 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+receipt_id=3144-4999-2697-0828 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=248.00 
+shipping=0.00 
+ipn_track_id=3da74d02e5fea 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Paypal-Debug-Id: 36574f183f509
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: slc-b-origin-www-2.paypal.com
+Date: Thu, 17 Dec 2015 22:21:05 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=NDeeL4mAxOWqBUWLS97S7Pax4vKzEVVBddmnor16yAg-w5GX-_ADo8scmN5Omx_HbtEYDedKHfWg7Qh02qe8AlMzlr_6jyj_12072EOcD2nOcIM_WEyKaZxzZ8ZA0-5kCE65RExH_hT1evCGsLaAoCQk4aexkzSCczCgrjo6NwwdOr-riHAvWilqTquYpp6mF1qVXzBw8bNI4XMZFtZogQKgsJdW9b0mWYu6EpO-zSH9-FJcqJ_F244ePAwTrzlkfx1oU9SDkR4wMzseD4QvBw3E6_sEvVExEolCKyxT1ID4AyuZiL_jpfN8-FRHUwLryx_j-HQ_cLRZE4rFm2lPnb8I2DVpFio7GywIxdLFEGMLgVyQUR4NNuuAQH73ReI3QobTc6M9MB_c5ui8UeWl9K2G01ILfz3D6Ye-IZeeBzymSc0VbSx8JbCAuoi; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sun, 14-Dec-2025 22:21:05 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sat, 16-Dec-2017 22:21:05 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE6.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D1362457430; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.74.8.70.1450390865259129; path=/; expires=Sat, 09-Dec-45 22:21:05 GMT
+Set-Cookie: AKDC=slc-b-origin-www-2.paypal.com; expires=Thu, 17-Dec-2015 22:51:05 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[03/03/2016 3:43 AM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=59.00 
+invoice=0339163426 
+protection_eligibility=Ineligible 
+address_status=confirmed 
+payer_id=42LRPGCD4KJW6 
+tax=0.00 
+address_street=1415 E Central Rd #411 B 
+payment_date=19:42:47 Mar 02, 2016 PST 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=60005 
+first_name=Kathleen 
+mc_fee=2.90 
+address_country_code=US 
+address_name=Kathleen Fontanazza 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Arlington Heights 
+quantity=1 
+verify_sign=ACt7UQvTwN3aH00lLzccm1CHh1V5AiRIWb1yODIoC497asuiiGYi68wp 
+payer_email=kathleen.fontanazza@ul.com 
+txn_id=27V39647HS677080G 
+payment_type=instant 
+last_name=Fontanazza 
+address_state=IL 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=2.90 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+receipt_id=2912-2731-4975-2269 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=59.00 
+shipping=0.00 
+ipn_track_id=e1b65e433c69e 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: bc135ef67ef3
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: dcg12-origin-www-1.paypal.com
+Date: Thu, 03 Mar 2016 03:43:01 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=FOSjf3TAbPqWmdVTO3Ud7xabAqwTgkbo0gipVXX7psM34S7AVwsg1Uo1ppGRmfa_ljSVIPT4IkJJNtqGUYi8JyjwK-VriXa5R9eV397AAVx8hR6Zc4YxGR1FrGDEf-gIEaKJwVShdFY5r1mw6K07xT7AqPGE4blpTQUVV8vZApzKIjgzMPOFvVo9YYgkTGfUiz2N2eRnE80NlhRQfQoUeVmWkMM2EBeS8n_jukbdmQiprNawUrBozonJob8oOq--Pq5y4AyyUYMUHqnc7dTp-ckafj3nQtz1BgLhfyuxTHJMv_qTY6-SB5a64KGxeJcpZWDD5qQSlyH3S7PP7HwTQja-3zoQk6CSQgmjuXnxoc0ZCGctQbYDHZ30RAAVaZHZIa2mAEKlecQL_FpXoZ5usD4eza-fUWKMU2A4ymYtlbdEHdJJMs9RCwXC6Ga; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sun, 01-Mar-2026 03:43:01 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sat, 03-Mar-2018 03:43:01 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE11.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D3316832086; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=dcg12-origin-www-1.paypal.com; expires=Thu, 03-Mar-2016 04:13:01 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[03/15/2016 7:30 AM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=277.00 
+invoice=0725423432 
+protection_eligibility=Eligible 
+address_status=confirmed 
+payer_id=T48UCQ7T2H6EE 
+tax=0.00 
+address_street=52 Champlain Road 
+payment_date=00:30:25 Mar 15, 2016 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=08852 
+first_name=Riza 
+mc_fee=12.49 
+address_country_code=US 
+address_name=Riza Abayon 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Monmouth Junction 
+quantity=1 
+verify_sign=A1JQ2qI71Vq8Rfgtm1eURubVF.O6Awnnuzp4Yio1ObA.B4fizmofbWRD 
+payer_email=rjabayon@gmail.com 
+txn_id=0NA75011NV541031K 
+payment_type=instant 
+last_name=Abayon 
+address_state=NJ 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=12.49 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=ELEPHANT JUNGLE (Half Day Trip) 
+mc_currency=USD 
+item_number=389 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject=ELEPHANT JUNGLE (Half Day Trip) 
+payment_gross=277.00 
+shipping=0.00 
+ipn_track_id=1359eb8ddb73 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: 91df2d0946cad
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: dcg11-origin-www.paypal.com
+Date: Tue, 15 Mar 2016 07:30:38 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=A7NpGrvmpSrFyI0vj5H5u9yvEvCdYDOiV2g09Fv3SnLgcOAmZMPoH3P3oyntElMbnKzAHWmV6_mo2qPpGEUrh4H53oXnWjlAw5BQwNLwX1Iehm3PB5NVz_n_9mSyy80bJRL3JU2ZsutlcQG_OBkcSfttogCdnEZyeaEJtmEmSnz-xekc1lmVRKrwjZZTKgP8QvG0u19eOMeW8Vj4u9fKveVepyr4btUT8cC5TPUeU7Cc-pWg4QXm3x8B67Enar_pcd683K_04CASsiDttrfIKahsnST0VMJr8NWJRtPX_XnWektmu8CChJ4tgn0RuKjIunegkDekWyxe1aQS3tiRf1uDrZbWIR5yu82kfUpQId_Mz4HayNvWpzYHYLzRUhf2Nguv_-jYXx0rPa_cfm5qjcpO7Ju5RiYRqNSYooWWi7gDQS35gRAvwyn-PEa; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 13-Mar-2026 07:30:38 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 15-Mar-2018 07:30:38 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE9.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D515565398; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=dcg11-origin-www.paypal.com; expires=Tue, 15-Mar-2016 08:00:38 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[04/05/2016 7:10 AM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=325.00 
+invoice=0702407196 
+protection_eligibility=Ineligible 
+address_status=unconfirmed 
+payer_id=EBK2686BMEGHL 
+tax=0.00 
+address_street=3601 Brook Run Drive 
+payment_date=00:10:15 Apr 05, 2016 PDT 
+payment_status=Pending 
+charset=windows-1252 
+address_zip=50317 
+first_name=Allison 
+mc_fee=14.60 
+address_country_code=US 
+address_name=Allison Wall 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Des Moines 
+quantity=1 
+verify_sign=AI7lmouzGlbcBNpG8d1al0v0CAvnAs-8C8jvAYhg2Hx6Zv7VkT3HMxvW 
+payer_email=ty_50009@yahoo.com 
+txn_id=9FY87499HU003401E 
+payment_type=instant 
+last_name=Wall 
+address_state=IA 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=14.60 
+receiver_id=QWDPHME2LBXWE 
+pending_reason=paymentreview 
+txn_type=web_accept 
+item_name=TROPICAL JUNGLE (Day trip) 
+mc_currency=USD 
+item_number=385 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=325.00 
+shipping=0.00 
+ipn_track_id=6470169d44cba 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: 856c078b40c88
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: phx-origin-www-2.paypal.com
+Date: Tue, 05 Apr 2016 07:10:29 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=31BM95tO_O6AFQvG4umA28050iczO5vLd43MQWd8Rl3zMXIr2RxDKftLF3cidMuc68nSeXsMr6OPXGl9y29KTVyZ92iIqymBRlvZR2yAQfooLf4OewRb6cMW0OU8zl7-WAvHVLhB-9R2Bak75RohBuR8V1E1V70L-ReXt4TOgKr1QjOFtaajRRKs__DQ5uEgc1-gAc0dVCYoKiQiSPin5TGfW_d1P8_U649cNter6XIb72hGwZRLFr7K3A9DxXTMwnL7i4tGQLDbx372Sq3bN32EGQgkpdMrstxsDwg3D4dBmOQ6ElOhinmTjS3BHK6iKmpQ02s_Dayne_f6C2ZK9zv6hKNOyJJiBaUfu-v4YHUcHEGfR0KoCHVxm4AmVO0w_EJCMJ1xsrZSgp2-U7zBI2UrQp2hE_oUj3pahF6DTsMwQwb3mOSg2su9wxu; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Fri, 03-Apr-2026 07:10:29 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Thu, 05-Apr-2018 07:10:29 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D3848536919%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Tue, 05 Apr 2016 07:40:29 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.190.9.186.1459840229265116; path=/; expires=Thu, 29-Mar-46 07:10:29 GMT
+Set-Cookie: AKDC=phx-origin-www-2.paypal.com; expires=Tue, 05-Apr-2016 07:40:29 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[04/06/2016 7:13 AM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=325.00 
+invoice=0702407196 
+protection_eligibility=Eligible 
+address_status=unconfirmed 
+payer_id=EBK2686BMEGHL 
+tax=0.00 
+address_street=3601 Brook Run Drive 
+payment_date=00:10:15 Apr 05, 2016 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=50317 
+first_name=Allison 
+mc_fee=14.60 
+address_country_code=US 
+address_name=Allison Wall 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Des Moines 
+quantity=1 
+verify_sign=AgZz2Dh23JOLR1A969Btn79aj2ZhAXSHUv3b1fpCKAtp5wrlqa37eBCM 
+payer_email=ty_50009@yahoo.com 
+txn_id=9FY87499HU003401E 
+payment_type=instant 
+last_name=Wall 
+address_state=IA 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=14.60 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=TROPICAL JUNGLE (Day trip) 
+mc_currency=USD 
+item_number=385 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=325.00 
+shipping=0.00 
+ipn_track_id=6470169d44cba 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: c13a5c56bb0a5
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: phx-origin-www-1.paypal.com
+Date: Wed, 06 Apr 2016 07:13:31 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=-z2qwBfGodY-OgrRIIyYx32m44A5bGfi6ZJgVGCyyB-tXTN8D3mygtySYkFgFxbP8ap3-PfVN98G4d-lFZZXQsi70E7Mawoqqa71XwnMT8xMD8NsNDrZkhgD8cVJov_7lfc4LAjRRMdPQ1sLL8gCD-0l1HCGTmtVaUP0e17-ozOYrxZAwVB88Oyb4kLmRJcMfmyVosdb44bI16T04LtT4Kb8CQXTPDhKCQbW0pSOzczAKzPtDJDGNDQgJkX6ck5zpCACMyF4lKNMFtFnhcNXTwzvvHZckYI1Zh1b4dWkldiNhMlzFC4bjzDaNFo48bsPLVfIraBF6g7idXpQt9vOE9bxHJmJbyJYrFXU-gvchjcw3ROG8wxm5LMCANk07PbW_Rc7n6THAy26LUm0wTGNV3a41payvPC7ccU49u_hPHnWk0Dcp9UGDPeijje; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 04-Apr-2026 07:13:31 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 06-Apr-2018 07:13:31 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D448201815%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Wed, 06 Apr 2016 07:43:31 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.190.8.152.1459926810765936; path=/; expires=Fri, 30-Mar-46 07:13:30 GMT
+Set-Cookie: AKDC=phx-origin-www-1.paypal.com; expires=Wed, 06-Apr-2016 07:43:31 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[04/08/2016 11:52 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=323.00 
+invoice=2349487844 
+protection_eligibility=Ineligible 
+address_status=confirmed 
+payer_id=W8W2D4EC6XRZA 
+tax=0.00 
+address_street=38 millyard crescent 
+payment_date=16:52:36 Apr 08, 2016 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=bn2 6lj 
+first_name=nadine blowers 
+mc_fee=14.51 
+address_country_code=GB 
+address_name=nadine blowers nadine blowers 
+notify_version=3.8 
+custom= 
+payer_status=unverified 
+business=yolanda@goaecotourism.com 
+address_country=United Kingdom 
+address_city=brighton 
+quantity=1 
+verify_sign=AXqB0WwvzXF8q40GhiucjfiMCnRhAEh70S8tY.z2My4666WAiOB7qaY9 
+payer_email=nadineblowers@gmail.com 
+txn_id=52597886S0442281H 
+payment_type=instant 
+last_name=nadine blowers 
+address_state=East Sussex 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=14.51 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=TROPICAL JUNGLE (Day trip) 
+mc_currency=USD 
+item_number=385 
+residence_country=GB 
+receipt_id=0761-3645-6226-8861 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=323.00 
+shipping=0.00 
+ipn_track_id=178aa88318f5b 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: e22e655f16171
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: slc-b-origin-www-2.paypal.com
+Date: Fri, 08 Apr 2016 23:52:50 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=PhVym7dQlUQQiOdTWVq0tUJvD5zOQoUja4OlhG21ZPLTpYzNGQzNnAtV463Kq__iSVcyNPNv3JYNsy4PnPy_ud_fo_qzlY0BoeMGr7bG3e0CscmGT6B8Rw0AXUyeqRYhKleshNYOd1TAuEYrMvsZEM5UQFZP1SOGjxNHV0nk5m_vSshg7izXM8W2YqLha8o_Rj6-mkj6bvJqh7apRVj4HrA1Ff1iS1-QSobrwZvY9njoynUZKl4GG7oSA7PV1sEt2jAvdvZueO9C6HF-zDfQ9_tlN5ZWD-vo66NbdXRpw9XXWUswYD0NS5Tk6EZKY2_FdazMKxAncy0kIahn7s6Z0SiCTRnMjLtFPOdKcc9fThgPo_NlC4MdlY2Jl7Yrj3-2jCkZst4x52lBleJ23H6n9glO6sL3vDft3xuNKLrpJ53u4pt0sm274wn4nLK; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Mon, 06-Apr-2026 23:52:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sun, 08-Apr-2018 23:52:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE6.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D1380190295%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Sat, 09 Apr 2016 00:22:50 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=slc-b-origin-www-2.paypal.com; expires=Sat, 09-Apr-2016 00:22:50 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[05/20/2016 7:50 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=67.00 
+invoice=1949026698 
+protection_eligibility=Eligible 
+address_status=confirmed 
+payer_id=HCQ3XASTC4Y3L 
+tax=0.00 
+address_street=3420 n 21st st 
+payment_date=12:50:32 May 20, 2016 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=98406-5802 
+first_name=Tammy 
+mc_fee=3.25 
+address_country_code=US 
+address_name=Tammy Scarlett 
+notify_version=3.8 
+custom= 
+payer_status=verified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=tacoma 
+quantity=1 
+verify_sign=A2l242kfBNIjPA7dhGw2ouxbGTwsAZLJglv3H5A2.sxnGjb4Xtk5A6DK 
+payer_email=scarlettgirl@hotmail.com 
+txn_id=3TY9204964901225F 
+payment_type=instant 
+payer_business_name=Sunsets & Skies by Tammy Scarlett 
+last_name=Scarlett 
+address_state=WA 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=3.25 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=67.00 
+shipping=0.00 
+ipn_track_id=74843d9e9c1b2 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Paypal-Debug-Id: 4d1c38955c611
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: slc-b-origin-www-2.paypal.com
+Date: Fri, 20 May 2016 19:50:37 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=M6QBmkJYd1MgD33X8QjoEDaKbyZLw36Zc2bJSl4XJnfE7WIJfvlrlHJbDdBFxgWQEyHLDZUdZWWdYBQv9w_46HyxfYGVHlRzPXAdOQFF_-KMdcz53Bsr9VFSzlzLGpm6lWYdkgCa1CBhYkqDSdKL4QsI4wqto5UIouO6f3Xz7ksaLBZw5Rgcz4GNW6WfYjiFjcajEXqvObM37QGp_ZHIzTZi60Eex0tuq8bmBZxPHcFyjkFWDaMsrlquKzv05pAFDeguwVJmopyG2f45EM3PTffPHsdmXJaomXKWZv5adPUCs6UQEhCmxOzS3WvzKs5wJ711o3UOKGb7La36AiwCGXnXiR-Gd6ltCMjQTpo6tcnHa5Qbgw8qCfwqy-gRMkf2SUr0W1VdqD2orSg9FlwQafQ98INVCDuTR9U4cgSz7wqMU6Qct7_WVO9xz0a; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Mon, 18-May-2026 19:50:37 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sun, 20-May-2018 19:50:37 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE6.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D2372550487%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Fri, 20 May 2016 20:20:37 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=slc-b-origin-www-2.paypal.com; expires=Fri, 20-May-2016 20:20:37 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[05/20/2016 8:32 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=67.00 
+invoice=2027445364 
+protection_eligibility=Ineligible 
+address_status=confirmed 
+payer_id=8NAAAKJCYVTUL 
+tax=0.00 
+address_street=2125 Commerce St
+Loft 403 
+payment_date=13:31:46 May 20, 2016 PDT 
+payment_status=Pending 
+charset=windows-1252 
+address_zip=99402 
+first_name=Megan 
+address_country_code=US 
+address_name=Megan Scarlett 
+notify_version=3.8 
+custom= 
+payer_status=verified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Tacoma 
+quantity=1 
+verify_sign=A-l7Ht3gCcGUz87UP0AOBYyGo3TWAjSlzZcEG5mNV2ghZlaJ4NSm6NUc 
+payer_email=shutuprichard@aol.com 
+txn_id=1RS59538X9948380E 
+payment_type=echeck 
+last_name=Scarlett 
+address_state=WA 
+receiver_email=yolanda@goaecotourism.com 
+receiver_id=QWDPHME2LBXWE 
+pending_reason=echeck 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=67.00 
+shipping=0.00 
+ipn_track_id=addb886d1c8e0 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Paypal-Debug-Id: 3bd0701436f49
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: phx-origin-www-1.paypal.com
+Date: Fri, 20 May 2016 20:32:01 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=1p_FuItyCntgY0e8Eex96ui6_ugy0LIaOC2yDNylrb6t-aNKDf9GPPaBFxz7P2P4XteT8VpcxSix1YhCjYArphO39xDiwIKVFX3wX9bkGxN_bn5I-K39l4F69W7w9p4e9o4O9xYaWQKKjIqD5MlGBgSiMxwsfEA9BL3ifFmpxVldD440n1_0HE_JXPMhgUjefxLJJh8z5cKxJR-gDhI9m4OwsLV4Hx_8jplahMbgIB8cQ07J51GJmP7HU9CqvZzIGxxqUpAUOX8c-2N6F4kdzKQmeBjnpfYTyAsJpTakRNGf78w_qxfKSpxiT0VxvwHX9A7i8NWbWrnEiR5n3Vi2AK5ReKGxs6xe5B7JwwitvxhteSXPxpyWzCcRie3539FwJhPwkRmNUY-mX_HU-j2Cleh1xmQxkAoQa15KKq_Cw2rN8b7OfAhquiqRVIi; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Mon, 18-May-2026 20:32:00 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Sun, 20-May-2018 20:32:00 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE3.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D1081360215%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Fri, 20 May 2016 21:02:00 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: Apache=10.190.8.167.1463776320224941; path=/; expires=Sun, 13-May-46 20:32:00 GMT
+Set-Cookie: AKDC=phx-origin-www-1.paypal.com; expires=Fri, 20-May-2016 21:02:01 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+
+[05/25/2016 12:56 PM] - SUCCESS:IPN VERIFIED!
+[From:notify.paypal.com|173.0.81.1]IPN POST Vars Received By Paypal_IPN Response API:
+mc_gross=67.00 
+invoice=2027445364 
+protection_eligibility=Eligible 
+address_status=confirmed 
+payer_id=8NAAAKJCYVTUL 
+tax=0.00 
+address_street=2125 Commerce St
+Loft 403 
+payment_date=13:31:46 May 20, 2016 PDT 
+payment_status=Completed 
+charset=windows-1252 
+address_zip=99402 
+first_name=Megan 
+mc_fee=3.25 
+address_country_code=US 
+address_name=Megan Scarlett 
+notify_version=3.8 
+echeck_time_processed=13:31:46 May 20, 2016 PDT 
+custom= 
+payer_status=verified 
+business=yolanda@goaecotourism.com 
+address_country=United States 
+address_city=Tacoma 
+quantity=1 
+verify_sign=AXbHfyOhp.g26Kv5HlJEYOBllEYOAxdi7yTH6kZFDTMTY-9pza7sCIi9 
+payer_email=shutuprichard@aol.com 
+txn_id=1RS59538X9948380E 
+payment_type=echeck 
+last_name=Scarlett 
+address_state=WA 
+receiver_email=yolanda@goaecotourism.com 
+payment_fee=3.25 
+receiver_id=QWDPHME2LBXWE 
+txn_type=web_accept 
+item_name=Do it Yourself Package 
+mc_currency=USD 
+item_number= 
+residence_country=US 
+handling_amount=0.00 
+transaction_subject= 
+payment_gross=67.00 
+shipping=0.00 
+ipn_track_id=5937d19962b9b 
+IPN Response from Paypal Server:
+HTTP/1.1 200 OK
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Paypal-Debug-Id: cb6c807fe540c
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Pragma: no-cache
+Content-Type: text/html; charset=UTF-8
+DC: slc-b-origin-www-2.paypal.com
+Date: Wed, 25 May 2016 12:56:13 GMT
+Content-Length: 8
+Connection: close
+Set-Cookie: cwrClyrK4LoCV1fydGbAxiNL6iG=GNzpuiJkdGLFSiKDHRDSvBdctLP-GgdENMthFaH8j1X5Pd15iY-tgUsWEENySyn5qNMHgBu_qx2Ft45Dbm3BRDsQMfji3RWuZscpfjI3tq02maFY5NKPbUva7J2VyG7W8PBxDD1bYvxVwomCehrFwBLO74IRSEEIQpmZm2a4Rr5TdIFkkHG7tQQYGInRjlOpipJVvUegDvui3bxL7-mdDzZzAyT2fmGDYxKaf7nYdRA2EfCBBtc0NtqB3t6Gutd_r86MHPaguZduhrpmlwfVNsZIcKglwqzBMC1zWFM_HGeuviUTAgjed0CXD-xH0wD02ULdJUEClCGk2weSL5GW9amituzTfkmdK8AXw-GYhpFkdqOKss1HL1JlyErBILqraFVUjLXJvzN32IYquQxPK-xrqzHBIId3sWgnzx9RxCXkDudfB5GmWJcDxcm; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: cookie_check=yes; expires=Sat, 23-May-2026 12:56:13 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navcmd=_notify-validate; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: navlns=0.0; expires=Fri, 25-May-2018 12:56:13 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=name%3DLIVE6.WEB.1%26silo_version%3D880%26app%3Dappdispatcher%26TIME%3D3969926487%26HTTP_X_PP_AZ_LOCATOR%3D; Expires=Wed, 25 May 2016 13:26:13 GMT; domain=.paypal.com; path=/; Secure; HttpOnly
+Set-Cookie: X-PP-SILOVER=; Expires=Thu, 01 Jan 1970 00:00:01 GMT
+Set-Cookie: AKDC=slc-b-origin-www-2.paypal.com; expires=Wed, 25-May-2016 13:26:13 GMT; path=/; secure
+Strict-Transport-Security: max-age=63072000
+
+VERIFIED
+

@@ -221,7 +221,7 @@ function check_user_publish ($post_id, $post) {
                      echo $post_id->get_error_message();
                 }
                 else {
-                    $url = site_url()."/pay-form?id=".$post_id."&price=0.1&post_name=".$post->post_title."&payer_email=".$email;
+                    $url = get_site_url().'/processForm/contact.php?post_id='.$post_id;
                      wp_redirect($url);
                      exit();
                 }
@@ -482,6 +482,39 @@ function get_administrator_email(){
 		$email = $user->user_email;
 	}
 	return $email;
+}
+
+add_action('wp_ajax_payCommission', 'payCommission');
+add_action('wp_ajax_nopriv_payCommission', 'payCommission');
+function payCommission(){
+    global $wpdb;
+    
+    $status = false;
+    if($_POST){
+        
+        $product = $_POST['product'];
+        $status = $product;
+        if($wpdb->update('payments', array('commission_status'=>true), array('id'=>$product))===false){
+            $status = false;
+        }
+        else{
+            //When database is updated now you can send the mail here
+            if(send_commission_mail($product)){
+                $status = true;
+            }
+        }
+        
+    }
+    else{
+        $status = false;
+    }
+    echo $status;
+    die();
+}
+
+function send_commission_mail($video_id){
+    //Code to send mail to user
+    return true;
 }
 
 // function your_function( $user_login, $user ) {

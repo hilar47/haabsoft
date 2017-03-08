@@ -41,10 +41,10 @@ class My_List_Table extends WP_List_Table {
 		
 		
 		
-		
-		// echo "<pre>";
-		// print_r($pageposts);
-		// echo "</pre>";
+
+		//echo "<pre>";
+		//print_r($pageposts);
+		//echo "</pre>";
 		
 		$data = array();
 		//echo WP_CONTENT_DIR;
@@ -112,46 +112,95 @@ class My_List_Table extends WP_List_Table {
 			//echo "<pre>";
 			//print_r(get_post_meta($post->ID,  , true));
 			$user_data = get_user_by(  "ID", $post->post_author )->data;
+			
+			
+			$user = wp_get_current_user();
+			$allowed_roles = array('administrator');
+			if( array_intersect($allowed_roles, $user->roles ) ) {
+			   //stuff here for allowed roles
+				//echo "he is an admin";
+				$invoice_to_client = '<button name="btn_pay_commission" data-product_id="'.$post->id.'" data-videocode="'.$post->video_id.'" class="button btn_pay" '.$disable_invoice.' >Pay</button>';
+				$new_data = '';
+				$new_data = array(
+					'clientname' 			=> $user_data->display_name,
+					'clientcode'    		=> $post->client_code,
+					'videocode'      		=> 'VID_'.$post->video_id,
+					'expdate'				=> $exp_date,
+					'expstatus'      		=> $exp_stat,
+					'commissionreceived'    => $commission_status,
+					'commissiondue'      	=> $commission_due,
+					'paycommission'      	=> $invoice_to_client,
+					//'remindertoclient'		=> $reminder_to_client,
+				);
+			}
+			else{
+				$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'"';
+				$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" value="'.$post->ID.'"';
+				
+				$new_data = '';
+				$new_data = array(
+					'clientname' 			=> $user_data->display_name,
+					'clientcode'    		=> $post->client_code,
+					'videocode'      		=> 'VID_'.$post->video_id,
+					'expdate'				=> $exp_date,
+					'expstatus'      		=> $exp_stat,
+					'commissionreceived'    => $commission_status,
+					'commissiondue'      	=> $commission_due,
+					'invoicetoclient'      	=> $invoice_to_client,
+					'remindertoclient'		=> $reminder_to_client,
+				);
+			}
+			//echo "<pre>";
+			//print_r($user);
+			//echo"</pre>";
 			//print_r($user_data);
 			//echo "</pre>";
-			$invoice_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-clientname="'.$user_data->display_name.'" class="invoice_to_client" id="invoice_to_client'.$post->ID.'" value="'.$post->video_id.'" />';
-			//$reminder_to_client = '<input type="checkbox" class="reminder_to_client" id="reminder_to_client"'.$post->ID.'" value="'.$post->ID.'"';
-			$reminder_to_client = '<input type="checkbox" '.$disable_invoice.' data-expdate="'.$exp_date.'" data-videocode="VID_'.$post->video_id.'" data-clientcode="'.$post->client_code.'" data-posteddate="'.$post->post_date.'" data-clientname="'.$user_data->display_name.'" class="reminder_to_client" id="reminder_to_client'.$post->ID.'" data-email="'.$user_data->user_email.'" value="'.$post->video_id.'" />';
+			
 			
 			
 			// Do your stuff, e.g.
-			$new_data = '';
-			$new_data = array(
-				'clientname' 			=> $user_data->display_name,
-				'clientemail' 			=> $user_data->user_email,
-				'clientcode'    		=> $post->client_code,
-				'videocode'      		=> 'VID_'.$post->video_id,
-				'expdate'				=> $exp_date,
-				'expstatus'      		=> $exp_stat,
-				'commissionreceived'    => $commission_status,
-				'commissiondue'      	=> $commission_due,
-				'invoicetoclient'      	=> $invoice_to_client,
-				'remindertoclient'		=> $reminder_to_client,
-			);
+			
 			array_push($data, $new_data);
 		}
 		return $data;
 	}
 	
 	function get_columns(){
-
-		$columns = array(
-			'clientname' 			=> 'Client Name',
-			'clientemail' 			=> 'Client Email',
-			'clientcode'    		=> 'Client Code',
-			'videocode'      		=> 'Video Code',
-			'expdate'				=> 'Exp. Date',
-			'expstatus'      		=> 'Exp. Status',
-			'commissionreceived'    => 'Commission Received',
-			'commissiondue'      	=> 'Commission Due',
-			'invoicetoclient'      	=> 'Invoice to Admin',
-			'remindertoclient'		=> 'Reminder to Client',
-		);
+		
+		//$user_data = get_user_by(  "ID", $post->post_author )->data;
+		
+		$user = wp_get_current_user();
+		$allowed_roles = array('administrator');
+		if( array_intersect($allowed_roles, $user->roles ) ) {
+			$columns = array(
+				'clientname' 			=> 'Client Name',
+				'clientcode'    		=> 'Client Code',
+				'videocode'      		=> 'Video Code',
+				'expdate'				=> 'Exp. Date',
+				'expstatus'      		=> 'Exp. Status',
+				'commissionreceived'    => 'Commission Received',
+				'commissiondue'      	=> 'Commission Due',
+				'paycommission'      	=> 'Pay Commission',
+				//'remindertoclient'		=> 'Reminder to Client',
+			);
+			
+		}
+		else{
+			$columns = array(
+				'clientname' 			=> 'Client Name',
+				'clientcode'    		=> 'Client Code',
+				'videocode'      		=> 'Video Code',
+				'expdate'				=> 'Exp. Date',
+				'expstatus'      		=> 'Exp. Status',
+				'commissionreceived'    => 'Commission Received',
+				'commissiondue'      	=> 'Commission Due',
+				'invoicetoclient'      	=> 'Invoice to Admin',
+				'remindertoclient'		=> 'Reminder to Client',
+			);
+		}
+		
+		
+		
 		return $columns;
 	}
 
@@ -201,35 +250,57 @@ class My_List_Table extends WP_List_Table {
 	
 	
 	function column_default( $item, $column_name ) {
-		switch( $column_name ) {
-			case 'clientname':
-			case 'clientemail':
-			case 'clientcode':
-			case 'videocode':
-			case 'expdate':
-			case 'expstatus':
-			case 'commissionreceived':
-			case 'commissiondue':
-			case 'invoicetoclient':
-			case 'remindertoclient':
-				return $item[ $column_name ];
-			default:
-				return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
+		
+		//$user_data = get_user_by(  "ID", $post->post_author )->data;
+		
+		$user = wp_get_current_user();
+		$allowed_roles = array('administrator');
+		if( array_intersect($allowed_roles, $user->roles ) ) {
+			switch( $column_name ) {
+				case 'clientname':
+				case 'clientcode':
+				case 'videocode':
+				case 'expdate':
+				case 'expstatus':
+				case 'commissionreceived':
+				case 'commissiondue':
+				case 'paycommission':
+					return $item[ $column_name ];
+				default:
+					return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
+			}
 		}
+		else{
+			switch( $column_name ) {
+				case 'clientname':
+				case 'clientcode':
+				case 'videocode':
+				case 'expdate':
+				case 'expstatus':
+				case 'commissionreceived':
+				case 'commissiondue':
+				case 'invoicetoclient':
+				case 'remindertoclient':
+					return $item[ $column_name ];
+				default:
+					return print_r( $item, true ) ; //Show the whole array for troubleshooting purposes
+			}
+		}
+		
+		
 	}
 	
 	function get_sortable_columns() {
 		$sortable_columns = array(
 			'clientname'			=> array('clientname',false),
-			'clientemail'			=> array('clientemail',false),
 			'clientcode' 			=> array('clientcode',false),
 			'videocode'   			=> array('videocode',false),
 			'expdate'   			=> array('expdate',false),
 			'expstatus'   			=> array('expstatus',false),
 			'commissionreceived'   	=> array('commissionreceived',false),
 			'commissiondue'   		=> array('commissiondue',false),
-			'invoicetoclient'   	=> array('invoicetoclient',false),
-			'remindertoclient'   	=> array('remindertoclient',false)
+			//'invoicetoclient'   	=> array('invoicetoclient',false),
+			//'remindertoclient'   	=> array('remindertoclient',false)
 		);
 		return $sortable_columns;
 	}
@@ -310,15 +381,24 @@ function my_render_list_page(){
 	//$myListTable->prepare_items();
 	
 	
+	
 	echo '<form method="post">
   	<input type="hidden" name="page" value="all_client_video_list" />';
   	echo $myListTable->search_box('search', 'search_id'); 
 	echo '</form>';
 	$myListTable->display();
-	echo '<div class="btn_container">
-		<input type="submit" id="send-invoice" class="button" value="Send Invoice" disabled="disabled">
-		<input type="submit" id="send-reminder" class="button" value="Send Reminder" disabled="disabled">
-		</div>';
+	
+	$user = wp_get_current_user();
+	$allowed_roles = array('administrator');
+	if( !array_intersect($allowed_roles, $user->roles ) ) {
+		echo '<div class="btn_container">
+			<input type="submit" id="send-invoice" class="button" value="Send Invoice" disabled="disabled">
+			<input type="submit" id="send-reminder" class="button" value="Send Reminder" disabled="disabled">
+			</div>';
+	}
+	
+	
+	
 	echo '</div>';
 	echo '<script>var BASE_URL = "'.get_site_url().'";</script>'; 
 }
