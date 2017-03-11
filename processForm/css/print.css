@@ -1,0 +1,35 @@
+.bs-example{
+		background-color: #fff;
+   	border: 1px solid #eee;
+    box-shadow: 1px 1px 22px 0;
+    border-radius: 3px ;
+    margin: 16px auto;
+    
+	}
+@media print {
+	#terms{
+		font-size: 10px !important;
+	}
+	.print
+	{
+    	/*margin: 2px auto !important; here*/
+		margin-left:0 !important;;
+		padding:0 !important;
+		
+	}
+	.col-md-12
+	{
+	width: 100% !important;
+	}
+	.container{
+		border:none !important;
+	}
+	td{
+		font-size: 11px;
+		padding: 4px !important;
+		border-top: none !important;
+	}
+	th, #address_section, #company_address {
+		font-size: 12px !important;
+	}
+}

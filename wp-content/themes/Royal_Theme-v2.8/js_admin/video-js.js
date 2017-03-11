@@ -174,7 +174,43 @@ jQuery(document).ready(function(){
 	
 
 	
+	 jQuery(".btn_pay").click(function(){
+        var prod = jQuery(this).data("product_id");
+        var r = confirm("Confirm paid the commission ?");
+        if (r == true) {
+            console.log("You pressed OK!");
+            
+            
+            jQuery.ajax({
 
+                url : BASE_URL+"/wp-admin/admin-ajax.php",
+                type : 'POST',
+                dataType: 'json',
+                data : {
+                    "product"    : prod,
+                    'action'         : 'payCommission'
+                },
+                success : function( response ) {
+                    if(response == true){
+                        console.log("i am in here");
+                        jQuery(".wrap").prepend('<div id="message" class="updated notice notice-success is-dismissible"><p>Commission status changed successfully</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>');
+                        
+                        location.reload();
+                    }
+                    else{
+                        console.log("i am in false");
+                        jQuery(".wrap").prepend('<div id="message" class="updated notice notice-success is-dismissible"><p>There was an error while updating commission status</p><button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button></div>');
+                        location.reload();
+                    }
+                    //console.log(response);
+                }
+            });
+            
+            
+        } else {
+            return false;
+        }
+    });
 	
 	
 	

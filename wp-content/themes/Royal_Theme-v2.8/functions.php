@@ -221,7 +221,7 @@ function check_user_publish ($post_id, $post) {
                      echo $post_id->get_error_message();
                 }
                 else {
-                    $url = site_url()."/pay-form?id=".$post_id."&price=0.1&post_name=".$post->post_title."&payer_email=".$email;
+                    $url = get_site_url().'/processForm/contact.php?post_id='.$post_id;
                      wp_redirect($url);
                      exit();
                 }
@@ -373,7 +373,7 @@ function sendInvoice(){
         echo "in else";
 		echo json_encode(false);
 	}
-	
+die();	
 }
 add_action('wp_ajax_sendInvoice', 'sendInvoice');
 add_action('wp_ajax_nopriv_sendInvoice', 'sendInvoice');
@@ -407,7 +407,7 @@ function sendReminder(){
         echo "in else";
         echo json_encode(false);
     }
-    
+die();    
 }
 add_action('wp_ajax_sendReminder', 'sendReminder');
 add_action('wp_ajax_nopriv_sendReminder', 'sendReminder');
@@ -430,7 +430,30 @@ function sendLocation(){
                 //echo "in if";
                 $retunResult = '';
                  foreach($video_results as $result) {
-                    $recent_author = get_user_by( 'ID', $post->post_author ); 
+                    $recent_author = get_user_by( 'ID', $result->post_author ); 
+                    $meta = get_post_meta($result->ID);
+                    $retunResult .= '<div class="col-xs-12 col-sm-4 m-b-20 video-holder"><video class="img-responsive" controls><source src="'.$meta['video_upload'][0].'" type="video/mp4"></video><div class="video-disc"><h5>'.$result->post_name.'</h5><h6>'.$meta['caption_line'][0].'</h6><p>Uploaded by: <span>'.$recent_author->display_name.'</span></p></div></div>';
+
+                 }
+                 echo $retunResult;
+             } else {
+                //echo "in else";
+                echo json_encode(0);
+             }
+        } else {
+            global $content_item_meta;
+        
+            global $wpdb;
+            
+            $querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE 1=1 AND $wpdb->posts.post_status = 'publish'  AND $wpdb->posts.post_type = 'videos' AND $wpdb->posts.post_date < NOW() ORDER BY $wpdb->posts.post_date DESC";
+
+             $video_results = $wpdb->get_results($querystr, OBJECT);
+             if($video_results) {
+                //echo "in if";
+                $retunResult = '';
+                 foreach($video_results as $result) {
+                    $recent_author = get_user_by( 'ID', $result->post_author ); 
+                    //echo "author : ".$recent_author;
                     $meta = get_post_meta($result->ID);
                     $retunResult .= '<div class="col-xs-12 col-sm-4 m-b-20 video-holder"><video class="img-responsive" controls><source src="'.$meta['video_upload'][0].'" type="video/mp4"></video><div class="video-disc"><h5>'.$result->post_name.'</h5><h6>'.$meta['caption_line'][0].'</h6><p>Uploaded by: <span>'.$recent_author->display_name.'</span></p></div></div>';
 
@@ -460,3 +483,44 @@ function get_administrator_email(){
 	}
 	return $email;
 }
+
+add_action('wp_ajax_payCommission', 'payCommission');
+add_action('wp_ajax_nopriv_payCommission', 'payCommission');
+function payCommission(){
+    global $wpdb;
+    
+    $status = false;
+    if($_POST){
+        
+        $product = $_POST['product'];
+        $status = $product;
+        if($wpdb->update('payments', array('commission_status'=>true), array('id'=>$product))===false){
+            $status = false;
+        }
+        else{
+            //When database is updated now you can send the mail here
+            if(send_commission_mail($product)){
+                $status = true;
+            }
+        }
+        
+    }
+    else{
+        $status = false;
+    }
+    echo $status;
+    die();
+}
+
+function send_commission_mail($video_id){
+    //Code to send mail to user
+    return true;
+}
+
+// function your_function( $user_login, $user ) {
+//     echo "<pre>";
+//     print_r($_POST);
+//     echo "</pre>";
+//     exit();
+// }
+// add_action('wp_login', 'your_function', 10, 2);
