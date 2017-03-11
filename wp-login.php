@@ -158,9 +158,13 @@ function login_header( $title = 'Log In', $message = '', $wp_error = '' ) {
 	do_action( 'login_header' );
 	?>
 	<div id="login">
+    <div class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 left">
 		<h1><a href="<?php echo esc_url( $login_header_url ); ?>" title="<?php echo esc_attr( $login_header_title ); ?>" tabindex="-1"><?php bloginfo( 'name' ); ?></a></h1>
+        <h1 class="text-center">Welcome to Haabsoft</h1>
+        </div>
+        <div class="col-sm-5 col-md-4 right">
 	<?php
-
+	
 	unset( $login_header_url, $login_header_title );
 
 	/**
@@ -225,12 +229,13 @@ function login_footer($input_id = '') {
 
 	// Don't allow interim logins to navigate away from the page.
 	if ( ! $interim_login ): ?>
+    <div class="col-sm-5 col-sm-offset-6 col-md-4 col-md-offset-6">
 	<p id="backtoblog"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php
 		/* translators: %s: site title */
-		printf( _x( '&larr; Back to %s', 'site' ), get_bloginfo( 'title', 'display' ) );
+		printf( _x( 'Back to %s', 'site' ), get_bloginfo( 'title', 'display' ) );
 	?></a></p>
 	<?php endif; ?>
-
+	</div>
 	</div>
 
 	<?php if ( !empty($input_id) ) : ?>
@@ -717,7 +722,7 @@ case 'register' :
 	$redirect_to = apply_filters( 'registration_redirect', $registration_redirect );
 	login_header(__('Registration Form'), '<p class="message register">' . __('Register For This Site') . '</p>', $errors);
 ?>
-<form name="registerform" id="registerform" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post" novalidate="novalidate">
+<form name="registerform" id="registerform" action="<?php echo esc_url( site_url( 'wp-login.php?action=register', 'login_post' ) ); ?>" method="post" novalidate>
 	<p>
 		<label for="user_login"><?php _e('Username') ?><br />
 		<input type="text" name="user_login" id="user_login" class="input" value="<?php echo esc_attr(wp_unslash($user_login)); ?>" size="20" /></label>
@@ -742,7 +747,7 @@ case 'register' :
 
 <p id="nav">
 <a href="<?php echo esc_url( wp_login_url() ); ?>"><?php _e( 'Log in' ); ?></a> |
-<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Forgot Password ?' ); ?></a>
 </p>
 
 <?php
@@ -894,6 +899,7 @@ default:
 	}
 ?>
 
+<h1>Login  / Sign up</h1>
 <form name="loginform" id="loginform" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>" method="post">
 	<p>
 		<label for="user_login"><?php _e( 'Username or Email Address' ); ?><br />
@@ -913,7 +919,7 @@ default:
 	?>
 	<p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" <?php checked( $rememberme ); ?> /> <?php esc_html_e( 'Remember Me' ); ?></label></p>
 	<p class="submit">
-		<input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e('Log In'); ?>" />
+		<input type="submit" name="wp-submit" id="wp-submit" class="button button-large" value="<?php esc_attr_e('Log In'); ?>" />
 <?php	if ( $interim_login ) { ?>
 		<input type="hidden" name="interim-login" value="1" />
 <?php	} else { ?>
@@ -936,10 +942,13 @@ default:
 		echo apply_filters( 'register', $registration_url ) . ' | ';
 	endif;
 	?>
-	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
+	<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Forgot Password ?' ); ?></a>
 <?php endif; ?>
 </p>
 <?php } ?>
+
+<h4 class="newaccount"><a href="http://localhost/haabsoft/wp-login.php">Don’t  have an Account ?</a></h4>
+</div>
 
 <script type="text/javascript">
 function wp_attempt_focus(){
